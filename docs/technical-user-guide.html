@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Technical User Guide - RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="../assets/favicon.webp">
+    <link rel="stylesheet" href="../arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#template-assignment-system">Template Assignment System</a></li>
+                    <li><a href="#page-types--templates">Page Types & Templates</a>
+                        <ul>
+                            <li><a href="#product-pages">Product Pages</a></li>
+                            <li><a href="#collection-pages">Collection Pages</a></li>
+                            <li><a href="#page-templates">Page Templates</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#customizer-sections">Customizer Sections</a>
+                        <ul>
+                            <li><a href="#content-sections">Content Sections</a></li>
+                            <li><a href="#product-sections">Product Sections</a></li>
+                            <li><a href="#collection-sections">Collection Sections</a></li>
+                            <li><a href="#media-sections">Media Sections</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#image-specifications">Image Specifications</a></li>
+                    <li><a href="#custom-features">Custom Features</a>
+                        <ul>
+                            <li><a href="#team-store-functionality">Team Store Functionality</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#template-variants">Template Variants</a></li>
+                    <li><a href="#data-reference">Data Reference</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="template-assignment-system">
+                    <h1>RUDIS Platform Documentation - Technical User Guide</h1>
+                    <p><strong>Last Updated:</strong> October 31, 2025<br>
+                    <strong>Theme:</strong> CQL Propel v3.0.0<br>
+                    <strong>Base:</strong> Dawn OS 2.0 (Customized)</p>
+                    
+                    <h2>Template Assignment System</h2>
+                    
+                    <h3>Understanding Template Suffixes</h3>
+                    <p>In Shopify, templates are assigned using <strong>template suffixes</strong> - a system where template files follow the naming pattern <code>{template-type}.{suffix}.json</code>. The suffix determines which template file is used for a specific product, collection, or page.</p>
+                    
+                    <h3>How Template Suffixes Work</h3>
+                    <p><strong>Template File Naming:</strong></p>
+                    <ul>
+                        <li>Standard template: <code>product.json</code> (no suffix)</li>
+                        <li>Template with suffix: <code>product.team-store-pdp.json</code> (suffix: <code>team-store-pdp</code>)</li>
+                        <li>Collection template: <code>collection.searchspring.json</code> (suffix: <code>searchspring</code>)</li>
+                    </ul>
+                    
+                    <p><strong>Assignment Process:</strong></p>
+                    <ol>
+                        <li><strong>Manual Assignment:</strong> Template suffixes are set manually in Shopify Admin:
+                            <ul>
+                                <li>Products: Product settings → <strong>Template suffix</strong> dropdown</li>
+                                <li>Collections: Collection settings → <strong>Template suffix</strong> dropdown</li>
+                                <li>Pages: Page settings → <strong>Template suffix</strong> dropdown</li>
+                            </ul>
+                        </li>
+                        <li><strong>Theme-Level Detection:</strong> Theme code can conditionally render different layouts based on metafields or other conditions, but this does <strong>not</strong> change the template file used. It only affects how the template renders.</li>
+                    </ol>
+                    
+                    <h3>Template Assignment vs Layout Conditionals</h3>
+                    <p><strong>Important Distinction:</strong></p>
+                    <ul>
+                        <li><strong>Template Suffix:</strong> Determines which <code>.json</code> template file is used (set in Shopify Admin)</li>
+                        <li><strong>Layout Conditionals:</strong> Theme code (<code>layout/theme.liquid</code>) can conditionally render different layouts based on metafields</li>
+                    </ul>
+                    
+                    <p><strong>Example - Team Store Products:</strong></p>
+                    <pre><code>{% if collection.template_suffix == 'team-store-landing' or product.metafields.custom.is_custom_team_blank %}
+</code></pre>
+                    <p>This code:</p>
+                    <ul>
+                        <li>Checks if collection has <code>team-store-landing</code> template suffix <strong>OR</strong></li>
+                        <li>Checks if product has <code>is_custom_team_blank</code> metafield</li>
+                        <li>If either condition is true, theme applies special layout (e.g., noindex robots tag)</li>
+                    </ul>
+                    <p><strong>However:</strong> The product still needs <code>product.team-store-pdp.json</code> template suffix set manually in Shopify Admin to use the correct template file.</p>
+                    
+                    <h3>Automatic vs Manual Assignment</h3>
+                    <p><strong>Reality:</strong> Shopify does <strong>not</strong> automatically assign template suffixes based on product type or metafields. All template suffix assignments are <strong>manual</strong> in Shopify Admin.</p>
+                    
+                    <p><strong>What Appears "Automatic":</strong></p>
+                    <ol>
+                        <li><strong>Team Store Products:</strong> Theme code checks <code>is_custom_team_blank</code> metafield to conditionally render layout, but template suffix <code>product.team-store-pdp.json</code> must still be set manually</li>
+                        <li><strong>Shoe Products:</strong> No automatic assignment exists - <code>product.shoe-product.json</code> template suffix must be set manually</li>
+                        <li><strong>Bundle Products:</strong> No automatic assignment exists - <code>product.bundles.json</code> template suffix must be set manually</li>
+                    </ol>
+                    
+                    <p><strong>Best Practice:</strong></p>
+                    <ul>
+                        <li>Set template suffix in Shopify Admin when creating/editing products, collections, or pages</li>
+                        <li>Use metafields to trigger conditional layout logic, not template assignment</li>
+                        <li>Document template suffix requirements for each product type</li>
+                    </ul>
+                    
+                    <h3>Setting Template Suffixes</h3>
+                    <p><strong>In Shopify Admin:</strong></p>
+                    
+                    <p><strong>1. For Products:</strong></p>
+                    <ol>
+                        <li>Navigate to <strong>Products</strong> → Select product</li>
+                        <li>Scroll to <strong>Search engine listing</strong> section</li>
+                        <li>Find <strong>Template suffix</strong> dropdown</li>
+                        <li>Select desired template (e.g., <code>team-store-pdp</code>, <code>shoe-product</code>)</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <p><strong>2. For Collections:</strong></p>
+                    <ol>
+                        <li>Navigate to <strong>Products</strong> → <strong>Collections</strong> → Select collection</li>
+                        <li>Scroll to <strong>Search engine listing</strong> section</li>
+                        <li>Find <strong>Template suffix</strong> dropdown</li>
+                        <li>Select desired template (e.g., <code>team-store-native</code>, <code>searchspring</code>)</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <p><strong>3. For Pages:</strong></p>
+                    <ol>
+                        <li>Navigate to <strong>Online Store</strong> → <strong>Pages</strong> → Select page</li>
+                        <li>Scroll to <strong>Search engine listing</strong> section</li>
+                        <li>Find <strong>Template suffix</strong> dropdown</li>
+                        <li>Select desired template (e.g., <code>yotpo-rewards</code>, <code>technique-library</code>)</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <h3>Template Suffix Reference</h3>
+                    <p><strong>Product Templates:</strong></p>
+                    <ul>
+                        <li><code>product.json</code> - Default (no suffix)</li>
+                        <li><code>product.team-store-pdp.json</code> - Team store products</li>
+                        <li><code>product.shoe-product.json</code> - Shoe products</li>
+                        <li><code>product.bundles.json</code> - Bundle products</li>
+                        <li><code>product.auction-pro-template.json</code> - Auction products</li>
+                        <li>See <a href="#template-variants">Template Variants</a> for complete list</li>
+                    </ul>
+                    
+                    <p><strong>Collection Templates:</strong></p>
+                    <ul>
+                        <li><code>collection.json</code> - Default (no suffix)</li>
+                        <li><code>collection.team-store-native.json</code> - Native team store</li>
+                        <li><code>collection.team-store-landing.json</code> - Team store landing page</li>
+                        <li><code>collection.searchspring.json</code> - SearchSpring-powered collections</li>
+                    </ul>
+                    
+                    <p><strong>Page Templates:</strong></p>
+                    <ul>
+                        <li><code>page.json</code> - Default (no suffix)</li>
+                        <li><code>page.yotpo-rewards.json</code> - Yotpo rewards page</li>
+                        <li><code>page.technique-library.json</code> - Technique library pages</li>
+                        <li>See <a href="#page-templates">Page Templates</a> section for complete list</li>
+                    </ul>
+                </section>
+                
+                <section id="page-types--templates">
+                    <h2>Page Types & Templates</h2>
+                    
+                    <section id="product-pages">
+                        <h3>Product Pages</h3>
+                        
+                        <h4>Standard Product Template (<code>product.json</code>)</h4>
+                        <ul>
+                            <li><strong>Usage:</strong> Default product template for most products</li>
+                            <li><strong>Template Sections:</strong> Uses <code>main-product.liquid</code></li>
+                            <li><strong>Key Features:</strong>
+                                <ul>
+                                    <li>Standard product media gallery</li>
+                                    <li>Variant selection</li>
+                                    <li>Add to cart functionality</li>
+                                    <li>Product information blocks</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <h4>Specialized Product Templates</h4>
+                        
+                        <p><strong>Shoe Products (<code>product.shoe-product.json</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Wrestling shoes and footwear</li>
+                            <li><strong>Template:</strong> <code>main-product-shoe.liquid</code></li>
+                            <li><strong>Special Features:</strong>
+                                <ul>
+                                    <li>Shoe-specific sizing information</li>
+                                    <li>Shoe-specific product features</li>
+                                    <li>Specialized media gallery for footwear</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <p><strong>Team Store Products (<code>product.team-store-pdp.json</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Team store custom products</li>
+                            <li><strong>Template:</strong> <code>main-product-team-store.liquid</code></li>
+                            <li><strong>Special Features:</strong>
+                                <ul>
+                                    <li>Team store customization options</li>
+                                    <li>Personalization fields (name, number)</li>
+                                    <li>Team store approval workflow</li>
+                                    <li>Custom image gallery management</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <p><strong>Bundle Products (<code>product.bundles.json</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Product bundles and sets</li>
+                            <li><strong>Template:</strong> <code>main-product-bundles.liquid</code></li>
+                            <li><strong>Special Features:</strong>
+                                <ul>
+                                    <li>Bundle component selection</li>
+                                    <li>Bundle pricing display</li>
+                                    <li>Bundle-specific add to cart</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <p><strong>Auction Products (<code>product.auction-pro-template.json</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Auction and special event products</li>
+                            <li><strong>Template:</strong> <code>main-product-auction.liquid</code></li>
+                            <li><strong>Special Features:</strong>
+                                <ul>
+                                    <li>Auction countdown timers</li>
+                                    <li>Bid functionality</li>
+                                    <li>Auction-specific pricing</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <p><strong>Athlete Brand Templates</strong></p>
+                        <ul>
+                            <li><code>product.kolat.json</code> - Kolat brand products</li>
+                            <li><code>product.rocky.json</code> - Rocky brand products</li>
+                            <li><code>product.hildebrandt.json</code> - Hildebrandt products</li>
+                            <li><code>product.jb-ultra-ps.json</code> - Jordan Burroughs Ultra products</li>
+                            <li><code>product.jb-ultralite.json</code> - Jordan Burroughs Ultralite products</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="collection-pages">
+                        <h3>Collection Pages</h3>
+                        
+                        <h4>Standard Collection (<code>collection.json</code>)</h4>
+                        <ul>
+                            <li><strong>Usage:</strong> Default collection listing page</li>
+                            <li><strong>Template:</strong> <code>main-collection-product-grid.liquid</code></li>
+                            <li><strong>Features:</strong>
+                                <ul>
+                                    <li>Product grid display</li>
+                                    <li>Filtering and sorting</li>
+                                    <li>Pagination</li>
+                                    <li>Product count display</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <h4>SearchSpring Collection (<code>collection.searchspring.json</code>)</h4>
+                        <ul>
+                            <li><strong>Usage:</strong> Collections using SearchSpring search/filter</li>
+                            <li><strong>Template Suffix:</strong> <code>searchspring</code> (creates <code>collection.searchspring.json</code> template)</li>
+                            <li><strong>Template Section:</strong> <code>main-collection-product-grid-ss.liquid</code></li>
+                            <li><strong>Features:</strong>
+                                <ul>
+                                    <li>SearchSpring-powered search and filtering</li>
+                                    <li>Advanced filtering with SearchSpring widgets</li>
+                                    <li>SearchSpring recommendations</li>
+                                    <li>IntelliSuggest autocomplete integration</li>
+                                </ul>
+                            </li>
+                            <li><strong>Configuration:</strong>
+                                <ul>
+                                    <li>Set collection template suffix to <code>searchspring</code> in Shopify Admin</li>
+                                    <li>SearchSpring app must be installed and configured</li>
+                                    <li>Collection uses <code>main-collection-product-grid-ss</code> section instead of standard grid</li>
+                                </ul>
+                            </li>
+                            <li><strong>Code References:</strong>
+                                <ul>
+                                    <li>Template: <code>templates/collection.searchspring.json</code></li>
+                                    <li>Section: <code>sections/main-collection-product-grid-ss.liquid</code></li>
+                                    <li>JavaScript: <code>assets/searchspring.bundle.js</code></li>
+                                    <li>Script Snippet: <code>snippets/searchspring-script.liquid</code></li>
+                                    <li>Recommendations: <code>sections/searchspring-recommendations.liquid</code></li>
+                                </ul>
+                            </li>
+                            <li><strong>See Also:</strong> <a href="integrations.html#searchspring">Integrations Guide - SearchSpring</a> for detailed integration documentation</li>
+                        </ul>
+                        
+                        <h4>Team Store Collection (<code>collection.team-store-native.json</code>)</h4>
+                        <ul>
+                            <li><strong>Usage:</strong> Team store collection pages</li>
+                            <li><strong>Template:</strong> <code>main-collection-team-store.liquid</code></li>
+                            <li><strong>Features:</strong>
+                                <ul>
+                                    <li>Team store status messages</li>
+                                    <li>Team store approval workflow</li>
+                                    <li>Custom team store product display</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section id="page-templates">
+                        <h3>Page Templates</h3>
+                        
+                        <h4>Standard Page (<code>page.json</code>)</h4>
+                        <ul>
+                            <li><strong>Usage:</strong> General content pages</li>
+                            <li><strong>Template:</strong> <code>main-page.liquid</code></li>
+                            <li><strong>Available Sections:</strong> All content sections</li>
+                        </ul>
+                        
+                        <h4>Specialized Page Templates</h4>
+                        
+                        <p><strong>Yotpo Rewards Page (<code>page.yotpo-rewards.json</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Yotpo loyalty rewards page</li>
+                            <li><strong>Template:</strong> <code>main-page-yotpo-rewards.liquid</code></li>
+                        </ul>
+                        
+                        <p><strong>Digioh Results (<code>page.digioh-results.liquid</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Digioh integration results page</li>
+                            <li><strong>Template:</strong> Liquid template (not JSON)</li>
+                        </ul>
+                        
+                        <p><strong>Style Guide (<code>page.styleguide.liquid</code>)</strong></p>
+                        <ul>
+                            <li><strong>Usage:</strong> Design system and style guide</li>
+                            <li><strong>Template:</strong> <code>main-page-styleguide.liquid</code></li>
+                        </ul>
+                        
+                        <p><strong>Technique Library Pages</strong></p>
+                        <ul>
+                            <li><code>page.technique-library.json</code> - General technique library</li>
+                            <li><code>page.technique-library-kennedy.json</code> - Kennedy Blades techniques</li>
+                            <li><code>page.technique-library-kolat.json</code> - Cary Kolat techniques</li>
+                        </ul>
+                        
+                        <p><strong>Athlete Pages</strong></p>
+                        <ul>
+                            <li><code>page.spencer.json</code> - Spencer Lee athlete page</li>
+                            <li><code>page.kolat.json</code> - Kolat athlete page</li>
+                        </ul>
+                        
+                        <p><strong>Signup Forms</strong></p>
+                        <ul>
+                            <li><code>page.signup-form.json</code></li>
+                            <li><code>page.signup-form-02.json</code></li>
+                            <li><code>page.signup-form-3.json</code></li>
+                        </ul>
+                    </section>
+                </section>
+                
+                <section id="customizer-sections">
+                    <h2>Customizer Sections</h2>
+                    
+                    <section id="content-sections">
+                        <h3>Content Sections</h3>
+                        
+                        <h4>Image Banner (<code>image-banner.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Full-width banner with background image and overlaid content</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        
+                        <p><strong>Images:</strong></p>
+                        <ul>
+                            <li><strong>Desktop Image:</strong>
+                                <ul>
+                                    <li>Recommended: 1920px × 1080px (16:9 ratio)</li>
+                                    <li>Format: JPG, PNG, WebP</li>
+                                    <li>Max file size: 500KB recommended</li>
+                                </ul>
+                            </li>
+                            <li><strong>Desktop Large Image (Wide Screens):</strong>
+                                <ul>
+                                    <li>Recommended: 2560px × 1440px (16:9 ratio)</li>
+                                    <li>For screens wider than 1650px</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mobile Image:</strong>
+                                <ul>
+                                    <li>Recommended: 750px × 1334px (9:16 portrait ratio)</li>
+                                    <li>Format: JPG, PNG, WebP</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <p><strong>Desktop Layout:</strong></p>
+                        <ul>
+                            <li><strong>Content Position:</strong> Top Left, Top Center, Top Right, Middle Left, Middle Center, Middle Right, Bottom Left, Bottom Center, Bottom Right</li>
+                            <li><strong>Content Alignment:</strong> Left, Center, Right</li>
+                            <li><strong>Desktop Max Height:</strong> Number (px), default 640px</li>
+                            <li><strong>Content Area Max Width:</strong> Number (px), default 400px</li>
+                        </ul>
+                        
+                        <p><strong>Mobile Layout:</strong></p>
+                        <ul>
+                            <li><strong>Content Position:</strong> Below image or overlaid</li>
+                            <li><strong>Content Alignment:</strong> Left, Center, Right</li>
+                            <li><strong>Show Content Below Image:</strong> Checkbox (default: true)</li>
+                            <li><strong>Hide Image on Mobile:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Colors:</strong></p>
+                        <ul>
+                            <li><strong>Section Background Color:</strong> Color picker</li>
+                            <li><strong>Content Container Color:</strong> Color picker</li>
+                            <li><strong>Container Border Color:</strong> Color picker (default: #333333)</li>
+                            <li><strong>Content Background Opacity:</strong> Range 0-100% (default: 100%)</li>
+                        </ul>
+                        
+                        <p><strong>Blocks:</strong></p>
+                        <ol>
+                            <li><strong>Eyebrow Block</strong> (Limit: 1)
+                                <ul>
+                                    <li>Text: Text input</li>
+                                    <li>Style: Eyebrow - Small, Eyebrow - Large</li>
+                                    <li>Colors: Desktop color, Mobile color</li>
+                                </ul>
+                            </li>
+                            <li><strong>Headline Block</strong> (Limit: 1)
+                                <ul>
+                                    <li>Headline: Text input</li>
+                                    <li>Size: Small (h3), Medium (h2), Large (h1)</li>
+                                    <li>Colors: Desktop color, Mobile color</li>
+                                    <li><strong>XL Headline Override:</strong>
+                                        <ul>
+                                            <li>Activate Desktop Override: Checkbox</li>
+                                            <li>Custom Size: 50-200px (default: 50px)</li>
+                                            <li>Activate Mobile Override: Checkbox</li>
+                                            <li>Custom Mobile Size: 16-100px (default: 16px)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Description Block</strong> (Limit: 1)
+                                <ul>
+                                    <li>Description: Rich text editor</li>
+                                    <li>Text Style: Body (Default), Body - Small, Body - Medium, Body - Large, Caption, Subtitle</li>
+                                    <li>Colors: Desktop color, Mobile color</li>
+                                </ul>
+                            </li>
+                            <li><strong>Buttons Block</strong> (Limit: 1)
+                                <ul>
+                                    <li><strong>Button 1:</strong>
+                                        <ul>
+                                            <li>Label: Text input</li>
+                                            <li>Link: URL</li>
+                                            <li>Style Desktop: Primary, Secondary, Secondary Transparent</li>
+                                            <li>Style Mobile: Primary, Secondary, Secondary Transparent</li>
+                                            <li>Colors: Foreground, Background, Border, Hover Border</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Button 2:</strong> (Same options as Button 1)</li>
+                                    <li><strong>Display Options:</strong>
+                                        <ul>
+                                            <li>Display side-by-side: Checkbox</li>
+                                            <li>Button widths: Inherit, Auto, 100%</li>
+                                            <li>Display vertical separator: Checkbox</li>
+                                            <li>Display horizontal separator: Checkbox</li>
+                                            <li>Separator color: Color picker</li>
+                                            <li>Override link/button default text color: Checkbox</li>
+                                            <li>Link color: Color picker</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Image Block</strong> (Limit: 1)
+                                <ul>
+                                    <li>Image: Image picker</li>
+                                    <li>Maximum Size: Number (px), default 75px</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <p><strong>Animations:</strong></p>
+                        <ul>
+                            <li><strong>Select Animation:</strong> Fade In, Fade In Up, Fade In Left, Fade In Right, No Effect</li>
+                            <li><strong>Animation Time:</strong> Text (e.g., "0.2s")</li>
+                        </ul>
+                        
+                        <h4>Rich Text (<code>rich-text.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Flexible text content section with multiple content blocks</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Background:</strong></p>
+                        <ul>
+                            <li><strong>Background Color:</strong> Color picker</li>
+                            <li><strong>Desktop Background Image:</strong> Image picker</li>
+                            <li><strong>Mobile Background Image:</strong> Image picker</li>
+                        </ul>
+                        
+                        <p><strong>Section Padding:</strong></p>
+                        <ul>
+                            <li><strong>Desktop Top Padding:</strong> Number (px), default 60px</li>
+                            <li><strong>Desktop Bottom Padding:</strong> Number (px), default 60px</li>
+                            <li><strong>Mobile Top Padding:</strong> Number (px), default 45px</li>
+                            <li><strong>Mobile Bottom Padding:</strong> Number (px), default 45px</li>
+                            <li><strong>Disable Section Top Margin:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Blocks:</strong></p>
+                        <ol>
+                            <li><strong>Headline Block</strong> (Limit: 1)
+                                <ul>
+                                    <li><strong>Headline Animation:</strong> Fade In, Fade In Up, Fade In Left, Fade In Right, No Effect</li>
+                                    <li><strong>Animation Time:</strong> Text (default: "0.2s")</li>
+                                    <li><strong>Headline:</strong> Text input</li>
+                                    <li><strong>Headline Color:</strong> Color picker (default: #000000)</li>
+                                    <li><strong>Headline Size:</strong> Headline Feature XL, Headline Feature Large, Headline Feature, Headline Small, Headline XS, Headline XS Regular, Custom Headline 1, 2, 3, X-Small (h4), Small (h3), Medium (h2), Large (h1), X-Large (h0)</li>
+                                    <li><strong>XL Headline Override:</strong>
+                                        <ul>
+                                            <li>Activate Desktop: Checkbox</li>
+                                            <li>Custom Size: 50-200px (default: 50px)</li>
+                                            <li>Activate Mobile: Checkbox</li>
+                                            <li>Custom Mobile Size: 16-120px (default: 16px)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Description Block</strong> (Limit: 1)
+                                <ul>
+                                    <li><strong>RichText Animation:</strong> Fade In, Fade In Up, Fade In Left, Fade In Right, No Effect</li>
+                                    <li><strong>Animation Time:</strong> Text (default: "0.2s")</li>
+                                    <li><strong>Description:</strong> Rich text editor</li>
+                                    <li><strong>Text Color:</strong> Color picker (default: #000000)</li>
+                                    <li><strong>Text Style:</strong> Paragraph Feature, Paragraph Interface, Paragraph Eyebrow, Paragraph Small, Caption, Subtitle, Body - Default, Body - Small, Body - Medium, Body - Large</li>
+                                </ul>
+                            </li>
+                            <li><strong>Button Block</strong> (Limit: 2)
+                                <ul>
+                                    <li><strong>Button Animation:</strong> Fade In, Fade In Up, Fade In Left, Fade In Right, No Effect</li>
+                                    <li><strong>Animation Time:</strong> Text (default: "0.2s")</li>
+                                    <li><strong>Button Label:</strong> Text input</li>
+                                    <li><strong>Button Link:</strong> URL</li>
+                                    <li><strong>Button Style:</strong> Primary, Secondary, Secondary Transparent, Secondary Alternate, Secondary Red, Secondary Gold, Link style 0, 1, 2</li>
+                                </ul>
+                            </li>
+                            <li><strong>Logo List Block</strong> (Limit: 2)
+                                <ul>
+                                    <li><strong>Logo Animation:</strong> Fade In, Fade In Up, Fade In Left, Fade In Right, No Effect</li>
+                                    <li><strong>Animation Time:</strong> Text (default: "0.2s")</li>
+                                    <li><strong>Logo Items:</strong> Up to 5 logos per block
+                                        <ul>
+                                            <li>Logo Image: Image picker (max 300px width recommended)</li>
+                                            <li>Logo Link: URL</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Padding Block</strong> (Unlimited)
+                                <ul>
+                                    <li><strong>Mobile Padding:</strong> Number (px)</li>
+                                    <li><strong>Desktop Padding:</strong> Number (px)</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <h4>Collapsible Content (<code>collapsible-content.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Accordion-style expandable content sections</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Content:</strong></p>
+                        <ul>
+                            <li><strong>Caption:</strong> Text input (optional)</li>
+                            <li><strong>Heading:</strong> Inline rich text</li>
+                            <li><strong>Heading Size:</strong> Small (h2), Medium (h1), X-Large (h0)</li>
+                            <li><strong>Heading Alignment:</strong> Left, Center, Right (default: center)</li>
+                        </ul>
+                        
+                        <p><strong>Layout:</strong></p>
+                        <ul>
+                            <li><strong>Layout:</strong> None, Row, Section</li>
+                            <li><strong>Desktop Layout:</strong> Image First, Image Second</li>
+                            <li><strong>Color Scheme:</strong> accent-1, accent-2, background-1, background-2, inverse</li>
+                            <li><strong>Container Color Scheme:</strong> accent-1, accent-2, background-1, background-2, inverse</li>
+                            <li><strong>Open First Collapsible Row:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Blocks:</strong></p>
+                        <p><strong>Collapsible Row Block</strong> (Unlimited)</p>
+                        <ul>
+                            <li><strong>Heading:</strong> Text input</li>
+                            <li><strong>Icon:</strong> None, Apple, Banana, Bottle, Box, Carrot, Chat Bubble, Check Mark, Clipboard, Dairy, Dairy Free, Dryer, Eye, Fire, Gluten Free, Heart, Iron, Leaf, Leather, Lightning Bolt, Lipstick, Lock, Map Pin, Nut Free, Pants, Paw Print, Pepper, Perfume, Plane, Plant, Price Tag, Question Mark, Recycle, Return, Ruler, Serving Dish, Shirt, Shoe, Silhouette, Snowflake, Star, Stopwatch, Truck, Washing</li>
+                            <li><strong>Row Content:</strong> Rich text editor</li>
+                            <li><strong>Page:</strong> Page picker (alternative to row content)</li>
+                        </ul>
+                        
+                        <h4>Multi-Column (<code>multicolumn.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Grid of content cards with images, text, and links</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Content:</strong></p>
+                        <ul>
+                            <li><strong>Title:</strong> Inline rich text</li>
+                            <li><strong>Heading Size:</strong> Small (h2), Medium (h1), X-Large (h0)</li>
+                            <li><strong>Button Label:</strong> Text input</li>
+                            <li><strong>Button Link:</strong> URL</li>
+                        </ul>
+                        
+                        <p><strong>Layout:</strong></p>
+                        <ul>
+                            <li><strong>Columns Desktop:</strong> 1-5 (default: 4)</li>
+                            <li><strong>Columns Mobile:</strong> 1-2 (default: 2)</li>
+                            <li><strong>Column Alignment:</strong> Center checkbox</li>
+                            <li><strong>Swipe on Mobile:</strong> Checkbox (enables slider on mobile)</li>
+                            <li><strong>Color Scheme:</strong> accent-1, accent-2, background-1, background-2, inverse</li>
+                            <li><strong>Background Style:</strong> None, Primary, Secondary</li>
+                        </ul>
+                        
+                        <p><strong>Column Block</strong> (Unlimited)</p>
+                        <ul>
+                            <li><strong>Image:</strong> Image picker
+                                <ul>
+                                    <li><strong>Recommended:</strong> 800px × 800px (square) or 800px × 1200px (portrait)</li>
+                                    <li><strong>Format:</strong> JPG, PNG, WebP</li>
+                                </ul>
+                            </li>
+                            <li><strong>Title:</strong> Inline rich text</li>
+                            <li><strong>Text:</strong> Rich text editor</li>
+                            <li><strong>Link Label:</strong> Text input</li>
+                            <li><strong>Link:</strong> URL</li>
+                        </ul>
+                        
+                        <h4>Video (<code>video.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Video player section with YouTube/Vimeo support</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Images:</strong></p>
+                        <ul>
+                            <li><strong>Desktop Cover Image:</strong>
+                                <ul>
+                                    <li><strong>Ratio:</strong> 16:9</li>
+                                    <li><strong>Recommended:</strong> 1920px × 1080px</li>
+                                    <li><strong>Format:</strong> JPG, PNG, WebP</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mobile Cover Image:</strong>
+                                <ul>
+                                    <li><strong>Ratio:</strong> 16:9</li>
+                                    <li><strong>Recommended:</strong> 750px × 422px</li>
+                                    <li><strong>Format:</strong> JPG, PNG, WebP</li>
+                                </ul>
+                            </li>
+                            <li><strong>Image Hover:</strong> Ease In, No Effect</li>
+                        </ul>
+                        
+                        <p><strong>Video Options:</strong></p>
+                        <ul>
+                            <li><strong>Desktop Video URL:</strong> YouTube or Vimeo URL</li>
+                            <li><strong>Mobile Video URL:</strong> YouTube or Vimeo URL</li>
+                            <li><strong>Video Alt Text:</strong> Text input (for accessibility)</li>
+                            <li><strong>Display as Background Video:</strong> Checkbox
+                                <ul>
+                                    <li>Background videos are automatically muted for autoplay</li>
+                                    <li>Supports only YouTube videos</li>
+                                </ul>
+                            </li>
+                            <li><strong>Make Section Full Width:</strong> Checkbox</li>
+                            <li><strong>Autoplay Video on Page Load:</strong> Checkbox</li>
+                            <li><strong>Display Video Player in Modal:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Content:</strong></p>
+                        <p><strong>Eyebrow:</strong></p>
+                        <ul>
+                            <li><strong>Text:</strong> Text input</li>
+                            <li><strong>Style:</strong> Eyebrow - Small, Eyebrow - Large</li>
+                        </ul>
+                        
+                        <p><strong>Headline:</strong></p>
+                        <ul>
+                            <li><strong>Text:</strong> Text input</li>
+                            <li><strong>Text Size:</strong> Headline Feature XL, Large, Feature, Small, XS, XS Regular, Custom Headline 1, 2, 3, X-Small (h4) through X-Large (h0)</li>
+                        </ul>
+                        
+                        <p><strong>Description:</strong></p>
+                        <ul>
+                            <li><strong>Text:</strong> Rich text editor</li>
+                            <li><strong>Text Style:</strong> Paragraph Feature, Interface, Eyebrow, Small, Body (Default, Small, Medium, Large), Caption, Subtitle</li>
+                        </ul>
+                        
+                        <p><strong>Button:</strong></p>
+                        <ul>
+                            <li><strong>Label:</strong> Text input (leave blank to hide)</li>
+                            <li><strong>Link:</strong> URL</li>
+                            <li><strong>Style Desktop:</strong> Primary, Secondary, Secondary Transparent, Secondary Alternate, Secondary Red, Secondary Gold, Link 0-2</li>
+                            <li><strong>Style Mobile:</strong> Same options as desktop</li>
+                            <li><strong>Override Link/Button Default Text Color:</strong> Checkbox</li>
+                            <li><strong>Link Color:</strong> Color picker</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="product-sections">
+                        <h3>Product Sections</h3>
+                        
+                        <h4>Featured Product (<code>featured-product.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Display a single featured product with media gallery</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Product:</strong></p>
+                        <ul>
+                            <li><strong>Product:</strong> Product picker</li>
+                        </ul>
+                        
+                        <p><strong>Layout:</strong></p>
+                        <ul>
+                            <li><strong>Media Size:</strong> Small (45% width), Medium (55% width), Large (65% width)</li>
+                            <li><strong>Media Position:</strong> Left, Right</li>
+                            <li><strong>Media Fit:</strong> Contain, Cover</li>
+                            <li><strong>Constrain to Viewport:</strong> Checkbox</li>
+                            <li><strong>Color Scheme:</strong> accent-1, accent-2, background-1, background-2, inverse</li>
+                            <li><strong>Secondary Background:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Blocks:</strong></p>
+                        <p>Available blocks include: Text, Title, Price, Variant Picker, Quantity Selector, Buy Buttons, Description, Share Button, Custom Liquid, Product Recommendations, and more...</p>
+                        
+                        <h4>Featured Collection (<code>featured-collection.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Display a grid of products from a selected collection</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Collection:</strong></p>
+                        <ul>
+                            <li><strong>Collection:</strong> Collection picker</li>
+                            <li><strong>Products to Show:</strong> 2-25 (default: 4)</li>
+                            <li><strong>Show View All:</strong> Checkbox (default: true)</li>
+                            <li><strong>View All Style:</strong> Link, Outline, Solid</li>
+                        </ul>
+                        
+                        <p><strong>Layout:</strong></p>
+                        <ul>
+                            <li><strong>Columns Desktop:</strong> 1-5 (default: 4)</li>
+                            <li><strong>Columns Mobile:</strong> 1-2 (default: 2)</li>
+                            <li><strong>Full Width:</strong> Checkbox</li>
+                            <li><strong>Enable Desktop Slider:</strong> Checkbox</li>
+                            <li><strong>Swipe on Mobile:</strong> Checkbox</li>
+                        </ul>
+                        
+                        <p><strong>Product Cards:</strong></p>
+                        <ul>
+                            <li><strong>Image Ratio:</strong> Adapt, Portrait, Square</li>
+                            <li><strong>Show Secondary Image:</strong> Checkbox (on hover)</li>
+                            <li><strong>Show Vendor:</strong> Checkbox</li>
+                            <li><strong>Show Rating:</strong> Checkbox</li>
+                            <li><strong>Enable Quick Add:</strong> Checkbox (add to cart from card)</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="collection-sections">
+                        <h3>Collection Sections</h3>
+                        
+                        <h4>Collection Product Grid (<code>main-collection-product-grid.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Main product listing for collection pages</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Filtering & Sorting:</strong></p>
+                        <ul>
+                            <li><strong>Enable Filtering:</strong> Checkbox</li>
+                            <li><strong>Enable Sorting:</strong> Checkbox</li>
+                            <li><strong>Collapse on Larger Devices:</strong> Checkbox</li>
+                            <li><strong>Custom Swatch Name:</strong> Text input</li>
+                        </ul>
+                        
+                        <p><strong>Display:</strong></p>
+                        <ul>
+                            <li><strong>Products Per Page:</strong> Number (default: 24)</li>
+                            <li><strong>Image Ratio:</strong> Adapt, Portrait, Square</li>
+                            <li><strong>Show Secondary Image:</strong> Checkbox</li>
+                            <li><strong>Add Image Padding:</strong> Checkbox</li>
+                            <li><strong>Show Vendor:</strong> Checkbox</li>
+                            <li><strong>Show Image Outline:</strong> Checkbox</li>
+                            <li><strong>Show Rating:</strong> Checkbox</li>
+                            <li><strong>Show Product Labels:</strong> Checkbox</li>
+                            <li><strong>Image Hover:</strong> Effect type</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="media-sections">
+                        <h3>Media Sections</h3>
+                        
+                        <h4>Animated Hero (<code>animated-hero.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Scroll-based animated hero section with image sequence animation</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Image Configuration:</strong></p>
+                        <ul>
+                            <li><strong>Image Filename Prefix:</strong> Text (e.g., "GoldReveal") - Prefix for image files in <code>/cdn/shop/files/</code>
+                                <ul>
+                                    <li>Images must be named: <code>{prefix}__0.jpg</code>, <code>{prefix}__1.jpg</code>, etc. (up to 50 images)</li>
+                                    <li>Section auto-detects JPG or PNG format</li>
+                                </ul>
+                            </li>
+                            <li><strong>Number of Images:</strong> Number (0-50) - Total number of images in sequence</li>
+                            <li><strong>Frame Step Value:</strong> Number (default: 30) - Pixels per scroll until next image (lower = faster animation)</li>
+                            <li><strong>Enable Loading Animation:</strong> Checkbox - Shows loading animation until images are ready</li>
+                        </ul>
+                        
+                        <p><strong>Image Requirements:</strong></p>
+                        <ul>
+                            <li><strong>Format:</strong> JPG or PNG (section auto-detects)</li>
+                            <li><strong>File Location:</strong> <code>/cdn/shop/files/</code></li>
+                            <li><strong>Naming:</strong> <code>{prefix}__0.{ext}</code>, <code>{prefix}__1.{ext}</code>, etc.</li>
+                            <li><strong>Max Images:</strong> 50 (numbered 0-49)</li>
+                            <li><strong>Recommended Size:</strong> 1920px × 1080px (16:9) or larger</li>
+                        </ul>
+                        
+                        <p><strong>Code Reference:</strong></p>
+                        <pre><code>{% if section.settings.filename_prefix != blank %}
+  {% for i in (0..50) %}
+    {% if use_jpg == true %}
+      <link rel="preload" as="image" href="https://www.rudis.com/cdn/shop/files/{{ jpg_file_name }}.jpg">
+    {% elsif use_png == true %}
+      <link rel="preload" as="image" href="https://www.rudis.com/cdn/shop/files/{{ png_file_name }}.png">
+    {% endif %}
+  {% endfor %}
+{% endif %}</code></pre>
+                        
+                        <h4>Team Store Banner (<code>team-store-banner.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Banner section for team store collection pages with date display, status messages, and disclaimer</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Colors:</strong></p>
+                        <ul>
+                            <li><strong>Background Color:</strong> Color picker (default: #F3F3F3)</li>
+                        </ul>
+                        
+                        <p><strong>Blocks:</strong></p>
+                        <ol>
+                            <li><strong>Team Store Message Block</strong> (Unlimited)
+                                <ul>
+                                    <li>No settings - Displays team store open/close dates automatically</li>
+                                    <li>Shows date messages based on collection <code>custom.start_date</code> and <code>custom.end_date</code> metafields</li>
+                                </ul>
+                            </li>
+                            <li><strong>Description Block</strong> (Unlimited)
+                                <ul>
+                                    <li><strong>Shipping Description:</strong> Rich text editor
+                                        <ul>
+                                            <li>Default: Customization disclaimer about shipping times and return policy</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Text Style:</strong> Body - Default, Body - xSmall, Body - Small, Body - Medium, Body - Large, Subtitle</li>
+                                    <li><strong>Description Color - Desktop:</strong> Color picker</li>
+                                    <li><strong>Description Color - Mobile:</strong> Color picker</li>
+                                </ul>
+                            </li>
+                            <li><strong>Statuses Description Block</strong> (Unlimited)
+                                <ul>
+                                    <li><strong>Approved Description:</strong> Rich text editor (Default: "The product is ready to buy, and the custom graphic is approved.")</li>
+                                    <li><strong>Declined Description:</strong> Rich text editor (Default: "The product is declined, and will not be available to buy.")</li>
+                                    <li><strong>Revised Description:</strong> Rich text editor (Default: "The revision request will be submitted after all statuses are updated on all products.")</li>
+                                    <li><strong>Text Style:</strong> Body - Default, Body - xSmall, Body - Small, Body - Medium, Body - Large, Subtitle</li>
+                                    <li><strong>Status Text Color:</strong> Color picker</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <h4>Slideshow (<code>slideshow.liquid</code>)</h4>
+                        <p><strong>Purpose:</strong> Image carousel with multiple slides</p>
+                        
+                        <p><strong>Settings:</strong></p>
+                        <p><strong>Slideshow:</strong></p>
+                        <ul>
+                            <li><strong>Auto-Rotate:</strong> Checkbox (enables automatic slide rotation)</li>
+                            <li><strong>Change Slides Every:</strong> 3-9 seconds (default: 5) - Only applies when auto-rotate is enabled</li>
+                            <li><strong>Pagination Style:</strong> Dots, Counter, Numbers - Controls how slide navigation is displayed</li>
+                        </ul>
+                        
+                        <p><strong>Slide Block</strong> (Unlimited)</p>
+                        <ul>
+                            <li><strong>Image:</strong> Image picker
+                                <ul>
+                                    <li><strong>Recommended:</strong> 1920px × 1080px (16:9)</li>
+                                    <li><strong>Format:</strong> JPG, PNG, WebP</li>
+                                    <li><strong>Max file size:</strong> 500KB recommended</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mobile Image:</strong> Image picker (optional)
+                                <ul>
+                                    <li><strong>Recommended:</strong> 750px × 422px (16:9)</li>
+                                    <li><strong>Format:</strong> JPG, PNG, WebP</li>
+                                    <li><strong>Max file size:</strong> 200KB recommended</li>
+                                </ul>
+                            </li>
+                            <li><strong>Link:</strong> URL (makes entire slide clickable)</li>
+                            <li><strong>Heading:</strong> Text input - Main slide heading</li>
+                            <li><strong>Subheading:</strong> Text input - Secondary slide text</li>
+                            <li><strong>Button Label:</strong> Text input - CTA button text (leave blank to hide button)</li>
+                            <li><strong>Button Link:</strong> URL - CTA button destination</li>
+                            <li><strong>Text Box Position:</strong> Top Left, Top Center, Top Right, Middle Left, Middle Center, Middle Right, Bottom Left, Bottom Center, Bottom Right - Position of text overlay on slide</li>
+                            <li><strong>Text Alignment:</strong> Left, Center, Right - Text alignment within text box</li>
+                            <li><strong>Text Color:</strong> Color picker - Color for heading and subheading text</li>
+                            <li><strong>Overlay Opacity:</strong> 0-100% - Dark overlay opacity for text readability (default: 0%)</li>
+                        </ul>
+                    </section>
+                </section>
+                
+                <section id="image-specifications">
+                    <h2>Image Specifications</h2>
+                    
+                    <h3>General Image Guidelines</h3>
+                    <p><strong>Recommended Formats:</strong></p>
+                    <ul>
+                        <li>JPG for photographs</li>
+                        <li>PNG for graphics with transparency</li>
+                        <li>WebP for optimized images (supported by theme)</li>
+                    </ul>
+                    
+                    <p><strong>File Size:</strong></p>
+                    <ul>
+                        <li>Desktop images: 500KB or less recommended</li>
+                        <li>Mobile images: 200KB or less recommended</li>
+                        <li>Use image optimization tools before upload</li>
+                    </ul>
+                    
+                    <p><strong>Aspect Ratios:</strong></p>
+                    <p><strong>16:9 (Landscape)</strong></p>
+                    <ul>
+                        <li>Desktop: 1920px × 1080px</li>
+                        <li>Mobile: 750px × 422px</li>
+                        <li>Use for: Video covers, hero banners, slideshows</li>
+                    </ul>
+                    
+                    <p><strong>1:1 (Square)</strong></p>
+                    <ul>
+                        <li>Desktop: 1200px × 1200px</li>
+                        <li>Mobile: 750px × 750px</li>
+                        <li>Use for: Product cards, featured collections, social media</li>
+                    </ul>
+                    
+                    <p><strong>4:5 (Portrait)</strong></p>
+                    <ul>
+                        <li>Desktop: 1200px × 1500px</li>
+                        <li>Mobile: 600px × 750px</li>
+                        <li>Use for: Product images, featured collections</li>
+                    </ul>
+                    
+                    <p><strong>9:16 (Vertical)</strong></p>
+                    <ul>
+                        <li>Desktop: 1080px × 1920px</li>
+                        <li>Mobile: 422px × 750px</li>
+                        <li>Use for: Mobile-specific banners</li>
+                    </ul>
+                    
+                    <p><strong>Adapt (Natural Aspect Ratio)</strong></p>
+                    <ul>
+                        <li>Use original image dimensions</li>
+                        <li>Theme will maintain aspect ratio</li>
+                    </ul>
+                </section>
+                
+                <section id="custom-features">
+                    <h2>Custom Features</h2>
+                    
+                    <section id="team-store-functionality">
+                        <h3>Team Store Functionality</h3>
+                        <p>Team Stores are a B2B micro-site system built into the RUDIS theme that enables wrestling teams to customize products with team-specific colors, logos, and personalization. The system is powered by Shopify metaobjects, GraphQL API calls, custom JavaScript classes, and a complex approval workflow.</p>
+                        
+                        <p><strong>📚 For complete Team Store/B2B system documentation, including Celigo, NetSuite, and custom cart logic, see: <a href="team-store-b2b.html">Team Store/B2B Documentation</a></strong></p>
+                        
+                        <h4>Architecture Overview</h4>
+                        <p><strong>Core Components:</strong></p>
+                        <ul>
+                            <li><strong>Templates:</strong> <code>product.team-store-pdp.json</code>, <code>collection.team-store-native.json</code>, <code>collection.team-store-landing.json</code></li>
+                            <li><strong>Sections:</strong> <code>main-product-team-store.liquid</code>, <code>main-collection-team-store.liquid</code>, <code>team-store-banner.liquid</code></li>
+                            <li><strong>Snippets:</strong> <code>team-store-revision-form.liquid</code>, <code>product-card-team-store.liquid</code>, <code>product-card-team-store-quick-order.liquid</code></li>
+                            <li><strong>JavaScript:</strong> <code>team-product.js</code>, <code>team-store-redirect.js</code></li>
+                            <li><strong>CSS:</strong> <code>section-team-store-banner.css</code>, <code>component-product-grid-team-store.css</code>, <code>team-store-bar.css</code></li>
+                        </ul>
+                        
+                        <p><strong>Key Files:</strong></p>
+                        <pre><code>{%- liquid
+    assign isCustomTeamBlank = product.metafields.custom.is_custom_team_blank
+    assign teamParentSku = product.metafields.custom.parent_sku
+    assign customerIsRep = customer.metafields.custom.sales_representative | default: false
+    assign customerOppNum = customer.current_location.metafields.custom.opportunity_number | default: '' | json
+    assign priceLevel = customer.current_location.metafields.custom.price_level.value[0] | default: 'Sales Rep Floor Price' | json
+%}</code></pre>
+                        
+                        <h4>Data Structures & Metafields</h4>
+                        <p><strong>Product Metafields:</strong><br>
+                        See <a href="data-guide.html#team-store-metafields">Data Guide - Product Metafields (Team Store)</a> for complete documentation.</p>
+                        <ul>
+                            <li><code>custom.is_custom_team_blank</code> (boolean) - Triggers team store product template</li>
+                            <li><code>custom.team_gear_product</code> (boolean) - Marks product as team gear</li>
+                            <li><code>custom.parent_sku</code> (text) - Parent SKU for team products (format: <code>{sku_prefix}{base_sku}</code>)</li>
+                            <li><code>custom.team_store_close_date</code> (date) - Product-level close date override</li>
+                        </ul>
+                        
+                        <p><strong>Collection Metafields:</strong><br>
+                        See <a href="data-guide.html#team-store-collection-metafields">Data Guide - Collection Metafields (Team Store)</a> for complete documentation.</p>
+                        <ul>
+                            <li><code>custom.start_date</code> (date) - Store opening date (YYYY-MM-DD format)</li>
+                            <li><code>custom.end_date</code> (date) - Store closing date (YYYY-MM-DD format)</li>
+                            <li><code>custom.team_product_data</code> (JSON) - Team product configuration data</li>
+                            <li><code>custom.opportunity_number</code> (text) - Team opportunity identifier</li>
+                        </ul>
+                        
+                        <p><strong>Customer/Location Metafields:</strong><br>
+                        See <a href="data-guide.html#customer--location-metafields">Data Guide - Customer & Location Metafields</a> for complete documentation.</p>
+                        <ul>
+                            <li><code>customer.metafields.custom.sales_representative</code> (boolean) - Grants sales rep access</li>
+                            <li><code>customer.current_location.metafields.custom.opportunity_number</code> (text) - Team opportunity number</li>
+                            <li><code>customer.current_location.metafields.custom.price_level.value[0]</code> (text) - Price tier (e.g., "Sales Rep Floor Price")</li>
+                        </ul>
+                        
+                        <p><strong>Metaobject Type: <code>art_id</code></strong><br>
+                        See <a href="data-guide.html#team-store-metaobjects">Data Guide - Team Store Metaobjects</a> for complete field documentation.</p>
+                        <ul>
+                            <li><strong>Handle Format:</strong> <code>{parent_sku}_{opportunity_number}</code> (e.g., <code>RUDIS12345_67890</code>)</li>
+                            <li><strong>Key Fields:</strong>
+                                <ul>
+                                    <li><code>opportunity_id</code> - Team opportunity number</li>
+                                    <li><code>proof_status</code> - Approval status ("Approved", "Pending Revision", "Declined", "Pending Approval")</li>
+                                    <li><code>include_default_images</code> (boolean/string) - Controls default image display</li>
+                                    <li><code>personalization</code> (boolean/string) - Enables name/number personalization</li>
+                                    <li><code>tier_pricing</code> (JSON) - Pricing tiers with quantity breaks</li>
+                                    <li><code>upcharge_price</code> (number) - Additional embellishment cost</li>
+                                    <li><code>price_override</code> (number) - Overrides all other pricing</li>
+                                    <li><code>min_order_qty</code> (number) - Minimum order quantity</li>
+                                    <li><code>entry_sku</code> - Entry SKU reference</li>
+                                    <li><code>team_store_collection</code> - Reference to collection metaobject</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <h3>Athlete Features</h3>
+                    <p><strong>Athlete Product Highlights:</strong></p>
+                    <ul>
+                        <li>Featured products by athlete</li>
+                        <li>Athlete-specific product templates</li>
+                        <li>Athlete branding elements</li>
+                    </ul>
+                    
+                    <h3>Auction Functionality</h3>
+                    <p><strong>Auction Product Pages:</strong></p>
+                    <ul>
+                        <li>Countdown timers</li>
+                        <li>Bid functionality</li>
+                        <li>Auction-specific pricing display</li>
+                        <li>Special event product templates</li>
+                    </ul>
+                </section>
+                
+                <section id="template-variants">
+                    <h2>Template Variants</h2>
+                    
+                    <h3>Product Template Variants</h3>
+                    <p><strong>Standard Templates:</strong></p>
+                    <ul>
+                        <li><code>product.json</code> - Default</li>
+                        <li><code>product.alternate.json</code> - Alternate layout</li>
+                        <li><code>product.with-free-returns-text.json</code> - Free returns messaging</li>
+                        <li><code>product.no-reviews.json</code> - No reviews display</li>
+                        <li><code>product.default-product-reviews.json</code> - Default reviews</li>
+                    </ul>
+                    
+                    <p><strong>Shoe Templates:</strong></p>
+                    <ul>
+                        <li><code>product.shoe-product.json</code> - Standard shoe</li>
+                        <li><code>product.ecom-store-shoe-pdp.json</code> - Ecom store shoe</li>
+                        <li><code>product.ds-shoe-pdp.json</code> - DS shoe</li>
+                        <li><code>product.jb-shoe-pdp.json</code> - JB shoe</li>
+                        <li><code>product.ks-shoe-pdp.json</code> - KS shoe</li>
+                        <li><code>product.sh-wrestling-shoe.json</code> - Wrestling shoe</li>
+                        <li><code>product.one-of-one-wrestling-shoe.json</code> - One-of-one shoe</li>
+                    </ul>
+                    
+                    <p><strong>Brand/Athlete Templates:</strong></p>
+                    <ul>
+                        <li><code>product.kolat.json</code> - Kolat brand</li>
+                        <li><code>product.rocky.json</code> - Rocky brand</li>
+                        <li><code>product.hildebrandt.json</code> - Hildebrandt</li>
+                        <li><code>product.jb-ultra-ps.json</code> - JB Ultra PS</li>
+                        <li><code>product.jb-ultralite.json</code> - JB Ultralite</li>
+                        <li><code>product.chronicle-elite.json</code> - Chronicle Elite</li>
+                        <li><code>product.alpha-2-0-happy.json</code> - Alpha 2.0</li>
+                        <li><code>product.tmnt.json</code> - TMNT</li>
+                    </ul>
+                    
+                    <p><strong>Specialized Templates:</strong></p>
+                    <ul>
+                        <li><code>product.bundles.json</code> - Bundle products</li>
+                        <li><code>product.bags.json</code> - Bag products</li>
+                        <li><code>product.gift-card.json</code> - Gift cards</li>
+                        <li><code>product.auction-pro-template.json</code> - Auction products</li>
+                        <li><code>product.team-store-pdp.json</code> - Team store products</li>
+                        <li><code>product.coming-soon.json</code> - Coming soon products</li>
+                    </ul>
+                </section>
+                
+                <section id="data-reference">
+                    <h2>Data Reference</h2>
+                    <p>For complete documentation of all metafields, metaobjects, and data structures used in the RUDIS platform, see the <strong><a href="data-guide.html">Data Guide</a></strong>. The Data Guide provides comprehensive reference documentation with code examples, field-level details, and usage guidelines for all custom data structures.</p>
+                    
+                    <h2>Reference</h2>
+                    <p><strong>Theme Code Location:</strong> <code>code/theme_export__www-rudis-com-production-10-29-25__31OCT2025-0252pm/</code></p>
+                    <p><strong>Settings Schema:</strong> <code>config/settings_schema.json</code></p>
+                    <p><strong>Settings Data:</strong> <code>config/settings_data.json</code></p>
+                    <p><strong>Main Layout:</strong> <code>layout/theme.liquid</code></p>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="../component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="../enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>
+

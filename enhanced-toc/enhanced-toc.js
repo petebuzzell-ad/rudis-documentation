@@ -1,0 +1,1 @@
+// Enhanced TOC functionality - placeholder

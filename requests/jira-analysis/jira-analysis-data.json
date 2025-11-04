@@ -1,0 +1,3454 @@
+{
+  "metadata": {
+    "analysis_date": "2025-11-03T23:39:52.831699",
+    "source_file": "RUDIS-JIRA.csv",
+    "outlier_threshold_days": 180
+  },
+  "summary": {
+    "total_issues": 395,
+    "resolved_issues": {
+      "typical": 278,
+      "outliers": 23,
+      "total": 301,
+      "percentage": 76.20253164556962
+    },
+    "resolution_times": {
+      "average": 54.10431654676259,
+      "median": 50.0,
+      "min": 0.0,
+      "max": 177.0,
+      "outlier_threshold_days": 180
+    },
+    "story_points": {
+      "total": null,
+      "average": null,
+      "median": null,
+      "min": null,
+      "max": null
+    },
+    "last_3_months": {
+      "total_issues": 21,
+      "resolved": 8,
+      "average_resolution_time": 14.125
+    }
+  },
+  "distribution": {
+    "priorities": {
+      "None": 305,
+      "Minor": 5,
+      "Major": 15,
+      "Critical": 12,
+      "Blocker": 58
+    },
+    "issue_types": {
+      "Story": 167,
+      "Bug": 71,
+      "Task": 51,
+      "Epic": 62,
+      "Non-workflow Task": 12,
+      "Client Deliverable": 7,
+      "Sub-task": 12,
+      "Level Access Finding": 13
+    },
+    "statuses": {
+      "Update Requirements": 14,
+      "Needs Estimate": 5,
+      "Approved": 4,
+      "Done": 119,
+      "Hold": 28,
+      "New": 16,
+      "Closed": 182,
+      "Waiting for Approval": 4,
+      "Client QA": 1,
+      "Ongoing": 22
+    },
+    "request_types": {},
+    "teams": {},
+    "categories": {},
+    "epics": {
+      "Loyalty: Discovery": 1,
+      "Loyalty: Readiness & Launch": 1,
+      "Loyalty: UAT Phase": 1,
+      "Loyalty: Development Phase": 1
+    },
+    "assignees": {
+      "Megan Jurasic": 7,
+      "Nolan Soule": 21,
+      "Ryan Kroening": 2,
+      "Josh Carrico": 10,
+      "Ryan Stewart": 1,
+      "MacKenzie Flint": 2,
+      "Justin Gambill": 1,
+      "Anthony Artalona": 3,
+      "Ryan Donahue": 1
+    },
+    "reporters": {
+      "Josh Carrico": 47,
+      "Justin Gambill": 10,
+      "Ryan Kroening": 204,
+      "Megan Jurasic": 57,
+      "Emily Riggan": 20,
+      "Wendi Magee": 9,
+      "Ryan Stewart": 2,
+      "Nolan Soule": 8,
+      "MacKenzie Flint": 2,
+      "Phil Haas": 10,
+      "Kitty Garrison": 4,
+      "Cindy Xayavong": 13,
+      "Becca Romero": 5,
+      "Krysta Stone": 1,
+      "Shawn McKinley": 1,
+      "John Tucker": 1,
+      "Eric Petroelje": 1
+    }
+  },
+  "priority_comparison": {
+    "None": {
+      "count": 229,
+      "average_days": 49.7292576419214,
+      "median_days": 42.0
+    },
+    "Critical": {
+      "count": 9,
+      "average_days": 35.333333333333336,
+      "median_days": 26.0
+    },
+    "Blocker": {
+      "count": 22,
+      "average_days": 107.63636363636364,
+      "median_days": 130.0
+    },
+    "Major": {
+      "count": 14,
+      "average_days": 46.07142857142857,
+      "median_days": 40.0
+    },
+    "Minor": {
+      "count": 4,
+      "average_days": 80.5,
+      "median_days": 68.0
+    }
+  },
+  "challenging_work": {
+    "outliers": [
+      {
+        "key": "RUDS25-94",
+        "summary": "Return Page Needs to be Translated",
+        "type": "Bug",
+        "priority": "Blocker",
+        "resolution_time": 182,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-92",
+        "summary": "PDP - Last Name field needs sanitized",
+        "type": "Bug",
+        "priority": "Blocker",
+        "resolution_time": 183,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-88",
+        "summary": "Image Carousel to use Slider not Dots",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 194,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-85",
+        "summary": "Catalog - Confirmation Page: Add CTA with link to art intake page",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 278,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-83",
+        "summary": "Zendesk Chat Conversion",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 202,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-82",
+        "summary": "PLP Swatches to not use Metafield",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 191,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-81",
+        "summary": "Team Store - Sales Team Ability to hydrate cart",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 231,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-80",
+        "summary": "Team Store Email Notification Updates",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 197,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-79",
+        "summary": "Team Store Catalog --> Team Identity Form (CTA)",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 259,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-78",
+        "summary": "AWS Middleware documentation and training",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 259,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-77",
+        "summary": "Identify PLPs / collections with highest bounce rate",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 181,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-76",
+        "summary": "Validate Current E-Comm Sales Data Validity",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 183,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-75",
+        "summary": "SEO - Subdomain Review & Closure",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 250,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-73",
+        "summary": "SEO - Custom School Gear Collections & Product Management",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 250,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-72",
+        "summary": "[placeholder] New Navigation design dev work",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 205,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-71",
+        "summary": "[placeholder - Growth] Outfitting / Campaign Template",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 315,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-70",
+        "summary": "[placeholder] PDP Gallery Standards dev work",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 205,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-69",
+        "summary": "[placeholder] New Design - PDP updates dev work",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 205,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-68",
+        "summary": "Behind the Brand lp dev work",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 205,
+        "story_points": null,
+        "request_type": ""
+      },
+      {
+        "key": "RUDS25-66",
+        "summary": "[placeholder] LP updates - dev work",
+        "type": "Story",
+        "priority": "Blocker",
+        "resolution_time": 205,
+        "story_points": null,
+        "request_type": ""
+      }
+    ],
+    "typical": [
+      {
+        "key": "RUDS25-61",
+        "summary": "Resolve Issue with PLP Swatches",
+        "resolution_time": 177,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-59",
+        "summary": "CA Analytics",
+        "resolution_time": 176,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-67",
+        "summary": "Performance Audit and Recommendations",
+        "resolution_time": 168,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-100",
+        "summary": "Simplify top traffic sources and cut inconsequential (just top 11)",
+        "resolution_time": 163,
+        "story_points": null,
+        "type": "Sub-task",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-99",
+        "summary": "Simply actual vs. prior year KPI",
+        "resolution_time": 163,
+        "story_points": null,
+        "type": "Sub-task",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-98",
+        "summary": "Simplify actuals vs. target KPI",
+        "resolution_time": 163,
+        "story_points": null,
+        "type": "Sub-task",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-97",
+        "summary": "Simplify session target by source KPI",
+        "resolution_time": 163,
+        "story_points": null,
+        "type": "Sub-task",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-96",
+        "summary": "Ecomm Data Action Items for 24/11/04",
+        "resolution_time": 163,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-74",
+        "summary": "AvaTax Upgrade",
+        "resolution_time": 160,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-86",
+        "summary": "Realift Scan Tool",
+        "resolution_time": 148,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-409",
+        "summary": "Image Carousel to use Slider not Dots",
+        "resolution_time": 147,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-64",
+        "summary": "[Placeholder] Daily Drop PDP Cross-Sells, Upsells, Pairs Well, etc.",
+        "resolution_time": 147,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-62",
+        "summary": "[Placeholder] Visual Subnav Menu Item Per Daily Drop",
+        "resolution_time": 147,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-60",
+        "summary": "[Placeholder] Visual Subnav Menu Item Per Gift Guide",
+        "resolution_time": 147,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-376",
+        "summary": "Team Store Checkout Disclaimer [PLACEHOLDER]",
+        "resolution_time": 146,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-87",
+        "summary": "PDP -> Features -> Bold Text (buy stack)",
+        "resolution_time": 146,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-65",
+        "summary": "Removing Zendesk Messaging (aka Chat) Outside HOOPs",
+        "resolution_time": 135,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-84",
+        "summary": "Triple Whale",
+        "resolution_time": 134,
+        "story_points": null,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "key": "RUDS25-161",
+        "summary": "CLONE - PDP Gallery Image not stretching full width",
+        "resolution_time": 133,
+        "story_points": null,
+        "type": "Bug",
+        "status": "Done"
+      },
+      {
+        "key": "RUDS25-137",
+        "summary": "CLONE - 'Featured Shoe' Swatch Image",
+        "resolution_time": 133,
+        "story_points": null,
+        "type": "Story",
+        "status": "Done"
+      }
+    ]
+  },
+  "unresolved_high_priority": [
+    {
+      "key": "RUDS25-460",
+      "summary": "Change the strike out price from green to red on the PLP",
+      "priority": "Critical",
+      "status": "Hold",
+      "type": "Task",
+      "created": "2025-10-08T13:48:00",
+      "request_type": ""
+    },
+    {
+      "key": "RUDS25-455",
+      "summary": "Product Listing Pages (PLPs) & Filter/Sort Updates",
+      "priority": "Critical",
+      "status": "Update Requirements",
+      "type": "Story",
+      "created": "2025-09-10T14:29:00",
+      "request_type": ""
+    },
+    {
+      "key": "RUDS25-439",
+      "summary": "New Design Component: Image banner that supports flexible content alignment.",
+      "priority": "Critical",
+      "status": "Update Requirements",
+      "type": "Task",
+      "created": "2025-07-15T09:21:00",
+      "request_type": ""
+    },
+    {
+      "key": "RUDS25-150",
+      "summary": "CLONE - TEAM BUG: Closed Store allows Coach / Sales rep to add items to cart and checkout",
+      "priority": "Major",
+      "status": "Hold",
+      "type": "Bug",
+      "created": "2024-12-31T15:45:00",
+      "request_type": ""
+    }
+  ],
+  "none_priority_analysis": {
+    "total": 305,
+    "resolved": 229,
+    "resolved_issues": [
+      {
+        "key": "RUDS25-450",
+        "summary": "TEAM BUG: RUDIS+ member Free shipping on team store",
+        "type": "Bug",
+        "resolution_time": 11,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-449",
+        "summary": "Free Shipping Offered In Cart: RUDIS-PLUS-SHIP",
+        "type": "Story",
+        "resolution_time": 1,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-448",
+        "summary": "Free Shipping Threshold Change",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-447",
+        "summary": "BUG: Shoes Notify PopUp",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-445",
+        "summary": "PDP Variant color showing both variant images",
+        "type": "Bug",
+        "resolution_time": 65,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-442",
+        "summary": "Add llms.txt file",
+        "type": "Story",
+        "resolution_time": 49,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-436",
+        "summary": "Team: Closed store for non-sales / coach experience",
+        "type": "Story",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-435",
+        "summary": "Design: Apparel Product Cards - Color Swatches",
+        "type": "Story",
+        "resolution_time": 118,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-434",
+        "summary": "TEAM: Opp Collection does not pass variable to product to remember OPP",
+        "type": "Story",
+        "resolution_time": 14,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-433",
+        "summary": "Font weights on mobile Buy Stack",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-426",
+        "summary": "Implement Uber component on Rudis",
+        "type": "Task",
+        "resolution_time": 40,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-420",
+        "summary": "Robot.txt modification",
+        "type": "Story",
+        "resolution_time": 9,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-419",
+        "summary": "Cookie Preference footer link",
+        "type": "Story",
+        "resolution_time": 10,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-418",
+        "summary": "Native TS Collection - Product isn't retaining QTY during ATC",
+        "type": "Bug",
+        "resolution_time": 14,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-415",
+        "summary": "Add Start a Return to Orders dropdown",
+        "type": "Story",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-413",
+        "summary": "Mobile Spacing - Filter Bar",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-411",
+        "summary": "Create Account Block for Rewards Info",
+        "type": "Story",
+        "resolution_time": 8,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-410",
+        "summary": "Elevar Post-Purchase GTM Tracking on Shopify",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-406",
+        "summary": "Change sale price from red to green",
+        "type": "Task",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-404",
+        "summary": "Shopify Notice: Thank you page upgrade",
+        "type": "Story",
+        "resolution_time": 7,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-403",
+        "summary": "Grid PLP layout for improved ordering",
+        "type": "Story",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-402",
+        "summary": "Sticky Promo Bar Issue",
+        "type": "Bug",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-401",
+        "summary": "Update Tags in GTM",
+        "type": "Task",
+        "resolution_time": 19,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-400",
+        "summary": "Shoe Finder/Quiz",
+        "type": "Epic",
+        "resolution_time": 62,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-397",
+        "summary": "OneTrust",
+        "type": "Epic",
+        "resolution_time": 62,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-396",
+        "summary": "Deploy loyalty to a theme for testing",
+        "type": "Story",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-394",
+        "summary": "Email Reminder template for Minimums",
+        "type": "Story",
+        "resolution_time": 13,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-390",
+        "summary": "Refund Process Revamp - Email when order refunded",
+        "type": "Story",
+        "resolution_time": 29,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-382",
+        "summary": "Yotpo Reviews not linking properly",
+        "type": "Bug",
+        "resolution_time": 11,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-378",
+        "summary": "Inaccessible Navigation Menu (pop-up menu not announced to screen readers)",
+        "type": "Story",
+        "resolution_time": 17,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-376",
+        "summary": "Team Store Checkout Disclaimer [PLACEHOLDER]",
+        "type": "Story",
+        "resolution_time": 146,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-374",
+        "summary": "Designs and UX improvements for Elevating Women's Products",
+        "type": "Story",
+        "resolution_time": 20,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-373",
+        "summary": "M/F Faceout Imagery for Unisex Products",
+        "type": "Story",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-371",
+        "summary": "UX/UI Overhaul of proof PLP",
+        "type": "Task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-370",
+        "summary": "Update Yotpo settings for Loyalty Program",
+        "type": "Task",
+        "resolution_time": 14,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-368",
+        "summary": "Open Countries / Go Live",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-367",
+        "summary": "Deploy in Prod",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-366",
+        "summary": "Preparation for Go-Live",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-365",
+        "summary": "Fixes / Verification (2)",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-364",
+        "summary": "UAT & 2nd QA Cycle",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-363",
+        "summary": "Deployment to Pre Production environment",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-362",
+        "summary": "Fixes / Verification",
+        "type": "Story",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-361",
+        "summary": "1st QA Cycle",
+        "type": "Story",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-360",
+        "summary": "DB configuration",
+        "type": "Story",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-359",
+        "summary": "Fulfilment & Refunds",
+        "type": "Story",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-358",
+        "summary": "Frontend Integration, Catalogue upload/classification",
+        "type": "Story",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-357",
+        "summary": "Customer Service Aspects",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-356",
+        "summary": "Financial Aspects",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-355",
+        "summary": "Logistics Rules and Order flow",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-354",
+        "summary": "Business and pricing Rules",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-353",
+        "summary": "Design Mock-ups",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-352",
+        "summary": "Initial Analysis & Set-up",
+        "type": "Task",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-351",
+        "summary": "Global-e: Go Live",
+        "type": "Epic",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-350",
+        "summary": "Global-e: Pre-Prod Testing (UAT)",
+        "type": "Epic",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-349",
+        "summary": "Global-e: Development",
+        "type": "Epic",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-348",
+        "summary": "Global-e: Discovery",
+        "type": "Epic",
+        "resolution_time": 23,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-347",
+        "summary": "Confirm Framework & Opt-In Strategy",
+        "type": "Client Deliverable",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-345",
+        "summary": "Desktop Predictive Search Bug Fix",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-344",
+        "summary": "BUG: Coming soon button AND add to cart",
+        "type": "Bug",
+        "resolution_time": 27,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-343",
+        "summary": "BUG: INTL Orders displaying free shipping banner",
+        "type": "Bug",
+        "resolution_time": 13,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-340",
+        "summary": "Shoe PDP - Single Images not Stretching w/ Fullwidth",
+        "type": "Bug",
+        "resolution_time": 29,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-339",
+        "summary": "Team Store Landing Page",
+        "type": "Story",
+        "resolution_time": 54,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-337",
+        "summary": "Design Updates - Multicolumn Section Options",
+        "type": "Story",
+        "resolution_time": 40,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-336",
+        "summary": "BUG: Out of Stock Variant, From NetSuite, Push to Shopify and populate null item on site",
+        "type": "Bug",
+        "resolution_time": 14,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-335",
+        "summary": "BUG: Personalization (recommended products) NOT in buy stack",
+        "type": "Bug",
+        "resolution_time": 8,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-334",
+        "summary": "Checkout Messaging for Promotion",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-333",
+        "summary": "BUG: Footer Click Here to Sign Up doesnt activate popup",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-332",
+        "summary": "BUG: Recommended Search - text overlap",
+        "type": "Bug",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-331",
+        "summary": "Sign Loyalty Contract",
+        "type": "Client Deliverable",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-330",
+        "summary": "Loyalty Go / No Go",
+        "type": "Client Deliverable",
+        "resolution_time": 99,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-329",
+        "summary": "Loyalty UAT",
+        "type": "Task",
+        "resolution_time": 104,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-328",
+        "summary": "Loyalty Kickoff",
+        "type": "Task",
+        "resolution_time": 15,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-327",
+        "summary": "Sprint 3 Dev",
+        "type": "Story",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-326",
+        "summary": "Sprint 2 Dev",
+        "type": "Story",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-325",
+        "summary": "Configure Loyalty Tiers & Structure",
+        "type": "Story",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-324",
+        "summary": "Framework Strategy Sessions",
+        "type": "Task",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-323",
+        "summary": "Loyalty: Kickoff Strategy & Motivation",
+        "type": "Epic",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-322",
+        "summary": "Batch 3 Client Approval",
+        "type": "Client Deliverable",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-321",
+        "summary": "Batch 2 Client Approval",
+        "type": "Client Deliverable",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-320",
+        "summary": "Batch 1 Client Approval",
+        "type": "Client Deliverable",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-319",
+        "summary": "B1: UI Spec",
+        "type": "Sub-task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-318",
+        "summary": "B1: Comps Review",
+        "type": "Sub-task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-317",
+        "summary": "B1: Wireframe Review",
+        "type": "Sub-task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-316",
+        "summary": "Batch 3",
+        "type": "Task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-315",
+        "summary": "Yotpo Landing Page Review",
+        "type": "Task",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-314",
+        "summary": "Batch 1",
+        "type": "Task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-313",
+        "summary": "Loyalty",
+        "type": "Epic",
+        "resolution_time": 104,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-312",
+        "summary": "Loyalty: UAT",
+        "type": "Epic",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-311",
+        "summary": "Loyalty: Development",
+        "type": "Epic",
+        "resolution_time": 42,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-308",
+        "summary": "Loyalty Launch",
+        "type": "Task",
+        "resolution_time": 104,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-307",
+        "summary": "Design Updates - Custom Headline Option (3 Sections)",
+        "type": "Story",
+        "resolution_time": 9,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-306",
+        "summary": "Sticky Promo Message when scrolling",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-304",
+        "summary": "Install Yotpo Loyalty",
+        "type": "Story",
+        "resolution_time": 13,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-301",
+        "summary": "Marketing & Merchandising",
+        "type": "Epic",
+        "resolution_time": 50,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-300",
+        "summary": "Toe-to-Head Complete the Look Designs",
+        "type": "Story",
+        "resolution_time": 72,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-298",
+        "summary": "Sarah H. Shoe Brand launch",
+        "type": "Story",
+        "resolution_time": 72,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-297",
+        "summary": "USAW/UWW",
+        "type": "Epic",
+        "resolution_time": 50,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-296",
+        "summary": "Design Updates - Featured Links Section Width Control",
+        "type": "Story",
+        "resolution_time": 17,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-295",
+        "summary": "Reposition Mobile Search Bar",
+        "type": "Story",
+        "resolution_time": 17,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-294",
+        "summary": "Update purchase event",
+        "type": "Story",
+        "resolution_time": 91,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-293",
+        "summary": "Roll out PDP Templates",
+        "type": "Story",
+        "resolution_time": 7,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-292",
+        "summary": "OneTrust: Planning & Workshops",
+        "type": "Story",
+        "resolution_time": 78,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-291",
+        "summary": "Catalog Store Enhancements",
+        "type": "Epic",
+        "resolution_time": 62,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-290",
+        "summary": "Additional Customization Methods - Catalog Store",
+        "type": "Story",
+        "resolution_time": 40,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-287",
+        "summary": "Team Store Checkout Page Bug",
+        "type": "Bug",
+        "resolution_time": 37,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-274",
+        "summary": "Data Cleanup",
+        "type": "Client Deliverable",
+        "resolution_time": 69,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-273",
+        "summary": "Turn Zendesk Chat back on",
+        "type": "Task",
+        "resolution_time": 8,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-272",
+        "summary": "Shopify Action Required: Not yet upgraded your Thank you and Order status pages",
+        "type": "Story",
+        "resolution_time": 72,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-255",
+        "summary": "Deactivate Zendesk from storefront",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-254",
+        "summary": "Managed Markets - Excluded products give 404 \"Oops, we can't find this page\"",
+        "type": "Bug",
+        "resolution_time": 16,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-253",
+        "summary": "Managed Markets | footer translation missing localization.countries",
+        "type": "Bug",
+        "resolution_time": 16,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-252",
+        "summary": "Horizontal Scrolling on Desktop",
+        "type": "Bug",
+        "resolution_time": 30,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-251",
+        "summary": "Coming Soon Button - Digioh",
+        "type": "Task",
+        "resolution_time": 53,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-248",
+        "summary": "TEAM Add to Cart issue (post code release)",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-247",
+        "summary": "Celigo <> Shopify API: Action required by April 1st",
+        "type": "Story",
+        "resolution_time": 70,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-246",
+        "summary": "PDP - Product Gallery Pagination Dots Show Above Navigation Menu",
+        "type": "Bug",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-245",
+        "summary": "Gift cards, bundles, & Accessories",
+        "type": "Sub-task",
+        "resolution_time": 68,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-244",
+        "summary": "Apparel Template",
+        "type": "Sub-task",
+        "resolution_time": 68,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-243",
+        "summary": "Shoe Template",
+        "type": "Sub-task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-242",
+        "summary": "Team Store Template",
+        "type": "Sub-task",
+        "resolution_time": 21,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-241",
+        "summary": "Clean Up Catalog Store Repo",
+        "type": "Task",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-240",
+        "summary": "TEAM / INTL Shipping (UWW Partnership)",
+        "type": "Bug",
+        "resolution_time": 35,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-236",
+        "summary": "Server 5XX Errors = robot.txt add?",
+        "type": "Bug",
+        "resolution_time": 15,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-235",
+        "summary": "The sizes keep shifting out of order, even after being corrected.",
+        "type": "Bug",
+        "resolution_time": 12,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-234",
+        "summary": "Shopify Fraud Filter App deprecation",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-232",
+        "summary": "CLONE - Google Tag Manager Click Triggers Being blocked by Permissions Issues",
+        "type": "Story",
+        "resolution_time": 118,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-231",
+        "summary": "CLONE - GA4 False Order Reporting",
+        "type": "Bug",
+        "resolution_time": 118,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-230",
+        "summary": "CLONE - Generate Reporting Dashboards",
+        "type": "Story",
+        "resolution_time": 118,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-229",
+        "summary": "CLONE - New PDP Variations",
+        "type": "Task",
+        "resolution_time": 19,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-163",
+        "summary": "CLONE - License Restrictions Preventing Canada sales",
+        "type": "Bug",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-162",
+        "summary": "CLONE - Investigate Duplicate Products published by Celigo",
+        "type": "Story",
+        "resolution_time": 15,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-161",
+        "summary": "CLONE - PDP Gallery Image not stretching full width",
+        "type": "Bug",
+        "resolution_time": 133,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-159",
+        "summary": "CLONE - Implement loader for JS for mobile image gallery",
+        "type": "Story",
+        "resolution_time": 63,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-158",
+        "summary": "CLONE - Upsell Carousel - UI Issues with Adding Items and Variant Selection",
+        "type": "Bug",
+        "resolution_time": 20,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-157",
+        "summary": "CLONE - Fix Search Cards Formatting/Design",
+        "type": "Bug",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-156",
+        "summary": "CLONE - Auction Pro - Research & Testing",
+        "type": "Story",
+        "resolution_time": 29,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-155",
+        "summary": "CLONE - Checkout Button Overlaps Upsell Carousel CTAs",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-154",
+        "summary": "CLONE - Products with too many pagination dots cause UI issues on Mobile",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-153",
+        "summary": "CLONE - Duplicate Product",
+        "type": "Story",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-152",
+        "summary": "CLONE - Mobile Menu Styling Issues",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-151",
+        "summary": "CLONE - BUG: New Back Button (sometimes) takes you to the top - Page1?",
+        "type": "Bug",
+        "resolution_time": 50,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-149",
+        "summary": "CLONE - Cart Redesign: Checkbox Upsell + CTA",
+        "type": "Story",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-148",
+        "summary": "CLONE - Performance Report",
+        "type": "Story",
+        "resolution_time": 55,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-147",
+        "summary": "CLONE - Cart Upsell Styling",
+        "type": "Story",
+        "resolution_time": 36,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-146",
+        "summary": "CLONE - Team Order without any Team Meta-Fields Populated",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-145",
+        "summary": "CLONE - Update Mobile Menu Fonts",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-144",
+        "summary": "CLONE - Team Store Order Delay",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-143",
+        "summary": "CLONE - SMS Sgn-up Modal Should Be Translated",
+        "type": "Bug",
+        "resolution_time": 55,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-142",
+        "summary": "CLONE - BUG Incorrect Product Image Appears for RUDIS Shoe Dreamscape T-Shirt",
+        "type": "Story",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-141",
+        "summary": "CLONE - Component Featured Collection - Broken",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-140",
+        "summary": "CLONE - Display Canadian Prices on PLP",
+        "type": "Story",
+        "resolution_time": 55,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-139",
+        "summary": "CLONE - Search Results Pages - Template missing styling",
+        "type": "Bug",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-138",
+        "summary": "CLONE - Wrestling Shoe Accordions",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-137",
+        "summary": "CLONE - 'Featured Shoe' Swatch Image",
+        "type": "Story",
+        "resolution_time": 133,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-136",
+        "summary": "CLONE - New PLP Top Navigation Jumps on click",
+        "type": "Bug",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-135",
+        "summary": "CLONE - Client Communications",
+        "type": "Task",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-134",
+        "summary": "CLONE - In-Grid SearchSpring Content does not fill grid box right",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-133",
+        "summary": "CLONE - Team Store - Custom design showing blank cached; not showing the same on user devices",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-132",
+        "summary": "CLONE - PLP - Poor CLS",
+        "type": "Bug",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-131",
+        "summary": "CLONE - Non-Desired Search drawer border styling issue",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-130",
+        "summary": "CLONE - Team Store: Filter white bar + Blue 'Action' Key Bar placement",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-129",
+        "summary": "CLONE - Rush Shipping at Checkout for B2B",
+        "type": "Task",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-127",
+        "summary": "CLONE - Collection feed middleware error",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-126",
+        "summary": "CLONE - Remove Searchspring From Team Store Process",
+        "type": "Story",
+        "resolution_time": 120,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-125",
+        "summary": "CLONE - Solution for Adding New Items During Proofing Stage of Team Store",
+        "type": "Task",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-124",
+        "summary": "CLONE - Team Store PDP Updates - Breadcrumbs",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-123",
+        "summary": "CLONE - Add Delay to Catalog Checkout Middleware",
+        "type": "Task",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-122",
+        "summary": "CLONE - Investigate Product Data Problems with Filtering",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-121",
+        "summary": "CLONE - PDP Status Changes Are Not Updating PLP",
+        "type": "Task",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-120",
+        "summary": "CLONE - Team Store - Quote generated to be converted to cart",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-119",
+        "summary": "CLONE - Team Store - Quote functionality on final checkout page",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-118",
+        "summary": "CLONE - Catalog store - Catalog PDP default size selection",
+        "type": "Story",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-117",
+        "summary": "CLONE - Deploys of New Themes are Causes Shipping",
+        "type": "Bug",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-114",
+        "summary": "CLONE - Delay Catalog Order Sync until Order Approved",
+        "type": "Story",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-113",
+        "summary": "CLONE - Inject Dynamic Redirects after Login",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-112",
+        "summary": "CLONE - Include Product Reviews from DTC site in Team Catalog/Store - investigation",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-111",
+        "summary": "CLONE - RUDIS Analytics Dashboard Updates",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-110",
+        "summary": "CLONE - Make video content more prominent to users in PDP Gallery",
+        "type": "Story",
+        "resolution_time": 22,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-109",
+        "summary": "CLONE - Clean Up Styles/CSS to match Style Guide",
+        "type": "Bug",
+        "resolution_time": 14,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-108",
+        "summary": "CLONE - Shopify POS Investigation and Consultation",
+        "type": "Story",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-107",
+        "summary": "CLONE - Catalog Store PLP: Display stock indicator on product cards",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-106",
+        "summary": "CLONE - Google Analytics Snapshot",
+        "type": "Task",
+        "resolution_time": 64,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-105",
+        "summary": "CLONE - [placeholder] User Account Updates",
+        "type": "Story",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-104",
+        "summary": "CLONE - [placeholder - Growth] PDP Upsell / Cross-sell Enhancements - Outfitting / Shop The Look - JUNE",
+        "type": "Story",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-103",
+        "summary": "CLONE - Speed & Site Performance Improvements",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-102",
+        "summary": "CLONE - Review Duplicate Collections & Products - URLs",
+        "type": "Story",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-101",
+        "summary": "Separate email UTMs by campaigns & flows",
+        "type": "Sub-task",
+        "resolution_time": 129,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-100",
+        "summary": "Simplify top traffic sources and cut inconsequential (just top 11)",
+        "type": "Sub-task",
+        "resolution_time": 163,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-99",
+        "summary": "Simply actual vs. prior year KPI",
+        "type": "Sub-task",
+        "resolution_time": 163,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-98",
+        "summary": "Simplify actuals vs. target KPI",
+        "type": "Sub-task",
+        "resolution_time": 163,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-97",
+        "summary": "Simplify session target by source KPI",
+        "type": "Sub-task",
+        "resolution_time": 163,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-96",
+        "summary": "Ecomm Data Action Items for 24/11/04",
+        "type": "Story",
+        "resolution_time": 163,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-44",
+        "summary": "Phase 1 Bugs",
+        "type": "Epic",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-43",
+        "summary": "Revenue Growth & Optimization",
+        "type": "Epic",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-41",
+        "summary": "Digital Merchandising",
+        "type": "Epic",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-40",
+        "summary": "Cart Slideout Enhancements",
+        "type": "Epic",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-39",
+        "summary": "Nav / Menu Optimization",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-38",
+        "summary": "PDP Enhancements",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-36",
+        "summary": "Listing Optimizations",
+        "type": "Epic",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-35",
+        "summary": "Marketplaces",
+        "type": "Epic",
+        "resolution_time": 57,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-33",
+        "summary": "Automations & Reporting",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-32",
+        "summary": "International Team Stores",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-31",
+        "summary": "DYO",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-30",
+        "summary": "Spiritwear",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-29",
+        "summary": "International Media",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-28",
+        "summary": "Programmatic Advertising",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-27",
+        "summary": "Video Ads",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-26",
+        "summary": "Ambassadors Program",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-25",
+        "summary": "SMS Flows",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-24",
+        "summary": "Email Flows",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-23",
+        "summary": "Subscription Program",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-22",
+        "summary": "Loyalty: Design Phase",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-21",
+        "summary": "Pop-Up Experience",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-20",
+        "summary": "Shopify POS",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-18",
+        "summary": "Product Discovery Tools",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-17",
+        "summary": "Content / SEO Strategy",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-16",
+        "summary": "International Expansion",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-15",
+        "summary": "Bundles & Kits Enhancements",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-14",
+        "summary": "PIM / DAM",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-13",
+        "summary": "Wishlists",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-12",
+        "summary": "Clearance/Outlet Program",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-11",
+        "summary": "Collegiate Branded",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-10",
+        "summary": "Personalization",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-8",
+        "summary": "Product Architecture DX",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-7",
+        "summary": "Account Enhancements",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-6",
+        "summary": "Gift Card Improvements",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-5",
+        "summary": "A|B Testing",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-4",
+        "summary": "Campaign Templates",
+        "type": "Epic",
+        "resolution_time": 56,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-3",
+        "summary": "PLP Enhancements",
+        "type": "Epic",
+        "resolution_time": 119,
+        "request_type": "",
+        "category": ""
+      }
+    ],
+    "quick_resolution": [
+      {
+        "key": "RUDS25-449",
+        "summary": "Free Shipping Offered In Cart: RUDIS-PLUS-SHIP",
+        "type": "Story",
+        "resolution_time": 1,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-448",
+        "summary": "Free Shipping Threshold Change",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-447",
+        "summary": "BUG: Shoes Notify PopUp",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-433",
+        "summary": "Font weights on mobile Buy Stack",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-413",
+        "summary": "Mobile Spacing - Filter Bar",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-410",
+        "summary": "Elevar Post-Purchase GTM Tracking on Shopify",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-406",
+        "summary": "Change sale price from red to green",
+        "type": "Task",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-404",
+        "summary": "Shopify Notice: Thank you page upgrade",
+        "type": "Story",
+        "resolution_time": 7,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-396",
+        "summary": "Deploy loyalty to a theme for testing",
+        "type": "Story",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-347",
+        "summary": "Confirm Framework & Opt-In Strategy",
+        "type": "Client Deliverable",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-345",
+        "summary": "Desktop Predictive Search Bug Fix",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-334",
+        "summary": "Checkout Messaging for Promotion",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-333",
+        "summary": "BUG: Footer Click Here to Sign Up doesnt activate popup",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-332",
+        "summary": "BUG: Recommended Search - text overlap",
+        "type": "Bug",
+        "resolution_time": 5,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-331",
+        "summary": "Sign Loyalty Contract",
+        "type": "Client Deliverable",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-306",
+        "summary": "Sticky Promo Message when scrolling",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-293",
+        "summary": "Roll out PDP Templates",
+        "type": "Story",
+        "resolution_time": 7,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-255",
+        "summary": "Deactivate Zendesk from storefront",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-248",
+        "summary": "TEAM Add to Cart issue (post code release)",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-234",
+        "summary": "Shopify Fraud Filter App deprecation",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-145",
+        "summary": "CLONE - Update Mobile Menu Fonts",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-141",
+        "summary": "CLONE - Component Featured Collection - Broken",
+        "type": "Bug",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-138",
+        "summary": "CLONE - Wrestling Shoe Accordions",
+        "type": "Story",
+        "resolution_time": 6,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-41",
+        "summary": "Digital Merchandising",
+        "type": "Epic",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      }
+    ],
+    "very_quick_resolution": [
+      {
+        "key": "RUDS25-449",
+        "summary": "Free Shipping Offered In Cart: RUDIS-PLUS-SHIP",
+        "type": "Story",
+        "resolution_time": 1,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-448",
+        "summary": "Free Shipping Threshold Change",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-433",
+        "summary": "Font weights on mobile Buy Stack",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-413",
+        "summary": "Mobile Spacing - Filter Bar",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-410",
+        "summary": "Elevar Post-Purchase GTM Tracking on Shopify",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-347",
+        "summary": "Confirm Framework & Opt-In Strategy",
+        "type": "Client Deliverable",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-345",
+        "summary": "Desktop Predictive Search Bug Fix",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-334",
+        "summary": "Checkout Messaging for Promotion",
+        "type": "Story",
+        "resolution_time": 2,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-255",
+        "summary": "Deactivate Zendesk from storefront",
+        "type": "Story",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-248",
+        "summary": "TEAM Add to Cart issue (post code release)",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-234",
+        "summary": "Shopify Fraud Filter App deprecation",
+        "type": "Bug",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      },
+      {
+        "key": "RUDS25-41",
+        "summary": "Digital Merchandising",
+        "type": "Epic",
+        "resolution_time": 0,
+        "request_type": "",
+        "category": ""
+      }
+    ],
+    "statistics": {
+      "average_resolution": 49.7292576419214,
+      "median_resolution": 42.0
+    }
+  },
+  "last_3_months": {
+    "issues": [
+      {
+        "key": "RUDS25-467",
+        "summary": "SWATCH PLP Bug - Double Price on Click",
+        "type": "Story",
+        "status": "Update Requirements",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-11-03T14:40:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-466",
+        "summary": "\"Submit A Request\" - Auto Pop Chat Widget",
+        "type": "Bug",
+        "status": "Needs Estimate",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-10-29T14:02:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-465",
+        "summary": "Swatches PDP \"You May Also Like\" update",
+        "type": "Story",
+        "status": "Needs Estimate",
+        "priority": "Minor",
+        "request_type": "",
+        "created": "2025-10-29T13:21:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-464",
+        "summary": "Custom Team Gear - Product Bundles",
+        "type": "Story",
+        "status": "Needs Estimate",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-10-24T17:04:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-463",
+        "summary": "Expand image limit for team store orders",
+        "type": "Story",
+        "status": "Approved",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-10-24T10:17:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-462",
+        "summary": "Free Shipping Mini Cart dollar threshold Global Theme Setting",
+        "type": "Story",
+        "status": "Needs Estimate",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-10-21T10:20:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-461",
+        "summary": "Create Video Section",
+        "type": "Story",
+        "status": "Done",
+        "priority": "Major",
+        "request_type": "",
+        "created": "2025-10-10T17:02:00",
+        "resolved": "2025-10-24T09:42:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-460",
+        "summary": "Change the strike out price from green to red on the PLP",
+        "type": "Task",
+        "status": "Hold",
+        "priority": "Critical",
+        "request_type": "",
+        "created": "2025-10-08T13:48:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-459",
+        "summary": "Attentive Theme Pixel App Embed Tag",
+        "type": "Story",
+        "status": "Done",
+        "priority": "Major",
+        "request_type": "",
+        "created": "2025-10-06T12:52:00",
+        "resolved": "2025-10-09T15:53:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-458",
+        "summary": "Dynamic PLP Header Image Experience",
+        "type": "Story",
+        "status": "Approved",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-10-02T16:44:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-457",
+        "summary": "Add \"Complete the Look\" to Bundles template +",
+        "type": "Story",
+        "status": "New",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-09-25T08:05:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-456",
+        "summary": "BUG: Add to cart, Checkout and bounces to RUDIS.com and cart empty",
+        "type": "Bug",
+        "status": "Closed",
+        "priority": "Blocker",
+        "request_type": "",
+        "created": "2025-09-11T08:20:00",
+        "resolved": "2025-09-25T11:56:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-455",
+        "summary": "Product Listing Pages (PLPs) & Filter/Sort Updates",
+        "type": "Story",
+        "status": "Update Requirements",
+        "priority": "Critical",
+        "request_type": "",
+        "created": "2025-09-10T14:29:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-454",
+        "summary": "Team Store: Theme not showing Custom Image on PLP",
+        "type": "Story",
+        "status": "Waiting for Approval",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-29T12:09:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-451",
+        "summary": "TEAM: New Functionality for USAW bulk customer ordering",
+        "type": "Story",
+        "status": "Needs Estimate",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-28T16:09:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-450",
+        "summary": "TEAM BUG: RUDIS+ member Free shipping on team store",
+        "type": "Bug",
+        "status": "Done",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-28T10:26:00",
+        "resolved": "2025-09-08T16:13:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-449",
+        "summary": "Free Shipping Offered In Cart: RUDIS-PLUS-SHIP",
+        "type": "Story",
+        "status": "Closed",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-28T09:30:00",
+        "resolved": "2025-08-29T10:37:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-448",
+        "summary": "Free Shipping Threshold Change",
+        "type": "Story",
+        "status": "Done",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-18T11:05:00",
+        "resolved": "2025-08-19T10:42:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-447",
+        "summary": "BUG: Shoes Notify PopUp",
+        "type": "Bug",
+        "status": "Closed",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-05T14:58:00",
+        "resolved": "2025-08-12T13:10:00",
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-446",
+        "summary": "Parallax Scrolling Content Pages",
+        "type": "Story",
+        "status": "Approved",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-04T16:13:00",
+        "resolved": null,
+        "story_points": null
+      },
+      {
+        "key": "RUDS25-445",
+        "summary": "PDP Variant color showing both variant images",
+        "type": "Bug",
+        "status": "Done",
+        "priority": "None",
+        "request_type": "",
+        "created": "2025-08-04T11:01:00",
+        "resolved": "2025-10-08T15:39:00",
+        "story_points": null
+      }
+    ],
+    "issue_types": {
+      "Story": 15,
+      "Bug": 5,
+      "Task": 1
+    },
+    "statuses": {
+      "Update Requirements": 2,
+      "Needs Estimate": 5,
+      "Approved": 3,
+      "Done": 5,
+      "Hold": 1,
+      "New": 1,
+      "Closed": 3,
+      "Waiting for Approval": 1
+    },
+    "request_types": {},
+    "resolved_count": 8,
+    "resolution_times": [
+      13,
+      3,
+      14,
+      11,
+      1,
+      0,
+      6,
+      65
+    ]
+  },
+  "time_tracking": {
+    "summary": {
+      "total_original_estimate_hours": 903.0,
+      "total_time_spent_hours": 1940.75,
+      "average_original_estimate_hours": 7.588235294117647,
+      "average_time_spent_hours": 17.64318181818182,
+      "estimation_accuracy_count": 59,
+      "overestimated_count": 24,
+      "underestimated_count": 30,
+      "average_estimate_ratio": 1.5410683761673638
+    },
+    "estimation_accuracy": [
+      {
+        "issue_key": "RUDS25-445",
+        "original_estimate_seconds": 28800.0,
+        "time_spent_seconds": 32400.0,
+        "ratio": 0.8888888888888888,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-442",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 7200.0,
+        "ratio": 0.5,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-440",
+        "original_estimate_seconds": 9000.0,
+        "time_spent_seconds": 9000.0,
+        "ratio": 1.0,
+        "overestimate": false,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-435",
+        "original_estimate_seconds": 252000.0,
+        "time_spent_seconds": 232200.0,
+        "ratio": 1.0852713178294573,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-420",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 3600.0,
+        "ratio": 1.0,
+        "overestimate": false,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-419",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 9900.0,
+        "ratio": 0.36363636363636365,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-418",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 36000.0,
+        "ratio": 0.4,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-416",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 18000.0,
+        "ratio": 0.4,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-415",
+        "original_estimate_seconds": 28800.0,
+        "time_spent_seconds": 36000.0,
+        "ratio": 0.8,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-414",
+        "original_estimate_seconds": 21600.0,
+        "time_spent_seconds": 14400.0,
+        "ratio": 1.5,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-409",
+        "original_estimate_seconds": 21600.0,
+        "time_spent_seconds": 88200.0,
+        "ratio": 0.24489795918367346,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-407",
+        "original_estimate_seconds": 57600.0,
+        "time_spent_seconds": 63000.0,
+        "ratio": 0.9142857142857143,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-406",
+        "original_estimate_seconds": 1800.0,
+        "time_spent_seconds": 1800.0,
+        "ratio": 1.0,
+        "overestimate": false,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-403",
+        "original_estimate_seconds": 288000.0,
+        "time_spent_seconds": 325800.0,
+        "ratio": 0.8839779005524862,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-402",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 21600.0,
+        "ratio": 0.3333333333333333,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-401",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 18000.0,
+        "ratio": 0.8,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-396",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 1800.0,
+        "ratio": 2.0,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-392",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 12600.0,
+        "ratio": 1.1428571428571428,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-390",
+        "original_estimate_seconds": 10800.0,
+        "time_spent_seconds": 35100.0,
+        "ratio": 0.3076923076923077,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-381",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 12600.0,
+        "ratio": 1.1428571428571428,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-376",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 41400.0,
+        "ratio": 0.17391304347826086,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-372",
+        "original_estimate_seconds": 21600.0,
+        "time_spent_seconds": 42300.0,
+        "ratio": 0.5106382978723404,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-343",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 18900.0,
+        "ratio": 0.38095238095238093,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-341",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 9000.0,
+        "ratio": 0.8,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-332",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 4500.0,
+        "ratio": 1.6,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-307",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 16200.0,
+        "ratio": 0.8888888888888888,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-306",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 37800.0,
+        "ratio": 0.38095238095238093,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-300",
+        "original_estimate_seconds": 57600.0,
+        "time_spent_seconds": 59400.0,
+        "ratio": 0.9696969696969697,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-296",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 5400.0,
+        "ratio": 1.3333333333333333,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-295",
+        "original_estimate_seconds": 21600.0,
+        "time_spent_seconds": 17100.0,
+        "ratio": 1.263157894736842,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-294",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 47700.0,
+        "ratio": 0.3018867924528302,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-293",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 7200.0,
+        "ratio": 1.0,
+        "overestimate": false,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-290",
+        "original_estimate_seconds": 18000.0,
+        "time_spent_seconds": 9000.0,
+        "ratio": 2.0,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-257",
+        "original_estimate_seconds": 54000.0,
+        "time_spent_seconds": 64800.0,
+        "ratio": 0.8333333333333334,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-254",
+        "original_estimate_seconds": 57600.0,
+        "time_spent_seconds": 82800.0,
+        "ratio": 0.6956521739130435,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-253",
+        "original_estimate_seconds": 14400.0,
+        "time_spent_seconds": 11700.0,
+        "ratio": 1.2307692307692308,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-251",
+        "original_estimate_seconds": 10800.0,
+        "time_spent_seconds": 12600.0,
+        "ratio": 0.8571428571428571,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-249",
+        "original_estimate_seconds": 18000.0,
+        "time_spent_seconds": 15300.0,
+        "ratio": 1.1764705882352942,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-247",
+        "original_estimate_seconds": 28800.0,
+        "time_spent_seconds": 12600.0,
+        "ratio": 2.2857142857142856,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-246",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 3600.0,
+        "ratio": 1.0,
+        "overestimate": false,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-241",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 3600.0,
+        "ratio": 2.0,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-238",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 5400.0,
+        "ratio": 1.3333333333333333,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-235",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 1800.0,
+        "ratio": 2.0,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-228",
+        "original_estimate_seconds": 72000.0,
+        "time_spent_seconds": 107100.0,
+        "ratio": 0.6722689075630253,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-164",
+        "original_estimate_seconds": 21600.0,
+        "time_spent_seconds": 33300.0,
+        "ratio": 0.6486486486486487,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-161",
+        "original_estimate_seconds": 7200.0,
+        "time_spent_seconds": 24300.0,
+        "ratio": 0.2962962962962963,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-152",
+        "original_estimate_seconds": 3600.0,
+        "time_spent_seconds": 5400.0,
+        "ratio": 0.6666666666666666,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-151",
+        "original_estimate_seconds": 108000.0,
+        "time_spent_seconds": 35100.0,
+        "ratio": 3.076923076923077,
+        "overestimate": true,
+        "underestimate": false
+      },
+      {
+        "issue_key": "RUDS25-150",
+        "original_estimate_seconds": 32400.0,
+        "time_spent_seconds": 37800.0,
+        "ratio": 0.8571428571428571,
+        "overestimate": false,
+        "underestimate": true
+      },
+      {
+        "issue_key": "RUDS25-148",
+        "original_estimate_seconds": 28800.0,
+        "time_spent_seconds": 14400.0,
+        "ratio": 2.0,
+        "overestimate": true,
+        "underestimate": false
+      }
+    ]
+  },
+  "comment_analysis": {
+    "total_comments": 941,
+    "issues_with_comments": 269,
+    "issues_without_comments": 126,
+    "average_comments_per_issue": 2.382278481012658,
+    "high_comment_issues": [
+      {
+        "issue_key": "RUDS25-376",
+        "comment_count": 27,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-435",
+        "comment_count": 24,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-257",
+        "comment_count": 22,
+        "type": "Task",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-390",
+        "comment_count": 21,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-403",
+        "comment_count": 19,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-372",
+        "comment_count": 19,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-137",
+        "comment_count": 16,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-407",
+        "comment_count": 15,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-126",
+        "comment_count": 15,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-294",
+        "comment_count": 14,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "issue_key": "RUDS25-415",
+        "comment_count": 13,
+        "type": "Story",
+        "status": "Closed"
+      },
+      {
+        "issue_key": "RUDS25-409",
+        "comment_count": 13,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-300",
+        "comment_count": 13,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-296",
+        "comment_count": 13,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-254",
+        "comment_count": 13,
+        "type": "Bug",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-344",
+        "comment_count": 12,
+        "type": "Bug",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-164",
+        "comment_count": 12,
+        "type": "Bug",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-161",
+        "comment_count": 12,
+        "type": "Bug",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-392",
+        "comment_count": 11,
+        "type": "Story",
+        "status": "Done"
+      },
+      {
+        "issue_key": "RUDS25-341",
+        "comment_count": 11,
+        "type": "Bug",
+        "status": "Done"
+      }
+    ]
+  }
+}

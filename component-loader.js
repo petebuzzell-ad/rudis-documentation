@@ -1,13 +1,9 @@
 // Component Loader: Dynamically loads header.html and footer.html
-// Works for both root-level and docs/ subdirectory pages
+// Works for root-level pages (GitHub Pages serves from root)
 
 (function() {
-    // Determine the correct path based on current location
-    const isDocsPage = window.location.pathname.includes('/docs/');
-    const pathPrefix = isDocsPage ? '../' : '';
-    
     // Load header
-    fetch(pathPrefix + 'header.html')
+    fetch('header.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('header-container').innerHTML = html;
@@ -16,7 +12,7 @@
         .catch(error => console.error('Error loading header:', error));
     
     // Load footer
-    fetch(pathPrefix + 'footer.html')
+    fetch('footer.html')
         .then(response => response.text())
         .then(html => {
             document.getElementById('footer-container').innerHTML = html;

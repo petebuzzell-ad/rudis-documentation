@@ -29,17 +29,38 @@
         const headerMenu = document.getElementById('header-menu');
         
         if (menuToggle && headerMenu) {
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-                headerMenu.classList.toggle('open');
+                const newExpanded = !isExpanded;
+                menuToggle.setAttribute('aria-expanded', newExpanded);
+                
+                if (newExpanded) {
+                    headerMenu.classList.add('show');
+                    menuToggle.classList.add('active');
+                } else {
+                    headerMenu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                }
             });
             
             // Close menu when clicking outside
             document.addEventListener('click', function(event) {
-                if (!menuToggle.contains(event.target) && !headerMenu.contains(event.target)) {
+                if (menuToggle && headerMenu && 
+                    !menuToggle.contains(event.target) && 
+                    !headerMenu.contains(event.target)) {
                     menuToggle.setAttribute('aria-expanded', 'false');
-                    headerMenu.classList.remove('open');
+                    headerMenu.classList.remove('show');
+                    menuToggle.classList.remove('active');
+                }
+            });
+            
+            // Close menu on Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && headerMenu.classList.contains('show')) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    headerMenu.classList.remove('show');
+                    menuToggle.classList.remove('active');
                 }
             });
         }

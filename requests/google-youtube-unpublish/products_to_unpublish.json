@@ -1,0 +1,10 @@
+{
+  "stats": {
+    "total_products": 0,
+    "products_analyzed": 0,
+    "products_with_5plus_oos": 0,
+    "total_variants_analyzed": 0,
+    "total_oos_variants": 0
+  },
+  "products_to_unpublish": []
+}

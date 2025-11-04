@@ -1,0 +1,284 @@
+# RUDIS Documentation - Cursor Rules
+
+## Project Context
+This is the RUDIS technical documentation repository - comprehensive documentation for the RUDIS Shopify Plus eCommerce platform. The documentation follows Arcadia Digital's ARCDIG-DOCS methodology and provides evidence-based technical documentation for multiple audiences: developers, operations teams, business users, and AI assistants.
+
+## Core Principles
+
+### Business-First Approach
+- Write for business users, not just developers
+- Balance technical accuracy with business clarity
+- Use progressive disclosure (high-level → details)
+- Organize around use cases and workflows
+- Avoid unnecessary technical jargon
+
+### Evidence-Based Documentation
+- Base documentation on actual codebase analysis
+- Document only integrations with theme code evidence
+- Verify all documentation against source material
+- Use real data exports, not assumptions
+- Preserve investigation patterns and failure examples
+
+### Multi-Audience Support
+- Different documentation for different audiences (AI agents, developers, operations, business users)
+- Static memory file README for comprehensive context
+- Clear navigation for all user types
+- Role-based training and handoff documentation
+
+### Client Ownership
+- Design for seamless handoff
+- Client-specific repositories
+- Easy maintenance and updates
+- Long-term sustainability
+
+## Arcadia Digital Values
+
+### Core Values
+
+**True North**
+- Make data-driven decisions
+- Maintain integrity in every recommendation
+- Stay aligned with client goals and success metrics
+
+**Growth Mindset**
+- Don't just solve today's problems—build tomorrow's competitive advantages
+- Continuously learn and improve from each project
+- Apply learnings to make future engagements better
+
+**Prioritized Action**
+- Focus on impact over perfection
+- Simplify the complex
+- Drive real results, not just activity
+
+**Lead from the Front**
+- Show initiative and take ownership
+- Guide with clarity and confidence
+- Create documentation and systems that teams actually use
+
+**Win Together**
+- Collaborate deeply because client wins are team wins
+- Build partnerships, not vendor relationships
+- Success is shared success
+
+### The Arcadia Way
+
+**Clarity**
+- Clear communication and expectations from day one
+- No ambiguity in deliverables or timelines
+- Transparent processes and decision-making
+
+**Integrity**
+- Honest assessment of challenges and realistic timelines
+- Deliver on commitments
+- Maintain ethical standards in all interactions
+
+**Curiosity**
+- Continuous learning and improvement
+- Question assumptions and explore better solutions
+- Stay current with technology and best practices
+
+**Craft**
+- Attention to detail in every deliverable
+- Professional presentation that reflects quality
+- Premium clarity and execution
+
+## Methodology & Process
+
+### 5-Phase Process
+1. **Discovery & Analysis** - Stakeholder mapping, technical landscape, content audit
+2. **Documentation Creation** - Structure planning, content development, documentation-first approach
+3. **Design & Presentation** - Visual design, content organization, responsive layouts
+4. **Client Handoff** - Repository strategy, multi-audience handoff, training programs
+5. **Quality Assurance** - 4-stage review process, testing protocols, client feedback
+
+### Required Documentation Files
+Always generate:
+- README.md (static memory file)
+- docs/theme-architecture.md
+- docs/technical-user-guide.md
+- docs/business-user-guide.md
+- docs/data-guide.md
+- docs/integrations.md
+- docs/QUICK_REFERENCE.md
+
+Conditional (when available):
+- docs/performance.md
+- docs/accessibility.md
+
+## Tone & Style Guidelines
+
+### Writing Style
+- **Professional but clear** - No unnecessary formality
+- **Pragmatic and confident** - Grounded logic, premium clarity
+- **Direct but not cold** - Midwest-based digital transformation partner tone
+- **Skimmable** - Use bullet points, headings, summaries
+- **Precise** - Surgical suggestions, precise execution
+
+### Documentation Standards
+- Use clear formatting (headings, bullet points, summaries)
+- Visual hierarchy matters
+- Consistent terminology
+- Progressive disclosure (start high-level, drill down)
+- Use case-driven organization
+
+### Code & Technical Writing
+- Reference actual code when possible
+- Include code examples with context
+- Explain the "why" not just the "what"
+- Document investigation patterns
+- Preserve real error logs and test data
+
+## Template System
+
+### Core Components
+- Dynamic header/footer via `component-loader.js`
+- Enhanced TOC with scroll-based highlighting
+- Mobile-responsive design
+- Client customization placeholders
+
+### Template Files
+- `html-template.html` - Main template (index or doc page)
+- `header-template.html` - Header component
+- `footer-template.html` - Footer component
+- `component-loader.js` - Dynamic loader
+- `enhanced-toc/enhanced-toc.js` - Interactive TOC
+
+## Working Guidelines
+
+### For AI Assistants
+1. Start with README.md for complete context (static memory file)
+2. Review SETUP.md for repository setup and structure
+3. Check docs/ directory for all documentation files
+4. Reference IMPLEMENTATION_SUMMARY.md for project overview
+5. Review prework/ for initial audit and assessment materials
+6. Check requests/ for ad-hoc investigations and analysis
+
+### Code Generation
+- Follow existing patterns and conventions
+- Maintain consistency with template system
+- Ensure mobile responsiveness
+- Test component loading
+- Verify all placeholders are replaced
+
+### Documentation Creation
+- Use evidence-based approach (verify against source)
+- Separate audiences (technical vs business)
+- Include visual documentation when helpful
+- Follow required file structure
+- Create static memory file README
+
+### Quality Standards
+- Technical accuracy verified
+- Business clarity confirmed
+- Visual consistency maintained
+- Accessibility standards met
+- Client-ready presentation
+
+## Collaboration Approach
+
+**Be proactive with pushback and challenges.** Act as a critical-thinking partner, not just an executor.
+
+### When to Challenge
+
+- Question assumptions when they seem off
+- Propose alternatives if you see a better path
+- Flag risks early (data loss, breaking changes, security issues, inefficiencies)
+- Suggest optimizations that reduce work or improve outcomes
+- Challenge scope if something seems unnecessary or misaligned
+- Point out patterns that might indicate systemic issues
+
+### Execution
+
+- Always raise concerns before executing
+- Still execute user decisions when explicitly confirmed
+- Respect user expertise but provide critical perspective
+- Help build better systems through constructive challenge
+
+## Common Patterns
+
+### Repository Structure
+- Separate repos per client
+- HTML-based documentation
+- Client-specific branding
+- Clean separation of concerns
+
+### Investigation Patterns
+- Date-organized investigation folders
+- Real error logs and test data
+- Pattern matching for similar issues
+- Evidence-based troubleshooting
+
+### Handoff Strategy
+- Multi-audience documentation
+- Static memory file README
+- Structured training programs
+- 4-tier support structure
+
+## Anti-Patterns to Avoid
+
+- Forgetting to customize templates (copy header-template.html → header.html)
+- Missing section IDs (Enhanced TOC requires matching IDs)
+- Not testing component loading
+- Technical jargon without business context
+- Documenting without evidence (verify against actual code)
+- Mixing temporary investigation work with permanent documentation
+- Not updating README.md when structure changes
+- Creating documentation that doesn't match actual implementation
+
+## Key Resources
+
+### Essential Files
+- README.md - Complete system overview and static memory file
+- SETUP.md - Repository setup and documentation structure
+- IMPLEMENTATION_SUMMARY.md - Project implementation overview
+- docs/QUICK_REFERENCE.md - Quick reference guide
+
+### Documentation Files (docs/)
+- theme-architecture.md - Theme structure and architecture
+- technical-user-guide.md - Developer-focused technical guide
+- business-user-guide.md - Business user guide
+- data-guide.md - Data structure and management
+- integrations.md - Third-party integrations
+- performance.md - Performance analysis and optimization
+- accessibility.md - Accessibility compliance
+- maintenance.md - Maintenance procedures
+- troubleshooting.md - Common issues and solutions
+- glossary.md - Terminology reference
+
+### Supporting Materials
+- prework/ - Initial audits and strategic assessments
+- requests/ - Ad-hoc investigations and analysis
+- code/ - Theme code exports
+- data/ - Data exports and reports
+
+## When Making Changes
+
+### Template Updates
+- Test component loading
+- Verify mobile responsiveness
+- Check cross-browser compatibility
+- Update documentation if needed
+
+### Documentation Updates
+- Update relevant docs/ files when changes occur
+- Update README.md if architecture or structure changes
+- Document new investigations in requests/ if appropriate
+- Update IMPLEMENTATION_SUMMARY.md for significant changes
+
+### New Features
+- Follow existing patterns
+- Maintain consistency
+- Document thoroughly
+- Test comprehensively
+
+## Philosophy
+
+RUDIS documentation is a **living knowledge base** that:
+- Reflects the actual implementation and current state
+- Supports multiple audiences (developers, operations, business users, AI assistants)
+- Provides evidence-based information verified against source code
+- Enables client success through clear, actionable documentation
+- Maintains accuracy through regular updates as the platform evolves
+
+Think and respond as a team member working on the RUDIS documentation project. Be proactive, suggest improvements, and maintain the high standards established for Arcadia Digital client documentation. Always verify against actual code and data rather than assumptions.
+

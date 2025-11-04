@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Google Ads Inventory Filtering - Solution Review | RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="assets/favicon.webp">
+    <link rel="stylesheet" href="arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <main>
+            <section id="executive-summary">
+                <h1>Google Ads Inventory Filtering - Solution Review</h1>
+                
+                <p class="meta-info">
+                    <strong>Analysis Date:</strong> November 04, 2025<br>
+                    <strong>Prepared for:</strong> RUDIS<br>
+                    <strong>Prepared by:</strong> Arcadia Digital
+                </p>
+                
+                <h2>Executive Summary</h2>
+                
+                <h3>Problem Statement</h3>
+                <p>Google product ads are currently being paid for on products with broken inventory (limited size/color availability). This results in wasted ad spend when customers click on ads but cannot purchase due to limited inventory options.</p>
+                
+                <h3>Current Situation</h3>
+                <ul>
+                    <li><strong>Current Setup:</strong> Shopify native Google & YouTube sales channel (direct feed)</li>
+                    <li><strong>Issue:</strong> Cannot exclude products based on inventory rules</li>
+                    <li><strong>Impact:</strong> Ad spend wasted on products customers can't purchase</li>
+                    <li><strong>Scope:</strong> Analysis identified 1,154 active products with partial inventory (some variants in stock, some out)</li>
+                </ul>
+                
+                <h3>Recommended Solution</h3>
+                <p><strong>Feed Management Platform</strong> - A third-party service that sits between Shopify and Google Merchant Center, automatically filtering products based on inventory rules before ads are served.</p>
+                
+                <p><strong>Why This Approach:</strong></p>
+                <ul>
+                    <li>✅ Automatically excludes products with ≤5 in-stock variants</li>
+                    <li>✅ Real-time updates as inventory changes</li>
+                    <li>✅ No external scripts or manual maintenance</li>
+                    <li>✅ Professional rule engine built for this use case</li>
+                </ul>
+            </section>
+            
+            <section id="problem-analysis">
+                <h2>Problem Analysis</h2>
+                
+                <h3>Inventory Breakdown (Active Products)</h3>
+                <ul>
+                    <li><strong>Total Active Products:</strong> 4,629</li>
+                    <li><strong>Products Fully In Stock:</strong> 1,522 (32.9%)</li>
+                    <li><strong>Products Fully Out of Stock:</strong> 1,953 (42.2%)</li>
+                    <li><strong>Products with Mixed Inventory:</strong> 1,154 (24.9%) ← <strong>Focus Area</strong></li>
+                </ul>
+                
+                <h3>Why This Matters</h3>
+                <p>Products with mixed inventory create poor customer experiences:</p>
+                <ol>
+                    <li>Customer clicks ad for a product</li>
+                    <li>Product appears available</li>
+                    <li>Customer selects size/color → most options are out of stock</li>
+                    <li>Customer abandons purchase</li>
+                    <li><strong>Result:</strong> Ad spend wasted, no sale</li>
+                </ol>
+                
+                <h3>Current Limitations</h3>
+                <p>Shopify's native Google & YouTube sales channel cannot:</p>
+                <ul>
+                    <li>Filter products based on inventory rules</li>
+                    <li>Calculate "number of in-stock variants" dynamically</li>
+                    <li>Exclude products automatically based on inventory metrics</li>
+                    <li>Update feed in real-time based on inventory changes</li>
+                </ul>
+            </section>
+            
+            <section id="solution-options">
+                <h2>Solution Options Evaluated</h2>
+                
+                <h3>Option 1: Feed Management Platform ⭐ <strong>RECOMMENDED</strong></h3>
+                
+                <p><strong>What It Is:</strong> Professional platform that manages product feeds between Shopify and Google Merchant Center with advanced filtering capabilities.</p>
+                
+                <h4>How It Works</h4>
+                <pre><code>Shopify Store
+    ↓
+Feed Management Platform
+    ↓ [Applies Rules: "Exclude if ≤5 variants in stock"]
+    ↓
+Google Merchant Center</code></pre>
+                
+                <h4>Key Benefits</h4>
+                <ul>
+                    <li>Automatic inventory-based filtering</li>
+                    <li>Real-time feed updates</li>
+                    <li>No external scripts required</li>
+                    <li>Multi-channel support (Google, Facebook, Bing, etc.)</li>
+                    <li>Professional support and maintenance</li>
+                </ul>
+                
+                <h4>Platform Options</h4>
+                
+                <h5>Feedonomics (Enterprise Solution)</h5>
+                <ul>
+                    <li><strong>Pricing:</strong> Custom pricing (~$500-2,000+/month)</li>
+                    <li><strong>Best For:</strong> Complex inventory rules, enterprise scale</li>
+                    <li><strong>Features:</strong>
+                        <ul>
+                            <li>Powerful rule engine</li>
+                            <li>Real-time inventory calculations</li>
+                            <li>Multi-channel support</li>
+                            <li>Enterprise-grade support</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h5>DataFeedWatch (Mid-Tier)</h5>
+                <ul>
+                    <li><strong>Pricing:</strong> $99-299/month</li>
+                    <li><strong>Best For:</strong> Good features at lower cost</li>
+                    <li><strong>Features:</strong>
+                        <ul>
+                            <li>Inventory filtering rules</li>
+                            <li>Custom product rules</li>
+                            <li>Feed optimization</li>
+                            <li>Multi-channel support</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h5>ShoppingFeeder (Budget Option)</h5>
+                <ul>
+                    <li><strong>Pricing:</strong> Starts at $20/month</li>
+                    <li><strong>Best For:</strong> Cost-conscious, basic needs</li>
+                    <li><strong>Question:</strong> May not support complex inventory calculations</li>
+                </ul>
+                
+                <h4>Implementation</h4>
+                <ol>
+                    <li>Connect Shopify store to feed platform</li>
+                    <li>Configure rule: "Exclude products where in-stock variants ≤ 5"</li>
+                    <li>Feed platform generates filtered feed</li>
+                    <li>Feed platform sends to Google Merchant Center</li>
+                    <li>Disable native Shopify feed</li>
+                </ol>
+                
+                <p><strong>Timeline:</strong> 2-4 weeks for setup and testing</p>
+                
+                <h3>Option 2: Shopify Flow + Metafield + Feed App ⚠️ <strong>COMPLEX</strong></h3>
+                
+                <h4>How It Works</h4>
+                <ol>
+                    <li>Shopify Flow calculates in-stock variant count</li>
+                    <li>Flow sets metafield: <code>custom.in_stock_variant_count</code></li>
+                    <li>Feed app filters products based on metafield</li>
+                    <li>Products with metafield ≤ 5 are excluded</li>
+                </ol>
+                
+                <h4>Pros</h4>
+                <ul>
+                    <li>Uses Shopify-native Flow</li>
+                    <li>No external scripts</li>
+                    <li>Lower cost than feed management platform</li>
+                </ul>
+                
+                <h4>Cons</h4>
+                <ul>
+                    <li>Complex Flow setup required</li>
+                    <li>May not be real-time</li>
+                    <li>Requires managing both Flow and feed app</li>
+                    <li>Flow has limitations on complex calculations</li>
+                </ul>
+                
+                <p><strong>Feasibility:</strong> ⚠️ Partially feasible - requires complex Flow configuration</p>
+                
+                <h3>Option 3: Google Merchant Center Rules ⚠️ <strong>LIMITED</strong></h3>
+                
+                <h4>How It Works</h4>
+                <ol>
+                    <li>Shopify Flow sets metafield with inventory count</li>
+                    <li>Google Merchant Center rule filters based on metafield</li>
+                </ol>
+                
+                <h4>Limitations</h4>
+                <ul>
+                    <li>Cannot calculate inventory dynamically</li>
+                    <li>Requires Flow to calculate and set metafield</li>
+                    <li>Not designed for complex inventory rules</li>
+                </ul>
+                
+                <p><strong>Feasibility:</strong> ⚠️ Limited - requires workarounds</p>
+                
+                <h3>Option 4: External Scripts ❌ <strong>NOT RECOMMENDED</strong></h3>
+                
+                <p><strong>Why Not:</strong></p>
+                <ul>
+                    <li>Requires infrastructure and maintenance</li>
+                    <li>Not preferred per client requirements</li>
+                    <li>External dependency adds complexity</li>
+                </ul>
+            </section>
+            
+            <section id="decision-matrix">
+                <h2>Decision Matrix</h2>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Solution</th>
+                            <th>Cost</th>
+                            <th>Complexity</th>
+                            <th>Real-time</th>
+                            <th>Maintenance</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Feedonomics</strong></td>
+                            <td>$$$$</td>
+                            <td>Medium</td>
+                            <td>✅ Yes</td>
+                            <td>Low</td>
+                            <td>⭐⭐⭐⭐⭐ Best</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DataFeedWatch</strong></td>
+                            <td>$$</td>
+                            <td>Low</td>
+                            <td>✅ Yes</td>
+                            <td>Low</td>
+                            <td>⭐⭐⭐⭐ Good</td>
+                        </tr>
+                        <tr>
+                            <td>Flow + Metafield + Feed App</td>
+                            <td>$</td>
+                            <td>High</td>
+                            <td>⚠️ Delayed</td>
+                            <td>Medium</td>
+                            <td>⭐⭐⭐ Complex</td>
+                        </tr>
+                        <tr>
+                            <td>Google Merchant Center Rules</td>
+                            <td>$</td>
+                            <td>Medium</td>
+                            <td>⚠️ Delayed</td>
+                            <td>Medium</td>
+                            <td>⭐⭐ Limited</td>
+                        </tr>
+                        <tr>
+                            <td>External Scripts</td>
+                            <td>$</td>
+                            <td>Low</td>
+                            <td>⚠️ Delayed</td>
+                            <td>High</td>
+                            <td>⭐ Not preferred</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="cost-benefit">
+                <h2>Cost-Benefit Analysis</h2>
+                
+                <h3>Current Cost of Problem</h3>
+                
+                <p><strong>To Calculate:</strong></p>
+                <ol>
+                    <li>Review Google Ads spend for products with broken inventory</li>
+                    <li>Calculate click-through rate for those products</li>
+                    <li>Estimate conversion loss from poor inventory experience</li>
+                    <li>Factor in time spent on manual management</li>
+                </ol>
+                
+                <p><strong>Example Calculation:</strong></p>
+                <ul>
+                    <li>If spending $5,000/month on ads for broken inventory products</li>
+                    <li>Even 20% waste = $1,000/month in wasted ad spend</li>
+                    <li>Annual waste: $12,000</li>
+                </ul>
+                
+                <h3>Feed Management Platform Cost</h3>
+                <ul>
+                    <li><strong>Feedonomics:</strong> ~$500-2,000/month (~$6,000-24,000/year)</li>
+                    <li><strong>DataFeedWatch:</strong> ~$99-299/month (~$1,200-3,600/year)</li>
+                    <li><strong>ShoppingFeeder:</strong> ~$20-50/month (~$240-600/year)</li>
+                </ul>
+                
+                <h3>ROI Calculation</h3>
+                <p><strong>If wasted ad spend > platform cost:</strong></p>
+                <ul>
+                    <li>Platform pays for itself</li>
+                    <li>Additional benefits: Time savings, automation, better customer experience</li>
+                </ul>
+                
+                <p><strong>Recommendation:</strong></p>
+                <ul>
+                    <li>Calculate current wasted ad spend</li>
+                    <li>Compare to platform costs</li>
+                    <li>Factor in time savings and improved customer experience</li>
+                </ul>
+            </section>
+            
+            <section id="recommended-path">
+                <h2>Recommended Path Forward</h2>
+                
+                <h3>Phase 1: Platform Evaluation (Week 1-2)</h3>
+                <ol>
+                    <li><strong>Calculate Current Wasted Ad Spend</strong>
+                        <ul>
+                            <li>Review Google Ads performance data</li>
+                            <li>Identify spend on products with broken inventory</li>
+                            <li>Quantify the problem</li>
+                        </ul>
+                    </li>
+                    <li><strong>Request Platform Demos</strong>
+                        <ul>
+                            <li>Feedonomics (if budget allows)</li>
+                            <li>DataFeedWatch (recommended starting point)</li>
+                            <li>Compare capabilities and pricing</li>
+                        </ul>
+                    </li>
+                    <li><strong>Key Questions to Ask:</strong>
+                        <ul>
+                            <li>Can you exclude products where in-stock variants ≤ 5?</li>
+                            <li>How do you calculate variant inventory levels?</li>
+                            <li>How quickly do feed updates reflect inventory changes?</li>
+                            <li>What's the pricing for our product volume (~4,600 active products)?</li>
+                            <li>Can we test with a small subset first?</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h3>Phase 2: Pilot Testing (Week 3-4)</h3>
+                <ol>
+                    <li><strong>Select Platform</strong> based on demo and pricing</li>
+                    <li><strong>Setup Test Feed</strong> with one product category</li>
+                    <li><strong>Verify Filtering</strong> works correctly</li>
+                    <li><strong>Compare Results</strong> with current feed</li>
+                    <li><strong>Adjust Rules</strong> as needed</li>
+                </ol>
+                
+                <h3>Phase 3: Full Implementation (Week 5-6)</h3>
+                <ol>
+                    <li><strong>Configure Full Feed</strong> for all products</li>
+                    <li><strong>Run in Parallel</strong> with native Shopify feed</li>
+                    <li><strong>Verify Results</strong> - ensure filtering works correctly</li>
+                    <li><strong>Switch Google Merchant Center</strong> to feed platform</li>
+                    <li><strong>Disable Native Feed</strong> from Shopify</li>
+                    <li><strong>Monitor and Optimize</strong></li>
+                </ol>
+            </section>
+            
+            <section id="implementation-considerations">
+                <h2>Implementation Considerations</h2>
+                
+                <h3>Criteria Definition</h3>
+                <p><strong>Recommended Rule:</strong></p>
+                <ul>
+                    <li>Exclude products where number of in-stock variants ≤ 5</li>
+                </ul>
+                
+                <p><strong>Alternative Rules to Consider:</strong></p>
+                <ul>
+                    <li>Products with <50% inventory (if product has >10 variants)</li>
+                    <li>Products where specific size ranges are completely out of stock</li>
+                    <li>Products with no in-stock variants (already handled)</li>
+                </ul>
+                
+                <h3>Testing Approach</h3>
+                <ol>
+                    <li><strong>Start Small:</strong> Test with one product category</li>
+                    <li><strong>Verify Filtering:</strong> Ensure correct products are excluded</li>
+                    <li><strong>Monitor Performance:</strong> Check ad performance and conversions</li>
+                    <li><strong>Adjust Rules:</strong> Fine-tune criteria based on results</li>
+                </ol>
+                
+                <h3>Migration Strategy</h3>
+                <ol>
+                    <li><strong>Parallel Operation:</strong> Run both feeds simultaneously</li>
+                    <li><strong>Gradual Rollout:</strong> Start with subset, expand gradually</li>
+                    <li><strong>Monitoring:</strong> Track performance metrics</li>
+                    <li><strong>Cutover:</strong> Switch to feed platform when confident</li>
+                </ol>
+            </section>
+            
+            <section id="next-steps">
+                <h2>Next Steps</h2>
+                
+                <h3>Immediate Actions</h3>
+                <ol>
+                    <li>✅ <strong>Inventory Analysis Complete</strong> - Identified 1,154 products with mixed inventory</li>
+                    <li>📋 <strong>Calculate Wasted Ad Spend</strong> - Review Google Ads data</li>
+                    <li>📞 <strong>Request Platform Demos</strong> - Feedonomics and DataFeedWatch</li>
+                    <li>💰 <strong>Compare Pricing</strong> - Determine ROI</li>
+                </ol>
+                
+                <h3>Timeline</h3>
+                <ul>
+                    <li><strong>Week 1-2:</strong> Platform evaluation and demos</li>
+                    <li><strong>Week 3-4:</strong> Pilot testing</li>
+                    <li><strong>Week 5-6:</strong> Full implementation</li>
+                </ul>
+                
+                <h3>Success Metrics</h3>
+                <ul>
+                    <li>Reduction in wasted ad spend on broken inventory</li>
+                    <li>Improved conversion rates for products in ads</li>
+                    <li>Better customer experience (fewer abandoned carts)</li>
+                    <li>Automated feed management (time savings)</li>
+                </ul>
+            </section>
+            
+            <section id="questions-support">
+                <h2>Questions & Support</h2>
+                <p>For questions about this analysis or implementation support, contact:</p>
+                <ul>
+                    <li><strong>Arcadia Digital</strong> - Technical documentation and implementation support</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="component-loader.js"></script>
+</body>
+</html>
+

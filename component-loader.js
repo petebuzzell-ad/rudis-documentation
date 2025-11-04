@@ -4,8 +4,10 @@
 (function() {
     // Determine the correct path based on current location
     const pathSegments = window.location.pathname.split('/').filter(Boolean);
-    const isSubdirectory = pathSegments.length > 1 && pathSegments[0] !== 'index.html';
-    const pathPrefix = isSubdirectory ? '../' : '';
+    // Remove the HTML filename to get directory depth
+    const directoryDepth = pathSegments.length - 1;
+    // Build path prefix based on depth (0 = root, 1 = ../, 2 = ../../, etc.)
+    const pathPrefix = directoryDepth > 0 ? '../'.repeat(directoryDepth) : '';
     
     // Load header
     fetch(pathPrefix + 'header.html')

@@ -1,37 +1,47 @@
-# Google & YouTube Sales Channel Unpublish
+# Inventory Analysis - Out of Stock Variants
 
 ## Context
 
-This request identifies products that should be unpublished from the Google & YouTube sales channel based on inventory levels. Products with **5 or more out-of-stock variants** are flagged for unpublishing to maintain a better customer experience and avoid showing products with limited availability.
+This analysis identifies products with out-of-stock variants to understand inventory patterns across core styles and sizes. This helps identify broken inventory patterns and products that may need attention.
 
 ## Files
 
-- **`analyze_products.py`** - Analyzes products CSV to identify products with 5+ out-of-stock variants
-- **`unpublish_products.py`** - Script to unpublish identified products from Google & YouTube sales channel via Shopify API
-- **`products_to_unpublish.json`** - Full analysis data in JSON format (generated)
-- **`products_to_unpublish.csv`** - Products list in CSV format for easy review (generated)
-- **`unpublish_analysis_report.md`** - Analysis report with findings (generated)
+- **`analyze_inventory.py`** - Analyzes products CSV to identify inventory patterns and out-of-stock variants
+- **`analyze_products.py`** - Original script (identifies products with ≤5 in-stock variants for unpublishing)
+- **`unpublish_products.py`** - Script to unpublish products from Google & YouTube sales channel via Shopify API
+- **`inventory_analysis.json`** - Full inventory analysis data in JSON format (generated)
+- **`inventory_analysis.csv`** - Products list with inventory breakdown in CSV format (generated)
+- **`inventory_analysis_report.md`** - Inventory analysis report with findings (generated)
 
 ## Source Data
 
 - **Products CSV:** `../../data/AD_PRODUCTS_Export_2025-11-04_095613/Products.csv`
 
-## Running the Analysis
+## Running the Inventory Analysis
 
 ```bash
-python3 analyze_products.py
+python3 analyze_inventory.py
 ```
 
 The script will:
 1. Read the products CSV export
 2. Group variants by product ID
-3. Count out-of-stock variants (inventory quantity ≤ 0)
-4. Identify products with 5+ out-of-stock variants
+3. Analyze inventory patterns across styles and sizes
+4. Identify products with out-of-stock variants
 5. Generate output files (JSON, CSV, and markdown report)
 
-## Criteria
+## What This Analysis Shows
 
-Products are flagged for unpublishing if they have **at least 5 variants that are out of stock** (inventory quantity ≤ 0).
+- **Products with out-of-stock variants** - Products that have some but not all variants out of stock
+- **Inventory breakdown by style/size** - How inventory is distributed across option values
+- **Inventory health metrics** - Percentage of variants in stock per product
+- **Pattern identification** - Products with broken inventory patterns across core styles and sizes
+
+This helps identify:
+- Products where specific colors/styles are out of stock
+- Products where specific sizes are out of stock
+- Products with inventory management issues
+- Overall inventory health across the catalog
 
 ## Unpublishing Products
 

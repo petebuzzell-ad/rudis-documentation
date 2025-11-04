@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Business User Guide - RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="../assets/favicon.webp">
+    <link rel="stylesheet" href="../arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#understanding-rudis-specific-features">Understanding RUDIS-Specific Features</a></li>
+                    <li><a href="#team-stores-b2b">Team Stores (B2B)</a></li>
+                    <li><a href="#product-template-management">Product Template Management</a></li>
+                    <li><a href="#collection-configuration">Collection Configuration</a></li>
+                    <li><a href="#page-template-assignments">Page Template Assignments</a></li>
+                    <li><a href="#custom-sections--rudis-specific-components">Custom Sections & RUDIS-Specific Components</a></li>
+                    <li><a href="#metafields--custom-data">Metafields & Custom Data</a></li>
+                    <li><a href="#media-asset-specifications">Media Asset Specifications</a></li>
+                    <li><a href="#making-site-updates">Making Site Updates</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#data-reference">Data Reference</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="understanding-rudis-specific-features">
+                    <h1>RUDIS Platform Documentation - Business User Guide</h1>
+                    <p><strong>Last Updated:</strong> October 31, 2025<br>
+                    <strong>For:</strong> Content Managers, Marketing Team, Business Users<br>
+                    <strong>Focus:</strong> RUDIS-specific features and configurations</p>
+                    
+                    <h2>Understanding RUDIS-Specific Features</h2>
+                    <p>The RUDIS platform includes several custom features that are not part of standard Shopify functionality. Understanding these is essential for managing content effectively.</p>
+                    
+                    <h3>Key Custom Features</h3>
+                    <ol>
+                        <li><strong>Team Stores</strong> - B2B functionality for wrestling teams (pseudo B2B micro-sites)</li>
+                        <li><strong>Product Template Variants</strong> - Specialized templates for different product types</li>
+                        <li><strong>Athlete-Specific Features</strong> - Templates and features for athlete-branded products</li>
+                        <li><strong>Auction Functionality</strong> - Special product templates for auctions</li>
+                        <li><strong>Bundle Products</strong> - Custom bundle product handling</li>
+                        <li><strong>SearchSpring Integration</strong> - Advanced search and filtering on collection pages</li>
+                    </ol>
+                </section>
+                
+                <section id="team-stores-b2b">
+                    <h2>Team Stores (B2B)</h2>
+                    
+                    <h3>Overview</h3>
+                    <p>Team Stores are a unique micro-site concept built into the theme that acts as a pseudo B2B site for wrestling teams. Each team gets their own store where they can customize products with team colors, logos, and personalization.</p>
+                    
+                    <h3>How Team Stores Work</h3>
+                    <p><strong>Team Store Structure:</strong></p>
+                    <ul>
+                        <li>Each team store is a <strong>Collection</strong> with the template suffix <code>team-store-native</code> or <code>team-store-landing</code></li>
+                        <li>Team stores have <strong>start dates</strong> and <strong>end dates</strong> (managed via <a href="data-guide.html#team-store-collection-metafields">collection metafields</a>)</li>
+                        <li>Products in team stores are marked with <code>custom.team_gear_product = true</code> metafield</li>
+                        <li>Products that are customizable blanks are marked with <code>custom.is_custom_team_blank = true</code> metafield</li>
+                        <li>Team stores can be <strong>open</strong> or <strong>closed</strong> based on dates</li>
+                        <li>Team stores require <strong>approval workflow</strong> before ordering</li>
+                    </ul>
+                    
+                    <h3>Setting Up a Team Store</h3>
+                    
+                    <h4>1. Create the Team Store Collection</h4>
+                    <ol>
+                        <li>Go to <strong>Products</strong> > <strong>Collections</strong></li>
+                        <li>Create a new collection for the team</li>
+                        <li>Set the <strong>Template suffix</strong> to <code>team-store-native</code></li>
+                        <li>Add collection metafields (see <a href="data-guide.html#team-store-collection-metafields">Data Guide - Team Store Collection Metafields</a>):
+                            <ul>
+                                <li><code>custom.start_date</code> - When the store opens</li>
+                                <li><code>custom.end_date</code> - When the store closes</li>
+                                <li><code>custom.team_product_data</code> - JSON data for team products</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h4>2. Configure Team Store Products</h4>
+                    <p>Products in team stores must have specific metafields (see <a href="data-guide.html#team-store-metafields">Data Guide - Team Store Metafields</a>):</p>
+                    <ul>
+                        <li><code>custom.team_gear_product</code> = <code>true</code> (boolean) - Marks product as team gear</li>
+                        <li><code>custom.is_custom_team_blank</code> = <code>true</code> (boolean) - Marks product as a customizable blank</li>
+                        <li><code>custom.parent_sku</code> = Parent SKU for the team product (text)</li>
+                        <li><code>custom.team_store_close_date</code> = Date when team store closes (date)</li>
+                    </ul>
+                    
+                    <h4>3. Team Store Product Pages</h4>
+                    <ul>
+                        <li>Team store products use template: <code>product.team-store-pdp.json</code> or automatically when <code>custom.is_custom_team_blank = true</code></li>
+                        <li>Products display custom image galleries managed via <a href="data-guide.html#team-store-metaobjects">metaobjects</a> (type: <code>art_id</code>)</li>
+                        <li>Include personalization options (name, number)</li>
+                        <li>Show approval status messages</li>
+                        <li>Include team-specific pricing from <a href="data-guide.html#team-store-metaobjects">metaobjects</a></li>
+                    </ul>
+                    
+                    <h4>4. Team Store Collection Pages</h4>
+                    <ul>
+                        <li>Template: <code>collection.team-store-native.json</code> or <code>collection.team-store-landing.json</code></li>
+                        <li>Display status messages via "Status Key Messages" block:
+                            <ul>
+                                <li><strong>Approved:</strong> "YOUR GEAR LOOKS GREAT: Your sale's rep will contact you soon to order."</li>
+                                <li><strong>Action Required:</strong> "ACTION REQUIRED: Update the status on ALL products to proceed with your order."</li>
+                                <li><strong>In Revision:</strong> "REVISIONS IN PROGRESS: You will be notified when action is required."</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3>Team Store Workflow</h3>
+                    <ol>
+                        <li><strong>Setup Phase:</strong>
+                            <ul>
+                                <li>Create collection with team store template</li>
+                                <li>Set start/end dates</li>
+                                <li>Add products with team gear metafields</li>
+                                <li>Configure team-specific pricing</li>
+                            </ul>
+                        </li>
+                        <li><strong>Active Phase:</strong>
+                            <ul>
+                                <li>Team members can view products</li>
+                                <li>Customize products (colors, logos, personalization)</li>
+                                <li>Submit for approval</li>
+                            </ul>
+                        </li>
+                        <li><strong>Approval Phase:</strong>
+                            <ul>
+                                <li>Products show approval status</li>
+                                <li>Team admin can approve/reject items</li>
+                                <li>Status messages guide users</li>
+                            </ul>
+                        </li>
+                        <li><strong>Closed Phase:</strong>
+                            <ul>
+                                <li>Store closes on end date</li>
+                                <li>Products show "This team store has officially closed" message</li>
+                                <li>No new orders accepted</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h3>Team Store Access</h3>
+                    <ul>
+                        <li>Team stores are accessible via URL with <code>opportunity_number</code> parameter</li>
+                        <li>The opportunity number is stored in <code>localStorage</code> and collection metafields</li>
+                        <li>Access is controlled by <a href="data-guide.html#customer-metafields">customer metafields</a>:
+                            <ul>
+                                <li><code>custom.sales_representative</code> (boolean) - Sales rep access</li>
+                                <li><code>custom.opportunity_number</code> (text) - Team opportunity number (stored in <a href="data-guide.html#customer-location-metafields">customer location metafields</a>)</li>
+                            </ul>
+                        </li>
+                        <li>Team stores are hidden on Canada site (US only) - "Custom Team Gear" menu link is hidden via <code>function.is_menu_item_hidden.liquid</code></li>
+                    </ul>
+                    
+                    <h3>Managing Team Store Content</h3>
+                    
+                    <p><strong>Adding Products to Team Store:</strong></p>
+                    <ol>
+                        <li>Products must be assigned to the team store collection</li>
+                        <li>Set <a href="data-guide.html#team-store-metafields"><code>custom.team_gear_product = true</code></a> metafield</li>
+                        <li>For customizable blanks, set <a href="data-guide.html#team-store-metafields"><code>custom.is_custom_team_blank = true</code></a> metafield</li>
+                        <li>Set <a href="data-guide.html#team-store-metafields"><code>custom.parent_sku</code></a> to link to parent product</li>
+                        <li>Configure team-specific pricing in <a href="data-guide.html#team-store-metaobjects">metaobjects</a> (type: <code>art_id</code>)</li>
+                    </ol>
+                    
+                    <p><strong>Updating Team Store Dates:</strong></p>
+                    <ul>
+                        <li>Edit <a href="data-guide.html#team-store-collection-metafields">collection metafields</a>: <code>custom.start_date</code> and <code>custom.end_date</code></li>
+                        <li>Dates control when store is open/closed</li>
+                        <li>Store automatically closes after end date</li>
+                    </ul>
+                    
+                    <p><strong>Team Store Status Messages:</strong></p>
+                    <ul>
+                        <li>Managed in collection template customizer via "Status Key Messages" block (type: <code>status_key_messages</code>)</li>
+                        <li>Edit messages for: Approved, Action Required, In Revision</li>
+                        <li>Messages display based on product approval status in team store workflow</li>
+                    </ul>
+                </section>
+                
+                <section id="product-template-management">
+                    <h2>Product Template Management</h2>
+                    
+                    <h3>Understanding Product Templates</h3>
+                    <p>RUDIS uses specialized product templates for different product types. The template assignment determines how products are displayed and what features are available.</p>
+                    
+                    <h3>Standard Product Templates</h3>
+                    <p><strong>Default Template (<code>product.json</code>)</strong></p>
+                    <ul>
+                        <li>Used for: Most standard products</li>
+                        <li>No special requirements</li>
+                        <li>Standard product display</li>
+                    </ul>
+                    
+                    <h3>Specialized Product Templates</h3>
+                    
+                    <p><strong>Shoe Products (<code>product.shoe-product.json</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> All wrestling shoes and footwear</li>
+                        <li><strong>Assignment:</strong> Manual - Set template suffix to <code>shoe-product</code> in Shopify Admin</li>
+                        <li><strong>Features:</strong> Shoe-specific sizing, features display, specialized media gallery</li>
+                        <li><strong>Requirements:</strong>
+                            <ul>
+                                <li>Set template suffix to <code>shoe-product</code> in product settings</li>
+                                <li>Product type should indicate footwear (for organization, not template assignment)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <p><strong>Team Store Products (<code>product.team-store-pdp.json</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> Team store products (customizable blanks)</li>
+                        <li><strong>Assignment:</strong> Manual - Set template suffix to <code>team-store-pdp</code> in Shopify Admin</li>
+                        <li><strong>Layout Detection:</strong> Theme code checks <a href="data-guide.html#team-store-metafields"><code>custom.is_custom_team_blank = true</code></a> metafield for conditional layout rendering (e.g., noindex robots tag), but template suffix must be set manually</li>
+                        <li><strong>Features:</strong> Custom image galleries (managed via <a href="data-guide.html#team-store-metaobjects">metaobjects</a>), personalization options, approval workflow, team-specific pricing</li>
+                        <li><strong>Requirements:</strong>
+                            <ul>
+                                <li>Set template suffix to <code>team-store-pdp</code> in product settings</li>
+                                <li>Must have <a href="data-guide.html#team-store-metafields"><code>custom.team_gear_product = true</code></a> and <a href="data-guide.html#team-store-metafields"><code>custom.is_custom_team_blank = true</code></a> metafields set</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <p><strong>Bundle Products (<code>product.bundles.json</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> Product bundles and sets</li>
+                        <li><strong>Assignment:</strong> Manual - Set template suffix to <code>bundles</code> in Shopify Admin</li>
+                        <li><strong>Features:</strong> Bundle component selection, bundle pricing</li>
+                        <li><strong>Requirements:</strong>
+                            <ul>
+                                <li>Set template suffix to <code>bundles</code> in product settings</li>
+                                <li>Products must be configured as bundles in Shopify</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <p><strong>Auction Products (<code>product.auction-pro-template.json</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> Auction and special event products</li>
+                        <li><strong>Features:</strong> Countdown timers, bid functionality</li>
+                        <li><strong>Requirements:</strong> Auction-specific metafields configured</li>
+                    </ul>
+                    
+                    <p><strong>Athlete Brand Templates:</strong></p>
+                    <ul>
+                        <li><code>product.kolat.json</code> - Kolat brand products</li>
+                        <li><code>product.rocky.json</code> - Rocky brand products</li>
+                        <li><code>product.hildebrandt.json</code> - Hildebrandt products</li>
+                        <li><code>product.jb-ultra-ps.json</code> - Jordan Burroughs Ultra</li>
+                        <li><code>product.jb-ultralite.json</code> - Jordan Burroughs Ultralite</li>
+                    </ul>
+                    
+                    <h3>Template Assignment</h3>
+                    <p><strong>Important:</strong> All template suffixes must be set <strong>manually</strong> in Shopify Admin. Shopify does not automatically assign templates based on product type, metafields, or configuration.</p>
+                    
+                    <p><strong>Setting Template Suffixes:</strong></p>
+                    <ol>
+                        <li>Navigate to product/collection/page settings</li>
+                        <li>Scroll to <strong>Search engine listing</strong> section</li>
+                        <li>Find <strong>Template suffix</strong> dropdown</li>
+                        <li>Select desired template suffix</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <p><strong>Template Suffix vs Layout Conditionals:</strong></p>
+                    <ul>
+                        <li><strong>Template Suffix:</strong> Determines which template file is used (set in Shopify Admin)</li>
+                        <li><strong>Layout Conditionals:</strong> Theme code can conditionally render different layouts based on metafields (e.g., team store products get noindex robots tag), but this does not change the template file</li>
+                    </ul>
+                    
+                    <p><strong>See Also:</strong> <a href="technical-user-guide.html#template-assignment-system">Technical User Guide - Template Assignment System</a> for complete documentation</p>
+                </section>
+                
+                <section id="collection-configuration">
+                    <h2>Collection Configuration</h2>
+                    
+                    <h3>Collection Types</h3>
+                    
+                    <p><strong>Standard Collections</strong></p>
+                    <ul>
+                        <li>Use default <code>collection.json</code> template</li>
+                        <li>Standard product grid display</li>
+                        <li>Native Shopify filtering and sorting</li>
+                    </ul>
+                    
+                    <p><strong>SearchSpring Collections</strong></p>
+                    <ul>
+                        <li><strong>Template Suffix:</strong> <code>searchspring</code> (creates <code>collection.searchspring.json</code> template)</li>
+                        <li><strong>Usage:</strong> Collections using SearchSpring search/filter integration</li>
+                        <li><strong>Features:</strong> Enhanced search, advanced filtering, SearchSpring recommendations</li>
+                        <li><strong>Configuration:</strong>
+                            <ol>
+                                <li>Set collection template suffix to <code>searchspring</code> in Shopify Admin</li>
+                                <li>Ensure SearchSpring app is installed and configured</li>
+                                <li>Collection automatically uses SearchSpring-powered product grid</li>
+                            </ol>
+                        </li>
+                        <li><strong>See Also:</strong> <a href="integrations.html#searchspring">Integrations Guide - SearchSpring</a> for detailed setup instructions</li>
+                    </ul>
+                    
+                    <p><strong>Team Store Collections</strong></p>
+                    <ul>
+                        <li><strong>Template Suffixes:</strong>
+                            <ul>
+                                <li><code>team-store-native</code> → Creates <code>collection.team-store-native.json</code> template</li>
+                                <li><code>team-store-landing</code> → Creates <code>collection.team-store-landing.json</code> template</li>
+                            </ul>
+                        </li>
+                        <li><strong>Usage:</strong> <code>team-store-native</code> for standard team store collections, <code>team-store-landing</code> for landing pages</li>
+                        <li><strong>Features:</strong> Custom team store functionality, approval workflow with status messages</li>
+                        <li><strong>Configuration:</strong> Date-based open/close via <a href="data-guide.html#team-store-collection-metafields"><code>custom.start_date</code> and <code>custom.end_date</code></a> metafields</li>
+                        <li><strong>Setting:</strong> Set template suffix in collection settings → Search engine listing → Template suffix dropdown</li>
+                    </ul>
+                    
+                    <h3>Collection Metafields</h3>
+                    <p><strong>Team Store Collections Require:</strong><br>
+                    Required metafields (see <a href="data-guide.html#team-store-collection-metafields">Data Guide - Team Store Collection Metafields</a> for complete documentation):</p>
+                    <ul>
+                        <li><code>custom.start_date</code> (date) - Store opening date</li>
+                        <li><code>custom.end_date</code> (date) - Store closing date</li>
+                        <li><code>custom.team_product_data</code> (JSON) - Team product configuration data</li>
+                        <li><code>custom.opportunity_number</code> (text) - Optional, team opportunity identifier</li>
+                    </ul>
+                    
+                    <p><strong>Collection Configuration:</strong></p>
+                    <ul>
+                        <li>Metafields are set in collection settings</li>
+                        <li>Dates control store availability</li>
+                        <li>Team product data contains pricing and product information</li>
+                    </ul>
+                </section>
+                
+                <section id="page-template-assignments">
+                    <h2>Page Template Assignments</h2>
+                    
+                    <h3>Standard Page Templates</h3>
+                    <p><strong>Default Page (<code>page.json</code>)</strong></p>
+                    <ul>
+                        <li>Used for: Most content pages</li>
+                        <li>Fully customizable with all sections</li>
+                        <li>Standard page functionality</li>
+                    </ul>
+                    
+                    <h3>Specialized Page Templates</h3>
+                    
+                    <p><strong>Yotpo Rewards Page (<code>page.yotpo-rewards.json</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> Yotpo loyalty rewards program page</li>
+                        <li><strong>Features:</strong> Yotpo rewards integration</li>
+                    </ul>
+                    
+                    <p><strong>Technique Library Pages:</strong></p>
+                    <ul>
+                        <li><code>page.technique-library.json</code> - General technique library</li>
+                        <li><code>page.technique-library-kennedy.json</code> - Kennedy Blades techniques</li>
+                        <li><code>page.technique-library-kolat.json</code> - Cary Kolat techniques</li>
+                        <li><strong>Usage:</strong> Wrestling technique content pages</li>
+                    </ul>
+                    
+                    <p><strong>Athlete Pages:</strong></p>
+                    <ul>
+                        <li><code>page.spencer.json</code> - Spencer Lee athlete page</li>
+                        <li><code>page.kolat.json</code> - Kolat athlete page</li>
+                        <li><strong>Usage:</strong> Individual athlete profile pages</li>
+                    </ul>
+                    
+                    <p><strong>Signup Forms:</strong></p>
+                    <ul>
+                        <li><code>page.signup-form.json</code></li>
+                        <li><code>page.signup-form-02.json</code></li>
+                        <li><code>page.signup-form-3.json</code></li>
+                        <li><strong>Usage:</strong> Email signup pages</li>
+                    </ul>
+                    
+                    <p><strong>Style Guide (<code>page.styleguide.liquid</code>)</strong></p>
+                    <ul>
+                        <li><strong>Usage:</strong> Design system reference page</li>
+                    </ul>
+                </section>
+                
+                <section id="custom-sections--rudis-specific-components">
+                    <h2>Custom Sections & RUDIS-Specific Components</h2>
+                    
+                    <h3>RUDIS Custom Sections</h3>
+                    
+                    <p><strong>Animated Hero (<code>animated-hero.liquid</code>)</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Hero sections with animated content</li>
+                        <li><strong>Usage:</strong> Homepage, landing pages</li>
+                        <li><strong>Special Features:</strong> Filename prefix system for dynamic images</li>
+                        <li><strong>Image Requirements:</strong> Images follow naming convention with prefix</li>
+                    </ul>
+                    
+                    <p><strong>Team Store Banner (<code>team-store-banner.liquid</code>)</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Banner for team store pages</li>
+                        <li><strong>Usage:</strong> Team store collections</li>
+                        <li><strong>Special Features:</strong> Team-specific messaging, date display, status messages, disclaimer</li>
+                    </ul>
+                    
+                    <p><strong>PDP Storytelling (<code>pdp-storytelling.liquid</code>)</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Product storytelling sections</li>
+                        <li><strong>Usage:</strong> Product detail pages</li>
+                        <li><strong>Special Features:</strong> Custom product narrative display</li>
+                    </ul>
+                    
+                    <p><strong>Product Journey (<code>product-journey.liquid</code>)</strong></p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Product journey visualization</li>
+                        <li><strong>Usage:</strong> Product detail pages</li>
+                        <li><strong>Special Features:</strong> Step-by-step product story</li>
+                    </ul>
+                    
+                    <h3>Understanding Section Usage</h3>
+                    <p><strong>Standard Shopify Sections:</strong></p>
+                    <ul>
+                        <li>Image Banner, Rich Text, Multi-Column, Video, etc.</li>
+                        <li>These work as expected with standard Shopify functionality</li>
+                    </ul>
+                    
+                    <p><strong>RUDIS Custom Sections:</strong></p>
+                    <ul>
+                        <li>Animated Hero, Team Store Banner, PDP Storytelling, etc.</li>
+                        <li>These require specific configurations or metafields</li>
+                        <li>See Technical User Guide for complete settings</li>
+                    </ul>
+                </section>
+                
+                <section id="metafields--custom-data">
+                    <h2>Metafields & Custom Data</h2>
+                    <p><strong>Note:</strong> For complete metafield documentation including field types, usage, and code references, see the <a href="data-guide.html">Data Guide</a>.</p>
+                    
+                    <p><strong>Commonly Used Metafields:</strong></p>
+                    
+                    <p><strong>Team Store Products:</strong></p>
+                    <ul>
+                        <li><code>custom.team_gear_product</code> (boolean) - Marks product as team gear</li>
+                        <li><code>custom.is_custom_team_blank</code> (boolean) - Marks product as customizable blank</li>
+                        <li><code>custom.parent_sku</code> (text) - Parent SKU for team products</li>
+                        <li>See <a href="data-guide.html#team-store-metafields">Data Guide - Team Store Metafields</a> for complete reference</li>
+                    </ul>
+                    
+                    <p><strong>Team Store Collections:</strong></p>
+                    <ul>
+                        <li><code>custom.start_date</code> (date) - Store opening date</li>
+                        <li><code>custom.end_date</code> (date) - Store closing date</li>
+                        <li><code>custom.team_product_data</code> (JSON) - Team product configuration data</li>
+                        <li>See <a href="data-guide.html#team-store-collection-metafields">Data Guide - Team Store Collection Metafields</a> for complete reference</li>
+                    </ul>
+                    
+                    <p><strong>Product Content:</strong></p>
+                    <ul>
+                        <li><code>custom.product_story</code> - Product narrative</li>
+                        <li><code>custom.product_features</code> - Feature list</li>
+                        <li><code>custom.product_badge</code> - Badge text</li>
+                        <li><code>custom.worn_by</code> - Athlete name</li>
+                        <li>See <a href="data-guide.html#product-metafields">Data Guide - Product Metafields</a> for complete reference</li>
+                    </ul>
+                    
+                    <h3>Managing Metafields</h3>
+                    <p><strong>Where to Set Metafields:</strong></p>
+                    <ol>
+                        <li><strong>Products:</strong> In product settings, scroll to <strong>Metafields</strong> section</li>
+                        <li><strong>Collections:</strong> In collection settings, scroll to <strong>Metafields</strong> section</li>
+                        <li><strong>Pages:</strong> In page settings, scroll to <strong>Metafields</strong> section</li>
+                    </ol>
+                    
+                    <p><strong>Important Metafields for Content Updates:</strong></p>
+                    <ul>
+                        <li>Product metafields control template behavior</li>
+                        <li>Collection metafields control team store functionality</li>
+                        <li>Page metafields control custom page features</li>
+                    </ul>
+                </section>
+                
+                <section id="media-asset-specifications">
+                    <h2>Media Asset Specifications</h2>
+                    
+                    <h3>Product Images</h3>
+                    <p><strong>Standard Product Images:</strong></p>
+                    <ul>
+                        <li><strong>Recommended Size:</strong> Minimum 2048px width (up to 4096px supported)</li>
+                        <li><strong>Aspect Ratio:</strong> Preserved (square, portrait, or landscape all supported)</li>
+                        <li><strong>Format:</strong> JPG or PNG</li>
+                        <li><strong>File Size:</strong> Optimize to &lt;500KB when possible</li>
+                        <li><strong>Responsive Breakpoints:</strong> Images are automatically served at 550px, 1100px, 1445px, 1680px, 2048px, 2200px, 2890px, 4096px widths</li>
+                    </ul>
+                    
+                    <p><strong>Product Card Images:</strong></p>
+                    <ul>
+                        <li><strong>Display Size:</strong> Responsive (165px, 360px, 533px, 720px, 940px, 1066px widths)</li>
+                        <li><strong>Default Display:</strong> 533px width</li>
+                        <li><strong>Aspect Ratio:</strong> Preserved from original image</li>
+                        <li><strong>Secondary Image:</strong> Same specifications (for hover effects)</li>
+                    </ul>
+                    
+                    <h3>Team Store Product Images</h3>
+                    <p><strong>Image Naming Convention:</strong><br>
+                    Team store products use a specific image naming and indexing system:</p>
+                    <ol>
+                        <li><strong>Custom Images (First Priority):</strong>
+                            <ul>
+                                <li>Images with no <code>data-image-index</code> attribute</li>
+                                <li>Display first in gallery</li>
+                                <li>Managed via metaobjects</li>
+                            </ul>
+                        </li>
+                        <li><strong>Model Shots (Second Priority):</strong>
+                            <ul>
+                                <li>Images with <code>data-image-index</code> values <strong>0010-0019</strong> (10-19)</li>
+                                <li>Display after custom images</li>
+                                <li>Used for model/lifestyle shots</li>
+                            </ul>
+                        </li>
+                        <li><strong>Detail Shots (Third Priority):</strong>
+                            <ul>
+                                <li>Images with <code>data-image-index</code> values <strong>0030-0039</strong> (30-39)</li>
+                                <li>Display after model shots</li>
+                                <li>Used for product detail shots</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>Important:</strong> Images with index numbers outside the 0010-0019 and 0030-0039 ranges are automatically hidden on team store product pages.</p>
+                    
+                    <h3>Animated Hero Images</h3>
+                    <p><strong>Filename Prefix System:</strong><br>
+                    The Animated Hero section uses a dynamic filename prefix system for scroll-based animations.</p>
+                    <p><strong>File Naming Convention:</strong></p>
+                    <ul>
+                        <li><strong>Format:</strong> <code>{filename_prefix}__{number}.{extension}</code></li>
+                        <li><strong>Example:</strong> <code>hero-2024__0.jpg</code>, <code>hero-2024__1.jpg</code>, <code>hero-2024__2.jpg</code>, etc.</li>
+                        <li><strong>Extension:</strong> JPG or PNG (section auto-detects which format exists)</li>
+                        <li><strong>Number Range:</strong> 0-50 (up to 51 images per hero section)</li>
+                    </ul>
+                    <p><strong>File Location:</strong></p>
+                    <ul>
+                        <li>Images must be uploaded to: <code>/cdn/shop/files/</code></li>
+                        <li>Full path format: <code>https://www.rudis.com/cdn/shop/files/{filename_prefix}__{number}.jpg</code></li>
+                    </ul>
+                    
+                    <h3>Image Banner Section</h3>
+                    <p><strong>Desktop Images:</strong></p>
+                    <ul>
+                        <li><strong>Standard Desktop:</strong> Up to 2800px width</li>
+                        <li><strong>Desktop Large (Wide Screens):</strong> Up to 2800px width (for screens wider than 1650px)</li>
+                        <li><strong>Aspect Ratio:</strong> Flexible (16:9 recommended for banners)</li>
+                        <li><strong>Format:</strong> JPG or PNG</li>
+                        <li><strong>File Size:</strong> &lt;500KB recommended</li>
+                    </ul>
+                    <p><strong>Mobile Images:</strong></p>
+                    <ul>
+                        <li><strong>Mobile:</strong> Up to 1100px width</li>
+                        <li><strong>Aspect Ratio:</strong> Flexible (9:16 portrait recommended for mobile banners)</li>
+                        <li><strong>Format:</strong> JPG or PNG</li>
+                        <li><strong>File Size:</strong> &lt;200KB recommended</li>
+                    </ul>
+                    
+                    <h3>General Image Guidelines</h3>
+                    <p><strong>File Formats:</strong></p>
+                    <ul>
+                        <li><strong>JPG:</strong> Best for photographs and complex images</li>
+                        <li><strong>PNG:</strong> Best for graphics with transparency or simple graphics</li>
+                        <li><strong>WebP:</strong> Supported but not required (theme will use JPG/PNG)</li>
+                    </ul>
+                    <p><strong>Optimization:</strong></p>
+                    <ul>
+                        <li>Always optimize images before upload</li>
+                        <li>Use image compression tools</li>
+                        <li>Target file sizes:
+                            <ul>
+                                <li>Desktop images: &lt;500KB</li>
+                                <li>Mobile images: &lt;200KB</li>
+                                <li>Product images: &lt;500KB (can be larger for high-quality product photos)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="making-site-updates">
+                    <h2>Making Site Updates</h2>
+                    
+                    <h3>Adding a New Product</h3>
+                    <p><strong>Standard Product:</strong></p>
+                    <ol>
+                        <li>Create product in Shopify admin</li>
+                        <li>Set product type (determines template)</li>
+                        <li>Add product images</li>
+                        <li>Set variants and pricing</li>
+                        <li>Product will use appropriate template automatically</li>
+                    </ol>
+                    
+                    <p><strong>Team Store Product:</strong></p>
+                    <ol>
+                        <li>Create product in Shopify admin</li>
+                        <li>Set metafields (see <a href="data-guide.html#team-store-metafields">Data Guide - Team Store Metafields</a>):
+                            <ul>
+                                <li><code>custom.team_gear_product = true</code> (boolean)</li>
+                                <li><code>custom.is_custom_team_blank = true</code> (boolean, if customizable blank)</li>
+                                <li><code>custom.parent_sku = [parent SKU]</code> (text)</li>
+                                <li><code>custom.team_store_close_date</code> (date, optional)</li>
+                            </ul>
+                        </li>
+                        <li>Add to team store collection (collection with template suffix <code>team-store-native</code> or <code>team-store-landing</code>)</li>
+                        <li>Configure team-specific pricing in <a href="data-guide.html#team-store-metaobjects">metaobjects</a> (metaobject type: <code>art_id</code>)</li>
+                    </ol>
+                    
+                    <h3>Updating Collection Content</h3>
+                    <p><strong>Team Store Collection:</strong></p>
+                    <ol>
+                        <li>Set collection template suffix to <code>team-store-native</code> or <code>team-store-landing</code></li>
+                        <li>Configure collection metafields (see <a href="data-guide.html#team-store-collection-metafields">Data Guide - Team Store Collection Metafields</a>):
+                            <ul>
+                                <li><code>custom.start_date</code> (date)</li>
+                                <li><code>custom.end_date</code> (date)</li>
+                                <li><code>custom.team_product_data</code> (JSON)</li>
+                                <li><code>custom.opportunity_number</code> (text, optional)</li>
+                            </ul>
+                        </li>
+                        <li>Add team store products (products with <a href="data-guide.html#team-store-metafields"><code>custom.team_gear_product = true</code></a>)</li>
+                        <li>Configure status messages in template customizer via "Status Key Messages" block</li>
+                    </ol>
+                </section>
+                
+                <section id="troubleshooting">
+                    <h2>Troubleshooting</h2>
+                    
+                    <h3>Team Store Not Showing Products</h3>
+                    <p><strong>Check:</strong></p>
+                    <ul>
+                        <li>Collection template suffix is set to <code>team-store-native</code> or <code>team-store-landing</code></li>
+                        <li>Products have <a href="data-guide.html#team-store-metafields"><code>custom.team_gear_product = true</code></a> metafield</li>
+                        <li><a href="data-guide.html#team-store-collection-metafields">Collection metafields</a> are set: <code>custom.start_date</code>, <code>custom.end_date</code>, <code>custom.team_product_data</code></li>
+                        <li>Products are in the collection</li>
+                    </ul>
+                    
+                    <h3>Product Using Wrong Template</h3>
+                    <p><strong>Check:</strong></p>
+                    <ul>
+                        <li>Product <a href="data-guide.html#product-metafields">metafields</a> (team gear triggers team store template)</li>
+                        <li>Product type (footwear automatically uses shoe template)</li>
+                        <li>Verify automatic assignment logic is working</li>
+                    </ul>
+                    
+                    <h3>Team Store Not Opening/Closing</h3>
+                    <p><strong>Check:</strong></p>
+                    <ul>
+                        <li><a href="data-guide.html#team-store-collection-metafields">Collection metafields</a> <code>custom.start_date</code> and <code>custom.end_date</code> are set (date type)</li>
+                        <li>Dates are in correct format (YYYY-MM-DD)</li>
+                        <li>Current date is between start and end dates (store opens when current date &gt; start_date and closes when current date &gt; end_date)</li>
+                    </ul>
+                    
+                    <h3>Custom Images Not Showing on Team Products</h3>
+                    <p><strong>Check:</strong></p>
+                    <ul>
+                        <li>Product has <a href="data-guide.html#team-store-metafields"><code>custom.is_custom_team_blank = true</code></a> metafield</li>
+                        <li><a href="data-guide.html#team-store-metaobjects">Metaobject</a> (type: <code>art_id</code>, handle format: <code>{parent_sku}_{opportunity_number}</code>) is configured with image data</li>
+                        <li><code>include_default_images</code> field in <a href="data-guide.html#team-store-metaobjects">metaobject</a> is set correctly</li>
+                        <li>Images have correct <code>data-image-index</code> values:
+                            <ul>
+                                <li>Model shots: 0010-0019 (10-19)</li>
+                                <li>Detail shots: 0030-0039 (30-39)</li>
+                                <li>Images outside these ranges are hidden</li>
+                            </ul>
+                        </li>
+                        <li>Custom images (no index) display first</li>
+                    </ul>
+                </section>
+                
+                <section id="data-reference">
+                    <h2>Data Reference</h2>
+                    <p>For comprehensive documentation of all metafields and metaobjects used in the RUDIS platform, see the <strong><a href="data-guide.html">Data Guide</a></strong>. The Data Guide provides complete reference documentation for all custom data structures, including metafields organized by resource type (Products, Collections, Pages, Customers) and metaobjects with field-level documentation.</p>
+                    
+                    <h2>Support Resources</h2>
+                    <ul>
+                        <li><strong>Technical Documentation:</strong> See <a href="technical-user-guide.html">Technical User Guide</a> for developers</li>
+                        <li><strong>Data Documentation:</strong> See <a href="data-guide.html">Data Guide</a> for complete metafield and metaobject reference</li>
+                        <li><strong>Theme Code:</strong> Located in <code>code/theme_export__www-rudis-com-production-10-29-25__31OCT2025-0252pm/</code></li>
+                        <li><strong>Data Exports:</strong> Located in <code>data/AD-EVERYTHING-Export_2025-10-22_131917/</code></li>
+                    </ul>
+                    <p><strong>For Advanced Customization:</strong> Refer to Technical User Guide for complete section documentation and customizer options.</p>
+                    
+                    <p><strong>Remember:</strong> This guide focuses on RUDIS-specific features. For standard Shopify functionality, refer to Shopify's help documentation.</p>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="../component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="../enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Platform Documentation - RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="../assets/favicon.webp">
+    <link rel="stylesheet" href="../arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#user-guides">User Guides</a></li>
+                    <li><a href="#page-types">Page Types</a>
+                        <ul>
+                            <li><a href="#product-pages">Product Pages</a></li>
+                            <li><a href="#collection-pages">Collection Pages</a></li>
+                            <li><a href="#content-pages">Content Pages</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#customizer-sections">Customizer Sections</a>
+                        <ul>
+                            <li><a href="#content-sections">Content Sections</a></li>
+                            <li><a href="#product-sections">Product Sections</a></li>
+                            <li><a href="#media-sections">Media Sections</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#image-specs">Image Specifications</a></li>
+                    <li><a href="#quick-reference">Quick Reference</a></li>
+                    <li><a href="#theme-structure">Theme Structure</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="overview">
+                    <h1>RUDIS Platform Documentation</h1>
+                    <p><strong>Last Updated:</strong> October 31, 2025<br>
+                    <strong>Theme:</strong> CQL Propel v3.0.0<br>
+                    <strong>Base:</strong> Dawn OS 2.0 (Customized)</p>
+                    
+                    <p class="lead">Comprehensive documentation for the RUDIS Shopify Plus platform. This documentation provides detailed information about page types, customizer components, image specifications, and usage guides for both technical and business users.</p>
+                </section>
+                
+                <section id="user-guides">
+                    <h2>User Guides</h2>
+                    
+                    <div class="guide-cards">
+                        <div class="guide-card">
+                            <h3><a href="technical-user-guide.md">Technical User Guide</a></h3>
+                            <p><strong>For:</strong> Developers, Customizers, Technical Team</p>
+                            <p>Complete technical documentation including:</p>
+                            <ul>
+                                <li>All page types and template assignments</li>
+                                <li>Complete customizer section documentation</li>
+                                <li>All available settings and options</li>
+                                <li>Image specifications by section type</li>
+                                <li>Schema documentation</li>
+                                <li>Template variants and usage</li>
+                            </ul>
+                            <p><a href="technical-user-guide.md" class="button">View Technical Guide</a></p>
+                        </div>
+                        
+                        <div class="guide-card">
+                            <h3><a href="business-user-guide.md">Business User Guide</a></h3>
+                            <p><strong>For:</strong> Content Managers, Marketing Team, Business Users</p>
+                            <p>Step-by-step guides for managing content:</p>
+                            <ul>
+                                <li>How to use the theme customizer</li>
+                                <li>Step-by-step section setup guides</li>
+                                <li>Image requirements and best practices</li>
+                                <li>Common tasks and workflows</li>
+                                <li>Troubleshooting guide</li>
+                                <li>Quick reference tables</li>
+                            </ul>
+                            <p><a href="business-user-guide.md" class="button">View Business Guide</a></p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="page-types">
+                    <h2>Page Types</h2>
+                    
+                    <section id="product-pages">
+                        <h3>Product Pages</h3>
+                        
+                        <h4>Standard Product Template</h4>
+                        <p><strong>Template:</strong> <code>product.json</code><br>
+                        <strong>Usage:</strong> Default template for most products<br>
+                        <strong>Features:</strong> Standard product display with media gallery, variant selection, add to cart</p>
+                        
+                        <h4>Specialized Product Templates</h4>
+                        <table class="spec-table">
+                            <thead>
+                                <tr>
+                                    <th>Template</th>
+                                    <th>Usage</th>
+                                    <th>Key Features</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>product.shoe-product.json</code></td>
+                                    <td>Wrestling shoes and footwear</td>
+                                    <td>Shoe-specific sizing, features, media gallery</td>
+                                </tr>
+                                <tr>
+                                    <td><code>product.team-store-pdp.json</code></td>
+                                    <td>Team store custom products</td>
+                                    <td>Personalization, approval workflow, custom images</td>
+                                </tr>
+                                <tr>
+                                    <td><code>product.bundles.json</code></td>
+                                    <td>Product bundles and sets</td>
+                                    <td>Bundle component selection, bundle pricing</td>
+                                </tr>
+                                <tr>
+                                    <td><code>product.auction-pro-template.json</code></td>
+                                    <td>Auction and special events</td>
+                                    <td>Countdown timers, bid functionality</td>
+                                </tr>
+                                <tr>
+                                    <td><code>product.kolat.json</code></td>
+                                    <td>Kolat brand products</td>
+                                    <td>Brand-specific styling and features</td>
+                                </tr>
+                                <tr>
+                                    <td><code>product.rocky.json</code></td>
+                                    <td>Rocky brand products</td>
+                                    <td>Brand-specific styling and features</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p><em>For complete template listing, see the <a href="technical-user-guide.md#template-variants">Technical User Guide</a>.</em></p>
+                    </section>
+                    
+                    <section id="collection-pages">
+                        <h3>Collection Pages</h3>
+                        
+                        <h4>Standard Collection</h4>
+                        <p><strong>Template:</strong> <code>collection.json</code><br>
+                        <strong>Usage:</strong> Default collection listing page<br>
+                        <strong>Features:</strong> Product grid, filtering, sorting, pagination</p>
+                        
+                        <h4>Specialized Collection Templates</h4>
+                        <ul>
+                            <li><strong>SearchSpring Collection:</strong> Uses SearchSpring-powered search and filtering</li>
+                            <li><strong>Team Store Collection:</strong> Team store-specific collection pages with approval workflow</li>
+                            <li><strong>Native Collection:</strong> Standard Shopify search and filtering</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="content-pages">
+                        <h3>Content Pages</h3>
+                        
+                        <h4>Standard Page</h4>
+                        <p><strong>Template:</strong> <code>page.json</code><br>
+                        <strong>Usage:</strong> General content pages<br>
+                        <strong>Features:</strong> Fully customizable with all content sections</p>
+                        
+                        <h4>Specialized Page Templates</h4>
+                        <ul>
+                            <li><strong>Yotpo Rewards:</strong> <code>page.yotpo-rewards.json</code> - Loyalty rewards page</li>
+                            <li><strong>Technique Library:</strong> Various templates for wrestling technique pages</li>
+                            <li><strong>Athlete Pages:</strong> Templates for individual athlete pages</li>
+                            <li><strong>Signup Forms:</strong> Templates for email signup pages</li>
+                            <li><strong>Style Guide:</strong> <code>page.styleguide.liquid</code> - Design system reference</li>
+                        </ul>
+                    </section>
+                </section>
+                
+                <section id="customizer-sections">
+                    <h2>Customizer Sections</h2>
+                    
+                    <section id="content-sections">
+                        <h3>Content Sections</h3>
+                        
+                        <h4>Image Banner</h4>
+                        <p><strong>Purpose:</strong> Full-width banner with background image and overlaid content</p>
+                        <p><strong>Image Specs:</strong></p>
+                        <ul>
+                            <li>Desktop: 1920px × 1080px (16:9), &lt;500KB</li>
+                            <li>Desktop Large (Wide Screens): 2560px × 1440px (16:9)</li>
+                            <li>Mobile: 750px × 422px (16:9), &lt;200KB</li>
+                        </ul>
+                        <p><strong>Key Features:</strong> Content positioning (9 positions), animations, clickable section, border options</p>
+                        <p><a href="technical-user-guide.md#image-banner">View Complete Documentation</a></p>
+                        
+                        <h4>Rich Text</h4>
+                        <p><strong>Purpose:</strong> Flexible text content with multiple content blocks</p>
+                        <p><strong>Key Features:</strong> Headlines, descriptions, buttons, logo lists, padding blocks, animations</p>
+                        <p><a href="technical-user-guide.md#rich-text">View Complete Documentation</a></p>
+                        
+                        <h4>Multi-Column</h4>
+                        <p><strong>Purpose:</strong> Grid of content cards with images, text, and links</p>
+                        <p><strong>Image Specs:</strong></p>
+                        <ul>
+                            <li>Square: 800px × 800px</li>
+                            <li>Portrait: 800px × 1200px</li>
+                        </ul>
+                        <p><strong>Key Features:</strong> 1-5 columns desktop, 1-2 columns mobile, swipe on mobile</p>
+                        <p><a href="technical-user-guide.md#multicolumn">View Complete Documentation</a></p>
+                        
+                        <h4>Collapsible Content (Accordion)</h4>
+                        <p><strong>Purpose:</strong> Expandable accordion-style content sections</p>
+                        <p><strong>Key Features:</strong> Multiple rows, icons, page linking, image support</p>
+                        <p><a href="technical-user-guide.md#collapsible-content">View Complete Documentation</a></p>
+                        
+                        <h4>Video</h4>
+                        <p><strong>Purpose:</strong> Video player with YouTube/Vimeo support</p>
+                        <p><strong>Image Specs:</strong></p>
+                        <ul>
+                            <li>Cover Image Desktop: 1920px × 1080px (16:9)</li>
+                            <li>Cover Image Mobile: 750px × 422px (16:9)</li>
+                        </ul>
+                        <p><strong>Key Features:</strong> Background video, modal player, content overlay, autoplay</p>
+                        <p><a href="technical-user-guide.md#video">View Complete Documentation</a></p>
+                    </section>
+                    
+                    <section id="product-sections">
+                        <h3>Product Sections</h3>
+                        
+                        <h4>Featured Product</h4>
+                        <p><strong>Purpose:</strong> Display a single featured product with media gallery</p>
+                        <p><strong>Key Features:</strong> Media size options, position control, variant picker, buy buttons</p>
+                        <p><a href="technical-user-guide.md#featured-product">View Complete Documentation</a></p>
+                        
+                        <h4>Featured Collection</h4>
+                        <p><strong>Purpose:</strong> Display a grid of products from a selected collection</p>
+                        <p><strong>Key Features:</strong> 2-25 products, 1-5 columns, quick add to cart, ratings</p>
+                        <p><a href="technical-user-guide.md#featured-collection">View Complete Documentation</a></p>
+                    </section>
+                    
+                    <section id="media-sections">
+                        <h3>Media Sections</h3>
+                        
+                        <h4>Slideshow</h4>
+                        <p><strong>Purpose:</strong> Image carousel with multiple slides</p>
+                        <p><strong>Image Specs:</strong> 1920px × 1080px (16:9), &lt;500KB</p>
+                        <p><strong>Key Features:</strong> Auto-rotate, pagination styles, mobile images, overlay options</p>
+                    </section>
+                </section>
+                
+                <section id="image-specs">
+                    <h2>Image Specifications</h2>
+                    
+                    <h3>General Guidelines</h3>
+                    <ul>
+                        <li><strong>Formats:</strong> JPG (photographs), PNG (transparency), WebP (optimized)</li>
+                        <li><strong>File Sizes:</strong> Desktop &lt;500KB, Mobile &lt;200KB</li>
+                        <li><strong>Optimization:</strong> Always compress images before upload</li>
+                    </ul>
+                    
+                    <h3>Standard Image Sizes</h3>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Use Case</th>
+                                <th>Dimensions</th>
+                                <th>Aspect Ratio</th>
+                                <th>Format</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Banner Images (Desktop)</td>
+                                <td>1920px × 1080px</td>
+                                <td>16:9</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Banner Images (Mobile)</td>
+                                <td>750px × 422px</td>
+                                <td>16:9</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Product Images (Square)</td>
+                                <td>1200px × 1200px</td>
+                                <td>1:1</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Product Images (Portrait)</td>
+                                <td>1200px × 1500px</td>
+                                <td>4:5</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Column/Card Images (Square)</td>
+                                <td>800px × 800px</td>
+                                <td>1:1</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Column/Card Images (Portrait)</td>
+                                <td>800px × 1200px</td>
+                                <td>4:5</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                            <tr>
+                                <td>Video Cover Images</td>
+                                <td>1920px × 1080px (desktop)<br>750px × 422px (mobile)</td>
+                                <td>16:9</td>
+                                <td>JPG, PNG</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><em>For complete image specifications by section, see the <a href="technical-user-guide.md#image-specifications">Technical User Guide</a>.</em></p>
+                </section>
+                
+                <section id="quick-reference">
+                    <h2>Quick Reference</h2>
+                    
+                    <h3>Section Quick Guide</h3>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>Best For</th>
+                                <th>Key Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Image Banner</strong></td>
+                                <td>Hero sections, promotions</td>
+                                <td>Full-width, content overlay, animations</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rich Text</strong></td>
+                                <td>Text content, announcements</td>
+                                <td>Flexible blocks, multiple content types</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multi-Column</strong></td>
+                                <td>Feature grids, benefits</td>
+                                <td>Grid layout, images + text, links</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Video</strong></td>
+                                <td>Demos, brand videos</td>
+                                <td>YouTube/Vimeo, background option</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collapsible Content</strong></td>
+                                <td>FAQs, specifications</td>
+                                <td>Expandable accordion, icons</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Featured Collection</strong></td>
+                                <td>Product showcases</td>
+                                <td>Product grid, filtering, quick add</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <section id="theme-structure">
+                    <h2>Theme Structure</h2>
+                    
+                    <h3>File Organization</h3>
+                    <ul>
+                        <li><strong>Sections:</strong> 124 files (main templates and reusable components)</li>
+                        <li><strong>Snippets:</strong> 183 files (reusable components, icons, integrations)</li>
+                        <li><strong>Templates:</strong> 413 files (403 JSON templates, 10 Liquid templates)</li>
+                        <li><strong>Assets:</strong> 182 files (126 CSS, 43 JS, 5 fonts, 8 other)</li>
+                    </ul>
+                    
+                    <h3>Directory Structure</h3>
+                    <pre><code>theme_export/
+├── assets/          # CSS, JS, fonts, images (182 files)
+├── blocks/          # AI-generated blocks (10 files)
+├── config/          # Theme settings and configuration
+├── layout/          # Theme layouts (4 files)
+├── locales/         # Translation files (multi-language support)
+├── sections/        # Theme sections (124 files)
+├── snippets/        # Reusable components (183 files)
+└── templates/       # Page templates (413 files)</code></pre>
+                    
+                    <h3>Custom Features</h3>
+                    <ul>
+                        <li><strong>Team Store Functionality:</strong> Custom products, personalization, approval workflow</li>
+                        <li><strong>Athlete Features:</strong> Athlete-specific product highlights and templates</li>
+                        <li><strong>Auction Functionality:</strong> Auction products with countdown timers</li>
+                        <li><strong>Bundle Functionality:</strong> Product bundles and sets</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="../component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="../enhanced-toc/enhanced-toc.js"></script>
+    
+    <style>
+        .guide-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .guide-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: #f9f9f9;
+        }
+        
+        .guide-card h3 {
+            margin-top: 0;
+        }
+        
+        .guide-card h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .guide-card h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .guide-card .button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .guide-card .button:hover {
+            background: #0056b3;
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .spec-table th,
+        .spec-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .spec-table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .spec-table code {
+            background: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</body>
+</html>

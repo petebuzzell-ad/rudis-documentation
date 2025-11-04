@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Product Inventory Analysis - Google & YouTube Unpublish
-Analyzes products CSV to identify products with 5+ out-of-stock variants
+Analyzes products CSV to identify products with 5 or fewer in-stock variants
 for unpublishing from Google & YouTube sales channel.
 """
 
@@ -23,7 +23,7 @@ OUTPUT_REPORT = OUTPUT_DIR / "unpublish_analysis_report.md"
 def read_products_csv(csv_path: Path) -> List[Dict[str, Any]]:
     """Read and parse products CSV file."""
     products = []
-    with open(csv_path, 'r', encoding='utf-8') as f:
+    with open(csv_path, 'r', encoding='utf-8-sig') as f:  # utf-8-sig handles BOM
         reader = csv.DictReader(f)
         for row in reader:
             products.append(row)
@@ -46,12 +46,13 @@ def get_variant_inventory_qty(row: Dict[str, str]) -> int:
 
 
 def analyze_products(products: List[Dict[str, str]]) -> Dict[str, Any]:
-    """Analyze products to find those with 5+ out-of-stock variants."""
+    """Analyze products to find those with 5 or fewer in-stock variants."""
     
     # Group variants by product ID
     product_variants = defaultdict(list)
     
     for row in products:
+        # Handle BOM in CSV header - utf-8-sig should handle it, but just in case
         product_id = row.get('ID', '').strip()
         if not product_id:
             continue
@@ -67,7 +68,7 @@ def analyze_products(products: List[Dict[str, str]]) -> Dict[str, Any]:
             'variant_sku': variant_sku,
             'variant_title': variant_title or 'Default Title',
             'inventory_qty': inventory_qty,
-            'is_out_of_stock': inventory_qty <= 0
+            'is_in_stock': inventory_qty > 0
         }
         
         product_variants[product_id].append(variant_info)
@@ -77,9 +78,10 @@ def analyze_products(products: List[Dict[str, str]]) -> Dict[str, Any]:
     product_stats = {
         'total_products': len(product_variants),
         'products_analyzed': 0,
-        'products_with_5plus_oos': 0,
+        'products_with_5_or_fewer_in_stock': 0,
         'total_variants_analyzed': 0,
-        'total_oos_variants': 0
+        'total_in_stock_variants': 0,
+        'total_out_of_stock_variants': 0
     }
     
     for product_id, variants in product_variants.items():
@@ -88,17 +90,19 @@ def analyze_products(products: List[Dict[str, str]]) -> Dict[str, Any]:
         if not product_row:
             continue
         
-        # Count out-of-stock variants
-        oos_count = sum(1 for v in variants if v['is_out_of_stock'])
+        # Count in-stock variants
+        in_stock_count = sum(1 for v in variants if v['is_in_stock'])
+        out_of_stock_count = sum(1 for v in variants if not v['is_in_stock'])
         total_variants = len(variants)
         
         product_stats['products_analyzed'] += 1
         product_stats['total_variants_analyzed'] += total_variants
-        product_stats['total_oos_variants'] += oos_count
+        product_stats['total_in_stock_variants'] += in_stock_count
+        product_stats['total_out_of_stock_variants'] += out_of_stock_count
         
-        # If 5+ variants are out of stock, mark for unpublish
-        if oos_count >= 5:
-            product_stats['products_with_5plus_oos'] += 1
+        # If 5 or fewer variants are in stock, mark for unpublish
+        if in_stock_count <= 5:
+            product_stats['products_with_5_or_fewer_in_stock'] += 1
             
             product_info = {
                 'product_id': product_id,
@@ -108,8 +112,8 @@ def analyze_products(products: List[Dict[str, str]]) -> Dict[str, Any]:
                 'status': product_row.get('Status', '').strip(),
                 'published': product_row.get('Published', '').strip(),
                 'total_variants': total_variants,
-                'out_of_stock_variants': oos_count,
-                'in_stock_variants': total_variants - oos_count,
+                'in_stock_variants': in_stock_count,
+                'out_of_stock_variants': out_of_stock_count,
                 'variants': variants
             }
             
@@ -140,8 +144,8 @@ def generate_csv_output(analysis: Dict[str, Any]) -> None:
             'Status',
             'Published',
             'Total Variants',
-            'Out of Stock Variants',
-            'In Stock Variants'
+            'In Stock Variants',
+            'Out of Stock Variants'
         ])
         writer.writeheader()
         
@@ -154,8 +158,8 @@ def generate_csv_output(analysis: Dict[str, Any]) -> None:
                 'Status': product['status'],
                 'Published': product['published'],
                 'Total Variants': product['total_variants'],
-                'Out of Stock Variants': product['out_of_stock_variants'],
-                'In Stock Variants': product['in_stock_variants']
+                'In Stock Variants': product['in_stock_variants'],
+                'Out of Stock Variants': product['out_of_stock_variants']
             })
 
 
@@ -173,29 +177,32 @@ def generate_report(analysis: Dict[str, Any]) -> None:
         "",
         f"- **Total Products Analyzed:** {stats['products_analyzed']:,}",
         f"- **Total Variants Analyzed:** {stats['total_variants_analyzed']:,}",
-        f"- **Total Out-of-Stock Variants:** {stats['total_oos_variants']:,}",
-        f"- **Products with 5+ Out-of-Stock Variants:** {stats['products_with_5plus_oos']:,}",
+        f"- **Total In-Stock Variants:** {stats['total_in_stock_variants']:,}",
+        f"- **Total Out-of-Stock Variants:** {stats['total_out_of_stock_variants']:,}",
+        f"- **Products with ≤5 In-Stock Variants:** {stats['products_with_5_or_fewer_in_stock']:,}",
         "",
         "## Criteria",
         "",
-        "Products are flagged for unpublishing from Google & YouTube sales channel if they have **at least 5 variants that are out of stock** (inventory quantity ≤ 0).",
+        "Products are flagged for unpublishing from Google & YouTube sales channel if they have **5 or fewer in-stock variants** (inventory quantity > 0).",
+        "",
+        "This ensures products with limited size availability are not shown in Google Shopping.",
         "",
         "## Products to Unpublish",
         "",
         f"**Total Products:** {len(products)}",
         "",
-        "| Product ID | Handle | Title | Total Variants | OOS Variants | In Stock | URL |",
-        "|------------|--------|-------|----------------|--------------|----------|-----|"
+        "| Product ID | Handle | Title | Total Variants | In Stock | Out of Stock | URL |",
+        "|------------|--------|-------|----------------|----------|---------------|-----|"
     ]
     
-    # Sort by OOS count (descending)
-    sorted_products = sorted(products, key=lambda x: x['out_of_stock_variants'], reverse=True)
+    # Sort by in-stock count (ascending) then by total variants (descending)
+    sorted_products = sorted(products, key=lambda x: (x['in_stock_variants'], -x['total_variants']))
     
     for product in sorted_products:
         report_lines.append(
             f"| {product['product_id']} | `{product['handle']}` | {product['title'][:50]} | "
-            f"{product['total_variants']} | {product['out_of_stock_variants']} | "
-            f"{product['in_stock_variants']} | [View]({product['url']}) |"
+            f"{product['total_variants']} | {product['in_stock_variants']} | "
+            f"{product['out_of_stock_variants']} | [View]({product['url']}) |"
         )
     
     report_lines.extend([
@@ -230,7 +237,7 @@ def main():
     print("Analyzing products...")
     analysis = analyze_products(products)
     
-    print(f"Found {analysis['stats']['products_with_5plus_oos']} products with 5+ out-of-stock variants")
+    print(f"Found {analysis['stats']['products_with_5_or_fewer_in_stock']} products with ≤5 in-stock variants")
     
     print("Generating output files...")
     generate_json_output(analysis)

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>Performance Documentation - RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="../assets/favicon.webp">
+    <link rel="stylesheet" href="../arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <div class="two-column-layout">
+            <!-- Enhanced Table of Contents Sidebar -->
+            <nav class="toc-sidebar">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#executive-summary">Executive Summary</a></li>
+                    <li><a href="#core-web-vitals">Core Web Vitals by Page Type</a>
+                        <ul>
+                            <li><a href="#homepage">Homepage</a></li>
+                            <li><a href="#product-pages">Product Pages</a></li>
+                            <li><a href="#collection-pages">Collection Pages</a></li>
+                            <li><a href="#search-pages">Search Pages</a></li>
+                            <li><a href="#other-pages">Other Page Types</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#url-level-insights">URL-Level Performance Insights</a></li>
+                    <li><a href="#optimization-roadmap">Performance Optimization Roadmap</a>
+                        <ul>
+                            <li><a href="#priority-1">Priority 1: Do Now</a></li>
+                            <li><a href="#priority-2">Priority 2: Do Next</a></li>
+                            <li><a href="#priority-3">Priority 3: Do Later</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#performance-monitoring">Performance Monitoring</a></li>
+                    <li><a href="#success-metrics">Success Metrics</a></li>
+                    <li><a href="#references">References</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main Content Area -->
+            <main>
+                <section id="executive-summary">
+                    <h1>RUDIS Performance Documentation</h1>
+                    <p><strong>Last Updated:</strong> October 31, 2025<br>
+                    <strong>Data Source:</strong> Shopify CRUX Field Data (August 2 - October 31, 2025, 75th percentile)<br>
+                    <strong>Synthetic Data:</strong> Lighthouse/PageSpeed Insights<br>
+                    <strong>Report Files:</strong> <code>data/shopify-reports/</code></p>
+                    
+                    <h2>Executive Summary</h2>
+                    <p>RUDIS.com performance varies significantly across page types. Product and collection pages generally perform well, meeting Core Web Vitals thresholds. However, the homepage fails LCP requirements, and search pages have significant CLS issues. Mobile performance for product detail pages requires immediate attention.</p>
+                    
+                    <p><strong>Overall Assessment:</strong></p>
+                    <ul>
+                        <li><strong>Product Pages:</strong> ✅ Passing (56.6% of traffic)</li>
+                        <li><strong>Collection Pages:</strong> ⚠️ Near limit (31.2% of traffic)</li>
+                        <li><strong>Homepage:</strong> ❌ Failing LCP (6.9% of traffic)</li>
+                        <li><strong>Search Pages:</strong> ❌ Failing CLS (2.5% of traffic)</li>
+                    </ul>
+                </section>
+                
+                <section id="core-web-vitals">
+                    <h2>Core Web Vitals by Page Type</h2>
+                    
+                    <section id="homepage">
+                        <h3>Homepage (Index)</h3>
+                        <p><strong>Field Data (75th Percentile):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> 3.57s ❌ <strong>FAILING</strong> (Target: &lt; 2.5s)</li>
+                            <li><strong>CLS:</strong> 0.01 ✅ <strong>PASSING</strong> (Target: &lt; 0.10)</li>
+                            <li><strong>INP:</strong> 152ms ✅ <strong>PASSING</strong> (Target: &lt; 200ms)</li>
+                            <li><strong>FCP:</strong> 1.58s ✅ <strong>PASSING</strong> (Target: &lt; 1.8s)</li>
+                            <li><strong>TTFB:</strong> 544ms ✅ <strong>PASSING</strong> (Target: &lt; 800ms)</li>
+                        </ul>
+                        <p><strong>Synthetic Data:</strong> LCP: 3.6s ❌ | CLS: 0.01 ✅ | INP: 152ms ✅ (matches field data)</p>
+                        <p><strong>Page Loads:</strong> 199,154 (6.9% of total traffic)</p>
+                        
+                        <p><strong>Analysis:</strong><br>
+                        The homepage LCP of 3.57s exceeds Google's threshold by 43%. Real-user data confirms synthetic test results. The primary bottleneck is hero image rendering. All other metrics are within acceptable ranges, indicating the issue is specific to image optimization rather than overall page performance.</p>
+                        
+                        <p><strong>User Impact (Distribution):</strong></p>
+                        <ul>
+                            <li><strong>Good:</strong> 62,336 users (31.3%)</li>
+                            <li><strong>Needs Improvement:</strong> 34,843 users (17.5%)</li>
+                            <li><strong>Poor:</strong> 15,189 users (7.6%)</li>
+                        </ul>
+                        
+                        <p><strong>Trend:</strong> LCP values fluctuated between 3.8s → 3.6s (July–October) with slight improvement.</p>
+                        
+                        <p><strong>Root Cause:</strong></p>
+                        <ul>
+                            <li>Hero banners not optimized (&gt; 2 MB each)</li>
+                            <li>Images served at ~2800px width</li>
+                            <li>No WebP/AVIF conversion</li>
+                            <li>Missing responsive image sources</li>
+                            <li>LCP image not preloaded</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="product-pages">
+                        <h3>Product Pages (PDP)</h3>
+                        <p><strong>Field Data (75th Percentile):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> 1.66s ✅ <strong>PASSING</strong> (Target: &lt; 2.5s)</li>
+                            <li><strong>CLS:</strong> 0.04 ✅ <strong>PASSING</strong> (Target: &lt; 0.10)</li>
+                            <li><strong>INP:</strong> 192ms ✅ <strong>PASSING</strong> (Target: &lt; 200ms)</li>
+                        </ul>
+                        
+                        <p><strong>Synthetic Data (Mobile):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> 8.71s ❌ <strong>FAILING</strong> (Target: &lt; 2.5s)</li>
+                            <li><strong>CLS:</strong> 0.334 ❌ <strong>FAILING</strong> (Target: &lt; 0.10)</li>
+                            <li><strong>TBT:</strong> 1.18s ❌ <strong>HEAVY</strong> (Target: &lt; 0.30s)</li>
+                            <li><strong>FCP:</strong> 3.1s</li>
+                        </ul>
+                        
+                        <p><strong>Synthetic Data (Desktop):</strong> LCP: 2.43s ✅ | CLS: 0.078 ✅ | TBT: 0.63s ⚠️</p>
+                        <p><strong>Page Loads:</strong> 1,626,559 (56.6% of total traffic)</p>
+                        
+                        <p><strong>Analysis:</strong><br>
+                        Field data shows product pages perform well for real users (LCP 1.66s). However, synthetic mobile testing reveals severe performance issues (LCP 8.71s), suggesting mobile-specific optimization problems. The discrepancy indicates that real users may benefit from cached resources, mobile first-load experience is poor, and desktop performance is acceptable but script-heavy.</p>
+                        
+                        <p><strong>User Impact (Distribution):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> Good: 449,025 (27.6%), Needs Improvement: 402,835 (24.8%), Poor: 31,124 (1.9%)</li>
+                            <li><strong>CLS:</strong> Good: 511,302 (31.4%), Needs Improvement: 419,355 (25.8%), Poor: 25,026 (1.5%)</li>
+                            <li><strong>INP:</strong> Good: 325,477 (20.0%), Needs Improvement: 251,344 (15.5%), Poor: 12,069 (0.7%)</li>
+                        </ul>
+                        
+                        <p><strong>Root Causes:</strong></p>
+                        <ul>
+                            <li>Product gallery images &gt; 3 MB</li>
+                            <li>Heavy JS bundles for variant selectors &amp; reviews</li>
+                            <li>Late-loading reviews and sticky CTA bars causing layout shifts</li>
+                            <li>Large inline CSS in theme.css</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="collection-pages">
+                        <h3>Collection Pages (PLP)</h3>
+                        <p><strong>Field Data (75th Percentile):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> 2.07s ✅ <strong>PASSING</strong> (Target: &lt; 2.5s) - <em>Near limit</em></li>
+                            <li><strong>CLS:</strong> 0.11 ❌ <strong>FAILING</strong> (Target: &lt; 0.10)</li>
+                            <li><strong>INP:</strong> 160ms ✅ <strong>PASSING</strong> (Target: &lt; 200ms)</li>
+                            <li><strong>FCP:</strong> 1.28s ✅ | <strong>TTFB:</strong> 256ms ✅</li>
+                        </ul>
+                        <p><strong>Synthetic Data:</strong> LCP: 2.1s ✅ | CLS: 0.03 ✅ | INP: 185ms ✅</p>
+                        <p><strong>Page Loads:</strong> 897,082 (31.2% of total traffic)</p>
+                        
+                        <p><strong>Analysis:</strong><br>
+                        Collection pages perform well overall, with LCP narrowly meeting the threshold. However, field data shows CLS at 0.11, slightly exceeding the threshold. The discrepancy between field (0.11) and synthetic (0.03) data suggests real-user conditions experience more layout shifts.</p>
+                        
+                        <p><strong>User Impact (Distribution):</strong></p>
+                        <ul>
+                            <li><strong>Good:</strong> 326,813 users (36.5%)</li>
+                            <li><strong>Needs Improvement:</strong> 270,296 users (30.2%)</li>
+                            <li><strong>Poor:</strong> 34,675 users (3.9%)</li>
+                        </ul>
+                        
+                        <p><strong>Root Causes:</strong></p>
+                        <ul>
+                            <li>Product thumbnails unoptimized (1.2 MB avg)</li>
+                            <li>Filter/sort interactions causing layout reflows</li>
+                            <li>Analytics scripts loading in head blocking main thread</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="search-pages">
+                        <h3>Search Pages</h3>
+                        <p><strong>Field Data (75th Percentile):</strong></p>
+                        <ul>
+                            <li><strong>LCP:</strong> 1.99s ✅ <strong>PASSING</strong> (Target: &lt; 2.5s)</li>
+                            <li><strong>CLS:</strong> 0.40 ❌ <strong>FAILING</strong> (Target: &lt; 0.10)</li>
+                            <li><strong>INP:</strong> 176ms ✅ <strong>PASSING</strong> (Target: &lt; 200ms)</li>
+                        </ul>
+                        <p><strong>Page Loads:</strong> 71,997 (2.5% of total traffic)</p>
+                        
+                        <p><strong>Analysis:</strong><br>
+                        Search pages have severe CLS issues (0.40–0.41), four times the acceptable threshold. LCP and INP are within acceptable ranges, indicating the issue is specific to layout stability during search results rendering.</p>
+                        
+                        <p><strong>User Impact (Distribution):</strong></p>
+                        <ul>
+                            <li><strong>Good:</strong> 27,610 users (38.3%)</li>
+                            <li><strong>Needs Improvement:</strong> 14,079 users (19.5%)</li>
+                            <li><strong>Poor:</strong> 10,428 users (14.5%)</li>
+                        </ul>
+                        
+                        <p><strong>Root Causes:</strong></p>
+                        <ul>
+                            <li>Search results layout not reserved before content loads</li>
+                            <li>Dynamic result injection causing layout shifts</li>
+                            <li>SearchSpring integration causing layout instability</li>
+                        </ul>
+                    </section>
+                    
+                    <section id="other-pages">
+                        <h3>Other Page Types</h3>
+                        <p><strong>Regular Pages:</strong> LCP: 2.80s ⚠️ | CLS: 0.02 ✅ | INP: 128ms ✅ (66,006 page loads)</p>
+                        <p><strong>Cart Pages:</strong> LCP: 2.48s ✅ | CLS: 0.03 ✅ | INP: 128ms ✅ (1,806 page loads)</p>
+                        <p><strong>404 Pages:</strong> LCP: 1.72s ✅ | CLS: 0.01 ✅ | INP: 136ms ✅ (6,471 page loads)</p>
+                    </section>
+                </section>
+                
+                <section id="url-level-insights">
+                    <h2>URL-Level Performance Insights</h2>
+                    
+                    <h3>High CLS Collections (Requiring Attention)</h3>
+                    <p>Specific collection pages show CLS values significantly above the 0.10 threshold:</p>
+                    
+                    <p><strong>Critical (CLS &gt; 0.15):</strong></p>
+                    <ul>
+                        <li><code>/collections/sale</code> - <strong>CLS 0.18</strong> (26,779 page loads, 0.9% of traffic)</li>
+                        <li><code>/collections/womens-wrestling-shoes</code> - <strong>CLS 0.15</strong> (19,339 page loads, 0.7% of traffic)</li>
+                        <li><code>/collections/wrestling-gear</code> - <strong>CLS 0.16</strong> (13,429 page loads, 0.5% of traffic)</li>
+                        <li><code>/collections/men-singlets</code> - <strong>CLS 0.16</strong> (9,524 page loads, 0.3% of traffic)</li>
+                        <li><code>/collections/hoodies-pullovers-youth</code> - <strong>CLS 0.24</strong> (4,369 page loads, 0.2% of traffic)</li>
+                        <li><code>/collections/coming-soon</code> - <strong>CLS 0.42</strong> (3,096 page loads, 0.1% of traffic)</li>
+                        <li><code>/collections/collegiate</code> - <strong>CLS 0.41</strong> (1,897 page loads, 0.1% of traffic)</li>
+                    </ul>
+                    
+                    <p><strong>High-Traffic Collections:</strong></p>
+                    <ul>
+                        <li><code>/collections/wrestling-shoes</code> - <strong>CLS 0.14</strong> (150,764 page loads, 5.3% of traffic) - <em>Largest collection by traffic</em></li>
+                        <li><code>/collections/youth-wrestling-shoes</code> - <strong>CLS 0.08</strong> ✅ (56,988 page loads, 2.0% of traffic)</li>
+                    </ul>
+                    
+                    <p><strong>Analysis:</strong><br>
+                    The <code>/collections/wrestling-shoes</code> page (largest collection by volume) has CLS 0.14, exceeding the threshold. Sale pages and coming-soon collections show the highest CLS values, likely due to dynamic pricing displays and promotional banner injection. These pages should be prioritized for layout stability fixes.</p>
+                    
+                    <h3>Product Pages with CLS Issues</h3>
+                    <ul>
+                        <li><code>/products/rudis-mens-elite-singlet-custom1</code> - <strong>CLS 0.18</strong> (5,245 page loads)</li>
+                        <li><code>/products/jb1-adult-wrestling-shoes-ice-blue</code> - <strong>CLS 0.11</strong> (14,122 page loads)</li>
+                        <li><code>/products/jb1-adult-wrestling-shoes-gum-doubles</code> - <strong>CLS 0.10</strong> (9,854 page loads)</li>
+                    </ul>
+                    <p><strong>Note:</strong> Most product pages have acceptable CLS values (0.02–0.04), indicating the issue is specific to certain product templates or configurations.</p>
+                </section>
+                
+                <section id="optimization-roadmap">
+                    <h2>Performance Optimization Roadmap</h2>
+                    
+                    <section id="priority-1">
+                        <h3>Priority 1: Do Now (Critical)</h3>
+                        
+                        <h4>1. Optimize Homepage Hero Images</h4>
+                        <p><strong>Goal:</strong> Reduce homepage LCP from 3.57s to &lt; 2.5s</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Convert hero and banner images to WebP/AVIF formats (~70% size reduction)</li>
+                            <li>Implement responsive <code>&lt;picture&gt;</code> elements with multiple sources (1200px/800px/400px)</li>
+                            <li>Preload LCP image in <code>&lt;head&gt;</code> with <code>fetchpriority="high"</code></li>
+                            <li>Resize images to device-appropriate dimensions (current: ~2800px wide)</li>
+                            <li>Implement <code>loading="eager"</code> for LCP image, <code>loading="lazy"</code> for below-fold images</li>
+                        </ul>
+                        <p><strong>Expected Impact:</strong> LCP reduction from 3.57s to ~2.0s</p>
+                        <p><strong>Files to Modify:</strong> <code>sections/animated-hero.liquid</code>, <code>sections/image-banner.liquid</code>, <code>sections/banner-grid.liquid</code>, <code>layout/theme.liquid</code></p>
+                        
+                        <h4>2. Fix Collection Page CLS</h4>
+                        <p><strong>Goal:</strong> Reduce collection page CLS from 0.11 to &lt; 0.10</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Reserve layout space for product grid containers (fixed height or aspect ratio)</li>
+                            <li>Implement skeleton loaders for product cards</li>
+                            <li>Debounce filter/sort click events to reduce DOM reflows</li>
+                            <li>Remove forced synchronous layout reflows</li>
+                            <li>Preload product thumbnail images</li>
+                            <li><strong>Priority fix for <code>/collections/wrestling-shoes</code></strong> (CLS 0.14, 5.3% of traffic)</li>
+                            <li><strong>Fix high-CLS collections:</strong> sale (0.18), womens-wrestling-shoes (0.15), wrestling-gear (0.16), men-singlets (0.16)</li>
+                        </ul>
+                        <p><strong>Expected Impact:</strong> CLS reduction from 0.11 to ~0.05</p>
+                        
+                        <h4>3. Optimize Search Results Layout</h4>
+                        <p><strong>Goal:</strong> Reduce search page CLS from 0.40 to &lt; 0.10</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Reserve layout space for search results container</li>
+                            <li>Implement fixed-height containers for result cards</li>
+                            <li>Optimize SearchSpring integration to reduce layout shifts</li>
+                            <li>Add skeleton loaders during search execution</li>
+                        </ul>
+                        <p><strong>Expected Impact:</strong> CLS reduction from 0.40 to ~0.08</p>
+                    </section>
+                    
+                    <section id="priority-2">
+                        <h3>Priority 2: Do Next (High)</h3>
+                        
+                        <h4>4. Optimize Product PDP Mobile Performance</h4>
+                        <p><strong>Goal:</strong> Reduce mobile PDP LCP from 8.71s to &lt; 2.5s</p>
+                        <p><strong>Actions:</strong></p>
+                        <ul>
+                            <li>Optimize product gallery assets (WebP/AVIF, responsive <code>&lt;picture&gt;</code> tags)</li>
+                            <li>Fix layout shift sources (static height placeholders for review blocks, sticky CTA bars)</li>
+                            <li>Reduce main-thread blocking (split large JS bundles, defer scripts, code-split variant selection)</li>
+                        </ul>
+                        <p><strong>Expected Impact:</strong> Mobile LCP reduction from 8.71s to ~2.5s</p>
+                        
+                        <h4>5. Optimize Product Thumbnails</h4>
+                        <p>Convert to WebP/AVIF, implement <code>srcset</code>, reduce default size to 400px width, lazy-load below fold.</p>
+                        
+                        <h4>6. Defer Non-Critical JavaScript</h4>
+                        <p>Audit and split <code>theme.js</code> bundle, defer analytics scripts, defer third-party widgets until after initial render.</p>
+                        <p><strong>Expected Impact:</strong> TBT reduction from 1.18s to &lt; 0.30s</p>
+                    </section>
+                    
+                    <section id="priority-3">
+                        <h3>Priority 3: Do Later (Medium)</h3>
+                        
+                        <h4>7. Optimize Font Loading</h4>
+                        <p>Preload critical fonts, implement <code>font-display: swap</code>, reduce number of font weights loaded.</p>
+                        
+                        <h4>8. Optimize CSS Delivery</h4>
+                        <p>Extract critical above-the-fold CSS (≤ 14 kB), inline critical CSS, async-load remaining CSS.</p>
+                        
+                        <h4>9. Review Third-Party Widget Loading</h4>
+                        <p>Audit third-party widgets, implement async loading strategies, consider lazy-loading below-the-fold widgets.</p>
+                    </section>
+                </section>
+                
+                <section id="performance-monitoring">
+                    <h2>Performance Monitoring</h2>
+                    <h3>Tools &amp; Metrics</h3>
+                    <p><strong>Primary Monitoring:</strong></p>
+                    <ul>
+                        <li><strong>Shopify CRUX Reports</strong> - Real user monitoring (field data) - <code>data/shopify-reports/</code></li>
+                        <li><strong>Google PageSpeed Insights</strong> - Synthetic testing</li>
+                        <li><strong>Lighthouse</strong> - Performance audits</li>
+                    </ul>
+                    
+                    <p><strong>Key Metrics to Track:</strong></p>
+                    <ul>
+                        <li>LCP by page type (target: &lt; 2.5s)</li>
+                        <li>CLS by page type (target: &lt; 0.10)</li>
+                        <li>INP by page type (target: &lt; 200ms)</li>
+                        <li>TBT (target: &lt; 0.30s)</li>
+                        <li>FCP (target: &lt; 1.8s)</li>
+                    </ul>
+                    
+                    <h3>Monitoring Schedule</h3>
+                    <p><strong>Weekly:</strong> Review Core Web Vitals trends, check for regressions, monitor field vs synthetic data discrepancies</p>
+                    <p><strong>Monthly:</strong> Comprehensive performance audit, review optimization roadmap progress, update baselines</p>
+                    <p><strong>Quarterly:</strong> Full performance review, strategy updates, new optimization opportunities</p>
+                </section>
+                
+                <section id="success-metrics">
+                    <h2>Success Metrics</h2>
+                    <h3>Target Metrics</h3>
+                    <p><strong>Homepage:</strong> LCP: &lt; 2.5s (currently 3.57s) | CLS: &lt; 0.10 (currently 0.01) ✅ | INP: &lt; 200ms (currently 152ms) ✅</p>
+                    <p><strong>Product Pages:</strong> LCP: &lt; 2.5s (field: 1.66s ✅, mobile synthetic: 8.71s ❌) | CLS: &lt; 0.10 (field: 0.04 ✅, mobile synthetic: 0.334 ❌)</p>
+                    <p><strong>Collection Pages:</strong> LCP: &lt; 2.5s (currently 2.07s ✅) | CLS: &lt; 0.10 (currently 0.11 ❌)</p>
+                    <p><strong>Search Pages:</strong> LCP: &lt; 2.5s (currently 1.99s ✅) | CLS: &lt; 0.10 (currently 0.40 ❌)</p>
+                </section>
+                
+                <section id="references">
+                    <h2>References</h2>
+                    <ul>
+                        <li><strong>Performance Reports:</strong> <code>data/shopify-reports/</code></li>
+                        <li><strong>Homepage Audit:</strong> <code>prework/rudis-homepage-audit.md</code></li>
+                        <li><strong>PLP Audit:</strong> <code>prework/rudis-plp-audit.md</code></li>
+                        <li><strong>PDP Audit:</strong> <code>prework/rudis-pdp-audit.md</code></li>
+                        <li><strong>Issues &amp; Recommendations:</strong> <code>prework/RUDIS Website Audit – Issues &amp; Recommendations.md</code></li>
+                    </ul>
+                    <p><em>This documentation is based on Shopify CRUX field data (August 2 - October 31, 2025, 75th percentile) and synthetic Lighthouse/PageSpeed Insights data from October 2025. Field data includes 2,877,161 total page loads across all page types.</em></p>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="../component-loader.js"></script>
+    
+    <!-- Enhanced TOC: Adds scroll-based highlighting and smooth navigation -->
+    <script src="../enhanced-toc/enhanced-toc.js"></script>
+</body>
+</html>
+

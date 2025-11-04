@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <title>RUDIS JIRA Insights - RUDIS Technical Documentation</title>
+    <link rel="icon" type="image/webp" href="../../assets/favicon.webp">
+    <link rel="stylesheet" href="../../arcadia-style.css">
+</head>
+<body>
+    <!-- Header will be loaded dynamically by component-loader.js -->
+    <div id="header-container"></div>
+    
+    <div class="container">
+        <main>
+            <h1>RUDIS Development Budget Allocation Analysis</h1>
+            
+            <p><em>Analysis Date: November 04, 2025</em><br>
+            <em>Data Source: RUDIS-JIRA.csv</em><br>
+            <em>Focus Period: Full Year 2025 (January - December 2025)</em></p>
+            
+            <h2>Methodology & Data Transparency</h2>
+            
+            <h3>Data Source</h3>
+            <ul>
+                <li><strong>Source:</strong> JIRA CSV export (RUDIS-JIRA.csv)</li>
+                <li><strong>Total Issues in Dataset:</strong> 395</li>
+                <li><strong>Issues in Analysis Period:</strong> 231</li>
+                <li><strong>Date Range:</strong> Issues created January 1, 2025 - December 31, 2025</li>
+            </ul>
+            
+            <h3>Development Budget</h3>
+            <ul>
+                <li><strong>Monthly Budget:</strong> 70 hours ($14,000/month)</li>
+                <li><strong>Annual Budget (2025):</strong> 840 hours ($168,000)</li>
+                <li><strong>Blended Developer Rate:</strong> $200/hour</li>
+                <li><strong>Budget Allocation Method:</strong> Issue count used as proxy where time tracking unavailable</li>
+            </ul>
+            
+            <h3>Categorization Methodology</h3>
+            <p>Issues are categorized into strategic areas based on issue summary text, description text, and issue type:</p>
+            <ul>
+                <li><strong>Text Analysis:</strong> Both summary and description fields are analyzed for categorization keywords</li>
+                <li><strong>Coverage:</strong> 68% of 2025 issues have descriptions (average 655 characters)</li>
+                <li><strong>Issue Type:</strong> Issue type (Bug, Epic, Story, etc.) is also considered for categorization</li>
+            </ul>
+            
+            <ul>
+                <li><strong>Team Store / B2B:</strong> Issues containing 'team', 'team store', 'usaw', or 'bulk'</li>
+                <li><strong>Product Display (PDP):</strong> Issues containing 'pdp', 'product detail', 'variant', or 'swatch'</li>
+                <li><strong>Product Listing (PLP):</strong> Issues containing 'plp', 'product listing', or 'collection'</li>
+                <li><strong>Cart/Checkout/Conversion:</strong> Issues containing 'cart', 'checkout', 'add to cart', or 'atc'</li>
+                <li><strong>Shipping/Logistics:</strong> Issues containing 'shipping' or 'free shipping'</li>
+                <li><strong>Account/User Experience:</strong> Issues containing 'account', 'user', 'return', 'order', or 'rewards'</li>
+                <li><strong>Design/UX Enhancements:</strong> Issues containing 'design', 'image', 'header', 'parallax', or 'video'</li>
+                <li><strong>Technical/Infrastructure:</strong> Issues containing 'seo', 'robot', 'llms.txt', 'attentive', 'pixel', or 'theme'</li>
+                <li><strong>Bug Fixes:</strong> Issues with Issue Type = 'Bug'</li>
+                <li><strong>Other:</strong> Issues that don't match above categories</li>
+            </ul>
+            
+            <p><strong>Note:</strong> Categorization is automated based on keywords. Some issues may be miscategorized. Manual review recommended for strategic decisions.</p>
+            
+            <h3>Business Value Classification</h3>
+            <p>Business value categories are inferred from issue content:</p>
+            <ul>
+                <li><strong>Revenue Impact:</strong> Issues directly affecting cart, checkout, conversion, or free shipping</li>
+                <li><strong>Operational Efficiency:</strong> Issues related to Team Store/B2B operations or bulk ordering</li>
+                <li><strong>Technical Debt:</strong> Issues with Issue Type = 'Bug'</li>
+                <li><strong>User Experience:</strong> Issues related to design, UX, account, or user-facing features</li>
+            </ul>
+            
+            <p><strong>Limitation:</strong> Business value is inferred, not explicitly stated in JIRA data. Actual ROI/impact requires business metrics.</p>
+            
+            <h3>Status Definitions</h3>
+            <ul>
+                <li><strong>Resolved:</strong> Status = 'Done' or 'Closed'</li>
+                <li><strong>Unresolved:</strong> Status not 'Done' or 'Closed'</li>
+                <li><strong>Stuck:</strong> Status in 'Hold', 'Update Requirements', 'Needs Estimate', or 'Waiting for Approval'</li>
+                <li><strong>Resolution Rate:</strong> (Resolved Issues / Total Issues) × 100</li>
+            </ul>
+            
+            <h3>Priority Definitions</h3>
+            <ul>
+                <li><strong>High Priority:</strong> Priority = 'Critical', 'Blocker', or 'Major'</li>
+                <li><strong>None Priority:</strong> Priority field is empty or 'None'</li>
+            </ul>
+            
+            <p><strong>Note:</strong> 71% of issues have no priority assigned. This suggests priority may not be used systematically for planning.</p>
+            
+            <h3>Assumptions & Limitations</h3>
+            <ol>
+                <li><strong>Budget Allocation Proxy:</strong> Issue count is used as a proxy for development budget allocation. Actual time/cost per issue is not available for most issues.</li>
+                <li><strong>Categorization Accuracy:</strong> Automated categorization based on keywords may misclassify issues. Manual review of key issues recommended.</li>
+                <li><strong>Business Value Inference:</strong> Business value categories are inferred from issue content, not actual measured impact. No revenue/ROI data available.</li>
+                <li><strong>Time Period:</strong> Analysis covers all issues created in 2025 (January - December). Work in progress from prior years not included.</li>
+                <li><strong>Resolution Context:</strong> 'Stuck' status may indicate legitimate planning phases (e.g., 'Needs Estimate' for new work). Not all stuck work is problematic.</li>
+                <li><strong>Priority System:</strong> High percentage of issues without priority suggests priority system may not be used systematically.</li>
+            </ol>
+            
+            <h3>Data Quality</h3>
+            <ul>
+                <li><strong>Issues with Time Tracking (2025):</strong> 44 (19% of 2025 issues)</li>
+                <li><strong>Issues with Time Tracking (All Time):</strong> 59 (15% of all issues)</li>
+                <li><strong>Issues with Comments:</strong> 269 (68% of all issues)</li>
+                <li><strong>Issues with Priority:</strong> 90 (23% of all issues)</li>
+            </ul>
+            
+            <p><strong>Recommendation:</strong> Improve data quality by ensuring time tracking, priority assignment, and clear categorization for better analysis.</p>
+            
+            <h2>Executive Summary</h2>
+            
+            <h3>Budget Allocation by Strategic Theme</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Theme</th>
+                        <th>Issues</th>
+                        <th>Assumed Hours</th>
+                        <th>Assumed Cost</th>
+                        <th>% of Budget</th>
+                        <th>Resolved</th>
+                        <th>Unresolved</th>
+                        <th>Stuck</th>
+                        <th>Resolution Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue & Growth</td>
+                        <td>63</td>
+                        <td>223h</td>
+                        <td>$44,650</td>
+                        <td>27%</td>
+                        <td>45</td>
+                        <td>18</td>
+                        <td>12</td>
+                        <td>71%</td>
+                    </tr>
+                    <tr>
+                        <td>Business Operations</td>
+                        <td>61</td>
+                        <td>182h</td>
+                        <td>$36,450</td>
+                        <td>22%</td>
+                        <td>35</td>
+                        <td>26</td>
+                        <td>17</td>
+                        <td>57%</td>
+                    </tr>
+                    <tr>
+                        <td>Platform & Infrastructure</td>
+                        <td>25</td>
+                        <td>22h</td>
+                        <td>$4,500</td>
+                        <td>3%</td>
+                        <td>22</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Experience</td>
+                        <td>59</td>
+                        <td>18h</td>
+                        <td>$3,650</td>
+                        <td>2%</td>
+                        <td>42</td>
+                        <td>17</td>
+                        <td>15</td>
+                        <td>71%</td>
+                    </tr>
+                    <tr>
+                        <td>Quality & Compliance</td>
+                        <td>11</td>
+                        <td>3h</td>
+                        <td>$550</td>
+                        <td>0%</td>
+                        <td>7</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <td>Strategic & Planning</td>
+                        <td>12</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>8</td>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>67%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Budget Allocation Overview</h2>
+            <p><strong>Total Issues:</strong> 231<br>
+            <strong>Resolved:</strong> 159 (69%)<br>
+            <strong>Unresolved:</strong> 72 (31%)</p>
+            
+            <h3>Assumed Spend vs. Estimated Total Cost</h3>
+            
+            <h4>Assumed Spend (Tracked Hours)</h4>
+            <ul>
+                <li><strong>Resolved Issues:</strong> 43 issues, 444 hours ($88,800)</li>
+                <li><strong>Unresolved Issues:</strong> 1 issues, 5 hours ($1,000)</li>
+                <li><strong>Total Assumed Spend:</strong> 449 hours ($89,800)</li>
+            </ul>
+            
+            <h4>Estimated Additional Costs (Untracked Issues)</h4>
+            <p><strong>Resolved but Untracked:</strong> 116 issues</p>
+            <ul>
+                <li>Estimated: 1198 hours ($239,553)</li>
+                <li><em>Based on average of 10.3 hours per tracked resolved issue</em></li>
+            </ul>
+            
+            <p><strong>Unresolved but Untracked:</strong> 71 issues</p>
+            <ul>
+                <li>Estimated: 355 hours ($71,000)</li>
+                <li><em>Based on average of 5.0 hours per tracked unresolved issue</em></li>
+            </ul>
+            
+            <h4>Total Estimated Cost</h4>
+            <ul>
+                <li><strong>Assumed Spend:</strong> 449 hours ($89,800)</li>
+                <li><strong>Estimated Remaining:</strong> 1553 hours ($310,553)</li>
+                <li><strong>Estimated Total Cost:</strong> 2002 hours ($400,353)</li>
+            </ul>
+            
+            <p><em>Note: Estimates for untracked issues use averages from tracked issues of the same resolution status. This provides a more accurate projection than a single average across all issues.</em></p>
+            
+            <p><strong>Budget Available (2025):</strong> 840 hours ($168,000)<br>
+            <strong>Budget Utilization (Assumed Spend):</strong> 53%</p>
+            
+            <h4>Backlog Capacity Analysis</h4>
+            <ul>
+                <li><strong>Estimated Total Work:</strong> 2002 hours ($400,353)</li>
+                <li><strong>Budget Capacity:</strong> 840 hours ($168,000)</li>
+                <li><strong>Backlog Beyond Budget:</strong> 1162 hours ($232,353)</li>
+            </ul>
+            
+            <p><em>Note: The estimated work volume exceeds available budget capacity. This indicates a backlog that will require ongoing prioritization and selective deferral of lower-priority items. This is a normal part of managing a fixed-budget development program.</em></p>
+            
+            <h2>Strategic Category Analysis</h2>
+            
+            <h3>Team Store / B2B</h3>
+            <p><strong>Total Issues:</strong> 54 (23% of issues)<br>
+            <strong>Assumed Hours:</strong> 182 hours ($36,450)<br>
+            <strong>Estimated Hours:</strong> 563 hours ($112,625) - 22% of budget<br>
+            <strong>Resolved:</strong> 30 (56%)<br>
+            <strong>In Process/Approved:</strong> 8 (likely active work)<br>
+            <strong>Stuck:</strong> 16 (on hold, needs estimate, or waiting for approval)<br>
+            <strong>Unresolved:</strong> 8 total</p>
+            
+            <h3>Product Display (PDP)</h3>
+            <p><strong>Total Issues:</strong> 27 (12% of issues)<br>
+            <strong>Assumed Hours:</strong> 144 hours ($28,700)<br>
+            <strong>Estimated Hours:</strong> 319 hours ($63,778) - 17% of budget<br>
+            <strong>Resolved:</strong> 20 (74%)<br>
+            <strong>In Process/Approved:</strong> 3 (likely active work)<br>
+            <strong>Stuck:</strong> 4 (on hold, needs estimate, or waiting for approval)<br>
+            <strong>Unresolved:</strong> 3 total</p>
+            
+            <h3>Cart/Checkout/Conversion</h3>
+            <p><strong>Total Issues:</strong> 16 (7% of issues)<br>
+            <strong>Assumed Hours:</strong> 36 hours ($7,150)<br>
+            <strong>Estimated Hours:</strong> 143 hours ($28,600) - 4% of budget<br>
+            <strong>Resolved:</strong> 12 (75%)<br>
+            <strong>In Process/Approved:</strong> 0 (likely active work)<br>
+            <strong>Stuck:</strong> 4 (on hold, needs estimate, or waiting for approval)<br>
+            <strong>Unresolved:</strong> 0 total</p>
+            
+            <h3>Account/User Experience</h3>
+            <p><strong>Total Issues:</strong> 36 (16% of issues)<br>
+            <strong>Assumed Hours:</strong> 11 hours ($2,250)<br>
+            <strong>Estimated Hours:</strong> 41 hours ($8,250) - 1% of budget<br>
+            <strong>Resolved:</strong> 22 (61%)<br>
+            <strong>In Process/Approved:</strong> 0 (likely active work)<br>
+            <strong>Stuck:</strong> 14 (on hold, needs estimate, or waiting for approval)<br>
+            <strong>Unresolved:</strong> 0 total</p>
+            
+            <h2>Prioritization Patterns</h2>
+            
+            <h3>Priority Distribution by Category</h3>
+            <p><strong>High Priority Issues:</strong> 42 (18% of work)</p>
+            <ul>
+                <li><strong>Resolved:</strong> 26 (62%)</li>
+                <li><strong>Unresolved:</strong> 16</li>
+            </ul>
+            
+            <h3>High Priority Work by Category</h3>
+            <ul>
+                <li>Account/User Experience: 11 (26%)</li>
+                <li>Team Store / B2B: 9 (21%)</li>
+                <li>Product Listing (PLP): 6 (14%)</li>
+                <li>Cart/Checkout/Conversion: 5 (12%)</li>
+                <li>Product Display (PDP): 3 (7%)</li>
+                <li>Search & Discovery: 2 (5%)</li>
+                <li>Design/UX Enhancements: 2 (5%)</li>
+                <li>Content & Pages: 2 (5%)</li>
+                <li>Analytics & Integrations: 1 (2%)</li>
+                <li>Deployment & Operations: 1 (2%)</li>
+            </ul>
+            
+            <h2>Business Value Analysis</h2>
+            
+            <h3>Budget Allocation by Business Value</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Value Type</th>
+                        <th>Issues</th>
+                        <th>% of Budget</th>
+                        <th>Resolution Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revenue Impact</td>
+                        <td>25</td>
+                        <td>11%</td>
+                        <td>80%</td>
+                    </tr>
+                    <tr>
+                        <td>Operational Efficiency</td>
+                        <td>46</td>
+                        <td>20%</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Debt</td>
+                        <td>25</td>
+                        <td>11%</td>
+                        <td>88%</td>
+                    </tr>
+                    <tr>
+                        <td>User Experience</td>
+                        <td>17</td>
+                        <td>7%</td>
+                        <td>82%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Strategic Questions</h3>
+            <ul>
+                <li><strong>Revenue Focus:</strong> Only 11% of work is directly revenue-impacting. Is this sufficient for growth goals?</li>
+                <li><strong>Priority Discipline:</strong> Only 18% of work is marked high priority. Is everything truly a priority, or is the system not being used?</li>
+            </ul>
+            
+            <h2>Strategic Recommendations</h2>
+            
+            <h3>Improve Completion Rates</h3>
+            <ul>
+                <li>Low resolution rates in: Testing & Investigation, Requirements & Planning, Strategic Initiatives</li>
+                <li>Investigate why these areas have low completion</li>
+                <li>Consider breaking work into smaller pieces</li>
+                <li>Review scope and requirements clarity</li>
+            </ul>
+            
+            <h3>Address Unresolved High Priority</h3>
+            <ul>
+                <li>16 high-priority issues remain unresolved</li>
+                <li>Review these for immediate attention</li>
+                <li>Consider if priorities have changed</li>
+                <li>Identify blockers preventing resolution</li>
+            </ul>
+            
+            <h3>Consider Budget Rebalancing</h3>
+            <ul>
+                <li>Significant imbalance in work allocation across categories</li>
+                <li>Review if current distribution matches strategic priorities</li>
+                <li>Consider if underrepresented areas need more investment</li>
+                <li>Assess if overrepresented areas are generating sufficient ROI</li>
+            </ul>
+        </main>
+    </div>
+    
+    <!-- Footer will be loaded dynamically by component-loader.js -->
+    <div id="footer-container"></div>
+    
+    <!-- Component Loader: Dynamically loads header.html and footer.html -->
+    <script src="../../component-loader.js"></script>
+</body>
+</html>
+

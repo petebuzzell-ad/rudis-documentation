@@ -1,0 +1,39 @@
+# ARCDIG-DOCS RUDIS Documentation
+
+# Temporary files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+
+# Node modules (if any)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+
+# Keep assets directory structure but ignore large files if needed
+# Uncomment if you want to exclude large assets from git
+# assets/*.png
+# assets/*.jpg
+# assets/*.jpeg
+
+# Keep code and data directories but note they may be large
+# Uncomment if code/data directories are too large for git
+code/
+data/
+

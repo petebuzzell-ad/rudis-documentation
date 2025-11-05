@@ -22,6 +22,15 @@
                     <li><a href="#team-stores-b2b">Team Stores (B2B)</a></li>
                     <li><a href="#product-template-management">Product Template Management</a></li>
                     <li><a href="#collection-configuration">Collection Configuration</a></li>
+                    <li><a href="#global-navigation--header">Global Navigation & Header</a>
+                        <ul>
+                            <li><a href="#header-section">Header Section</a></li>
+                            <li><a href="#mega-menu-configuration">Mega Menu Configuration</a></li>
+                            <li><a href="#announcement-bar">Announcement Bar</a></li>
+                            <li><a href="#global-footer">Global Footer</a></li>
+                            <li><a href="#managing-menus-in-shopify-admin">Managing Menus in Shopify Admin</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#page-template-assignments">Page Template Assignments</a></li>
                     <li><a href="#custom-sections--rudis-specific-components">Custom Sections & RUDIS-Specific Components</a></li>
                     <li><a href="#metafields--custom-data">Metafields & Custom Data</a></li>
@@ -338,6 +347,720 @@
                         <li>Metafields are set in collection settings</li>
                         <li>Dates control store availability</li>
                         <li>Team product data contains pricing and product information</li>
+                    </ul>
+                </section>
+                
+                <section id="global-navigation--header">
+                    <h2>Global Navigation & Header</h2>
+                    
+                    <h3>Overview</h3>
+                    <p>The RUDIS storefront uses a global header section that appears on every page. The header includes navigation menus, logo, search functionality, and cart icons. The header is managed in the theme customizer and uses Shopify menus for navigation links.</p>
+                    
+                    <h3 id="header-section">Header Section</h3>
+                    
+                    <h4>Location in Theme Customizer</h4>
+                    <p><strong>Path:</strong> Online Store → Themes → Customize → <strong>Header</strong> section</p>
+                    <p>The Header section is a global section that appears on all pages. All header settings are configured in this single section.</p>
+                    
+                    <h4>Header Menu Assignments</h4>
+                    
+                    <p><strong>Main Shopping Menu</strong> (<code>menu</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Primary navigation bar in header (desktop and mobile)</li>
+                        <li><strong>Where to Edit:</strong> Header section → <strong>Main Shopping Menu</strong> dropdown</li>
+                        <li><strong>Display:</strong> Horizontal menu bar on desktop, mobile drawer menu on mobile</li>
+                        <li><strong>Purpose:</strong> Main product/category navigation (e.g., Shop, Collections, Athletes)</li>
+                        <li><strong>Menu Type:</strong> Use nested menus for subcategories (up to 3 levels supported)</li>
+                        <li><strong>Mega Menu Support:</strong> Can be configured with mega menu flyouts (see <a href="#mega-menu-configuration">Mega Menu Configuration</a> below)</li>
+                    </ul>
+                    
+                    <p><strong>Main Content Menu</strong> (<code>main_content_menu</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Secondary navigation bar in header (desktop and mobile)</li>
+                        <li><strong>Where to Edit:</strong> Header section → <strong>Main Content Menu</strong> dropdown</li>
+                        <li><strong>Display:</strong> Appears next to Main Shopping Menu on desktop, below main menu in mobile drawer</li>
+                        <li><strong>Purpose:</strong> Content/informational links (e.g., Blog, Stories, Media)</li>
+                        <li><strong>Menu Type:</strong> Standard menu (no mega menu support)</li>
+                    </ul>
+                    
+                    <p><strong>Utility Menu</strong> (<code>utility_menu</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Mobile menu drawer only (below main menu links)</li>
+                        <li><strong>Where to Edit:</strong> Header section → <strong>Utility menu mobile</strong> dropdown</li>
+                        <li><strong>Display:</strong> Mobile-only menu below main menu in drawer</li>
+                        <li><strong>Purpose:</strong> Utility/quick links (e.g., Custom Team Gear, Outlet, Contact)</li>
+                        <li><strong>Icons:</strong> Can be configured with icons via "Utility menu - icons" block (see below)</li>
+                    </ul>
+                    
+                    <h4>Header Logo</h4>
+                    
+                    <p><strong>Desktop Logo</strong> (<code>logo</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Logo</strong> image picker</li>
+                        <li><strong>Display:</strong> Desktop header (hides on mobile)</li>
+                        <li><strong>Width:</strong> Configurable (Header section → <strong>Desktop width</strong> slider, 50-250px, default: 100px)</li>
+                        <li><strong>Format:</strong> PNG recommended (transparency supported)</li>
+                        <li><strong>Where to Edit:</strong> Header section → Logo section</li>
+                    </ul>
+                    
+                    <p><strong>Mobile Logo</strong> (<code>logo_mobile</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Sticky logo</strong> image picker (optional)</li>
+                        <li><strong>Display:</strong> Mobile header when sticky header is active</li>
+                        <li><strong>Width:</strong> Configurable (Header section → <strong>Width for sticky logo</strong> slider, 30-250px, default: 100px)</li>
+                        <li><strong>Format:</strong> PNG recommended</li>
+                        <li><strong>Where to Edit:</strong> Header section → Mobile Sticky Logo section</li>
+                        <li><strong>Note:</strong> If not provided, desktop logo is used on mobile</li>
+                    </ul>
+                    
+                    <p><strong>Mobile Primary Logo</strong> (<code>logo_width_mobile</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Uses same logo as desktop but different width</li>
+                        <li><strong>Width:</strong> Configurable (Header section → <strong>Mobile width</strong> slider, 30-250px, default: 100px)</li>
+                        <li><strong>Where to Edit:</strong> Header section → Logo section</li>
+                    </ul>
+                    
+                    <h4>Header Options</h4>
+                    
+                    <p><strong>Sticky Header</strong> (<code>enable_sticky_header</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Options</strong> → <strong>Enable sticky header</strong> checkbox</li>
+                        <li><strong>Effect:</strong> Header stays visible when scrolling up</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Header section → Options section</li>
+                    </ul>
+                    
+                    <p><strong>Border Line</strong> (<code>show_line_separator</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Options</strong> → <strong>Show border line</strong> checkbox</li>
+                        <li><strong>Effect:</strong> Displays border between header and page content</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Header section → Options section</li>
+                    </ul>
+                    
+                    <p><strong>Header Animations</strong> (<code>enable_header_animation</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Animations</strong> → <strong>Enable header animation</strong> checkbox</li>
+                        <li><strong>Effect:</strong> Enables fade-in animations for header elements and mega menus</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Header section → Animations section</li>
+                        <li><strong>Note:</strong> Must be enabled for all animation options to work</li>
+                    </ul>
+                    
+                    <p><strong>Header Items Animation</strong> (<code>enable_header_items_animation</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Animations</strong> → <strong>Show header items fade in</strong> checkbox</li>
+                        <li><strong>Effect:</strong> Fade-in animation for header menu items</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Header section → Animations section</li>
+                    </ul>
+                    
+                    <p><strong>Mobile Icon Animation</strong> (<code>enable_mobile_icon_animation</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Animations</strong> → <strong>Show mobile menu icon animation</strong> checkbox</li>
+                        <li><strong>Effect:</strong> Animated hamburger menu icon on mobile</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Header section → Animations section</li>
+                    </ul>
+                    
+                    <h4>Header Blocks</h4>
+                    
+                    <p><strong>Utility Menu - Icons</strong> (<code>menu_icons</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Add block</strong> → <strong>Utility menu - icons</strong></li>
+                        <li><strong>Purpose:</strong> Add icons to utility menu links in mobile drawer</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li>Icon labels must match menu link names exactly</li>
+                                <li>Configure up to 3 icons (Icon 1, Icon 2, Icon 3)</li>
+                                <li>For each icon:
+                                    <ul>
+                                        <li><strong>Link label:</strong> Exact text of menu item (e.g., "Custom Team Gear")</li>
+                                        <li><strong>Select icon:</strong> Choose from available icons (Account, Box, Chat Bubble, Check Mark, Clipboard, Eye, Heart, Leaf, Map Pin, Question Mark, Return, Ruler, Silhouette, Star, Store Locator)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Where to Edit:</strong> Header section → Click block → Configure icon settings</li>
+                        <li><strong>Important:</strong> Icon labels must match menu item names exactly and in order</li>
+                    </ul>
+                    
+                    <p><strong>Promo Message</strong> (<code>promo</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Header section → <strong>Add block</strong> → <strong>Promo Message</strong></li>
+                        <li><strong>Purpose:</strong> Display promotional messages in header (currently not visible in header, may be used elsewhere)</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>Message:</strong> Text (keep under 40 characters for mobile)</li>
+                                <li><strong>Link url:</strong> Optional link for promo</li>
+                                <li><strong>Text color:</strong> Color picker</li>
+                                <li><strong>Background color:</strong> Color picker</li>
+                            </ul>
+                        </li>
+                        <li><strong>Where to Edit:</strong> Header section → Click block → Configure promo settings</li>
+                    </ul>
+                    
+                    <h3 id="mega-menu-configuration">Mega Menu Configuration</h3>
+                    <p>Mega menus are large dropdown flyouts that appear when hovering over main menu items. They support images, promotional content, and activity links.</p>
+                    <p><strong>Where to Configure:</strong> Header section → <strong>Add block</strong> → Choose <strong>Megamenu - link lists</strong> or <strong>Megamenu - image blocks</strong></p>
+                    
+                    <h4>Mega Menu - Link Lists</h4>
+                    <p><strong>Purpose:</strong> Create mega menu flyouts with nested link lists and promotional content</p>
+                    <p><strong>Configuration:</strong></p>
+                    <ol>
+                        <li><strong>Parent Menu Item:</strong>
+                            <ul>
+                                <li><strong>Menu item name:</strong> Exact name of top-level menu item (e.g., "Boys", "Collections")</li>
+                                <li><strong>Select menu style:</strong>
+                                    <ul>
+                                        <li><strong>Default:</strong> Standard mega menu layout</li>
+                                        <li><strong>Left rail:</strong> Left-aligned menu with rail layout</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Link Lists:</strong>
+                            <ul>
+                                <li>Menu structure automatically uses nested menu items from Shopify menu</li>
+                                <li><strong>Display 'All X' links?:</strong> Checkbox to show "Shop All" links for each subcategory</li>
+                            </ul>
+                        </li>
+                        <li><strong>Promo Content</strong> (Right side of mega menu):
+                            <ul>
+                                <li><strong>Promo markup (liquid):</strong> Optional custom HTML/Liquid code</li>
+                                <li><strong>Promo 1-4:</strong> Up to 4 promotional images/links:
+                                    <ul>
+                                        <li><strong>Promo X image:</strong> Image picker</li>
+                                        <li><strong>Promo X label:</strong> Text label</li>
+                                        <li><strong>Promo X label subtext:</strong> Secondary text</li>
+                                        <li><strong>Promo X link:</strong> URL for promo</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Activity Links:</strong>
+                            <ul>
+                                <li><strong>Activity Menu:</strong> Select a menu to display as "By Activity" section</li>
+                                <li>Appears at bottom of mega menu</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>Where to Edit:</strong> Header section → Click <strong>Megamenu - link lists</strong> block → Configure settings</p>
+                    
+                    <h4>Mega Menu - Image Blocks</h4>
+                    <p><strong>Purpose:</strong> Create image-based mega menus with video thumbnails</p>
+                    <p><strong>Configuration:</strong></p>
+                    <ol>
+                        <li><strong>Parent Menu Item:</strong>
+                            <ul>
+                                <li><strong>Menu item name:</strong> Exact name of top-level menu item</li>
+                            </ul>
+                        </li>
+                        <li><strong>Image Blocks</strong> (Up to 4 images):
+                            <ul>
+                                <li><strong>Block X label:</strong> Menu item name that image corresponds to (must match child menu item exactly)</li>
+                                <li><strong>Video X Image:</strong> Thumbnail image</li>
+                                <li><strong>Video X Thumbnail:</strong> Text label below image</li>
+                                <li><strong>Video X Link:</strong> URL for video/content</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>Where to Edit:</strong> Header section → Click <strong>Megamenu - image blocks</strong> block → Configure settings</p>
+                    <p><strong>Important:</strong> Block labels must match child menu item names exactly for images to appear correctly.</p>
+                    
+                    <h3 id="announcement-bar">Announcement Bar</h3>
+                    
+                    <h4>Location in Theme Customizer</h4>
+                    <p><strong>Path:</strong> Online Store → Themes → Customize → <strong>Announcement bar</strong> section</p>
+                    <p>The Announcement Bar appears at the very top of every page, above the header.</p>
+                    
+                    <h4>Announcement Bar Menu</h4>
+                    <p><strong>Utility Menu</strong> (<code>utility_menu</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Right side of announcement bar (desktop and mobile)</li>
+                        <li><strong>Where to Edit:</strong> Announcement bar section → <strong>Utility Menu</strong> dropdown</li>
+                        <li><strong>Display:</strong> Horizontal menu in announcement bar</li>
+                        <li><strong>Purpose:</strong> Quick utility links (e.g., Custom Team Gear, Outlet, Contact)</li>
+                        <li><strong>Text Color:</strong> Configurable (Announcement bar section → <strong>Utility menu text color</strong> color picker, default: white)</li>
+                        <li><strong>Note:</strong> This is different from the header utility menu (mobile-only)</li>
+                    </ul>
+                    
+                    <h4>Announcement Blocks</h4>
+                    <p><strong>Announcement</strong> (<code>announcement</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Announcement bar section → <strong>Add block</strong> → <strong>Announcement</strong></li>
+                        <li><strong>Purpose:</strong> Display promotional messages or announcements</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>Message:</strong> Announcement text</li>
+                                <li><strong>Link url:</strong> Optional link for announcement</li>
+                                <li><strong>Link label:</strong> Link text (if link provided)</li>
+                                <li><strong>Text color:</strong> Color picker (default: white)</li>
+                                <li><strong>Link color:</strong> Color picker (default: blue)</li>
+                                <li><strong>Background color:</strong> Color picker (default: black)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Carousel:</strong> If multiple announcement blocks are added, they rotate automatically</li>
+                        <li><strong>Carousel Speed:</strong> Configurable (Announcement bar section → <strong>Slide scroll speed</strong>, 5-15 seconds, default: 5)</li>
+                        <li><strong>Where to Edit:</strong> Announcement bar section → Click announcement block → Configure settings</li>
+                    </ul>
+                    <p><strong>Special Features:</strong></p>
+                    <ul>
+                        <li>Team Store links automatically appear for team store customers</li>
+                        <li>US-only display (hidden for non-US customers)</li>
+                    </ul>
+                    
+                    <h3 id="global-footer">Global Footer</h3>
+                    
+                    <h4>Location in Theme Customizer</h4>
+                    <p><strong>Path:</strong> Online Store → Themes → Customize → <strong>Footer</strong> section</p>
+                    <p>The Footer appears at the bottom of every page and includes multiple content blocks.</p>
+                    
+                    <h4>Footer Menu Blocks</h4>
+                    <p><strong>Footer menus are added as blocks</strong>, not as direct menu assignments.</p>
+                    <p><strong>Link List Block</strong> (<code>link_list</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Add block</strong> → <strong>Link List</strong></li>
+                        <li><strong>Purpose:</strong> Display a menu column in footer</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>Heading:</strong> Column heading text (e.g., "Support", "About")</li>
+                                <li><strong>Menu:</strong> Select menu to display</li>
+                            </ul>
+                        </li>
+                        <li><strong>Display:</strong> Desktop: Column layout, Mobile: Accordion (collapsible)</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Click link list block → Configure heading and menu</li>
+                    </ul>
+                    <p><strong>Multiple Footer Menus:</strong></p>
+                    <ul>
+                        <li>Add multiple <strong>Link List</strong> blocks to create multiple footer columns</li>
+                        <li>Each block can have its own heading and menu</li>
+                        <li>Blocks automatically arrange in grid layout (1-5 columns based on number of blocks)</li>
+                    </ul>
+                    
+                    <h4>Footer Logo & Text</h4>
+                    <p><strong>Logo Image</strong> (<code>logo_image</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Logo</strong> section → <strong>Image</strong> picker</li>
+                        <li><strong>Display:</strong> Top-left of footer content area</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Logo section</li>
+                    </ul>
+                    <p><strong>Logo Text</strong> (<code>logo_text</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Logo</strong> section → <strong>Text</strong> rich text editor</li>
+                        <li><strong>Display:</strong> Below logo image (if provided) or standalone</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Logo section</li>
+                    </ul>
+                    
+                    <h4>Footer Text Blocks</h4>
+                    <p><strong>Text Block</strong> (<code>text</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Add block</strong> → <strong>Text</strong></li>
+                        <li><strong>Purpose:</strong> Display custom text content in footer</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>Heading:</strong> Optional heading text</li>
+                                <li><strong>Subtext:</strong> Rich text content</li>
+                            </ul>
+                        </li>
+                        <li><strong>Where to Edit:</strong> Footer section → Click text block → Configure heading and content</li>
+                    </ul>
+                    
+                    <h4>Footer Image Blocks</h4>
+                    <p><strong>Image Block</strong> (<code>image</code> block)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Add block</strong> → <strong>Image</strong></li>
+                        <li><strong>Purpose:</strong> Display images in footer (logos, badges, etc.)</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>Image:</strong> Image picker</li>
+                                <li><strong>Image width:</strong> Slider (50-200px, default: 100px)</li>
+                                <li><strong>Image alignment:</strong> Left, Center, Right (default: center)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Where to Edit:</strong> Footer section → Click image block → Configure image settings</li>
+                    </ul>
+                    
+                    <h4>Footer Newsletter</h4>
+                    <p><strong>Newsletter Enable</strong> (<code>newsletter_enable</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Newsletter</strong> section → <strong>Enable newsletter</strong> checkbox</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Newsletter section</li>
+                    </ul>
+                    <p><strong>Newsletter Heading</strong> (<code>newsletter_heading</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Newsletter</strong> section → <strong>Heading</strong> text input</li>
+                        <li><strong>Default:</strong> "Subscribe to our emails"</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Newsletter section</li>
+                    </ul>
+                    <p><strong>Newsletter Text</strong> (<code>newsletter_text</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Newsletter</strong> section → <strong>Text</strong> rich text editor</li>
+                        <li><strong>Purpose:</strong> Additional text below newsletter heading</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Newsletter section</li>
+                    </ul>
+                    
+                    <h4>Footer SMS Signup</h4>
+                    <p><strong>SMS Signup Show</strong> (<code>sms_signup_show</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>Show SMS Signup</strong> checkbox</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    <p><strong>SMS Signup Icon</strong> (<code>sms_signup_icon</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>SMS Icon</strong> image picker</li>
+                        <li><strong>Display:</strong> Icon next to SMS signup text</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    <p><strong>SMS Signup Heading</strong> (<code>sms_signup_heading</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>Heading</strong> text input</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    <p><strong>SMS Signup Text</strong> (<code>sms_signup_text</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>Text</strong> rich text editor</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    <p><strong>SMS Signup Trigger</strong> (<code>sms_signup_trigger</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>Text</strong> (trigger button text)</li>
+                        <li><strong>Purpose:</strong> Text for button that opens SMS signup form</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    <p><strong>Klaviyo Active</strong> (<code>klaviyo</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>SMS Signup</strong> section → <strong>Active Klaviyo button</strong> checkbox</li>
+                        <li><strong>Default:</strong> Enabled</li>
+                        <li><strong>Purpose:</strong> Enables Klaviyo SMS form integration</li>
+                        <li><strong>Where to Edit:</strong> Footer section → SMS Signup section</li>
+                    </ul>
+                    
+                    <h4>Footer Social Media</h4>
+                    <p><strong>Show Social</strong> (<code>show_social</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Social</strong> section → <strong>Show social</strong> checkbox</li>
+                        <li><strong>Default:</strong> Disabled</li>
+                        <li><strong>Effect:</strong> Displays social media icons in footer</li>
+                        <li><strong>Display:</strong> Desktop: Next to logo, Mobile: Below newsletter section</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Social section</li>
+                        <li><strong>Note:</strong> Social media links are configured in theme settings (not in footer section)</li>
+                    </ul>
+                    <p><strong>Social Media Links Configuration:</strong></p>
+                    <ul>
+                        <li><strong>Location:</strong> Theme Settings → <strong>Social media</strong> section (not in footer section)</li>
+                        <li><strong>Supported Platforms:</strong> Instagram, LinkedIn, Pinterest, Facebook, Twitter, TikTok, Tumblr, Snapchat, YouTube, Vimeo</li>
+                        <li><strong>Where to Edit:</strong> Online Store → Themes → Customize → <strong>Theme Settings</strong> → <strong>Social media</strong> section</li>
+                        <li><strong>Note:</strong> Icons only appear if links are provided AND "Show social" is enabled in footer section</li>
+                    </ul>
+                    
+                    <h4>Footer Copyright</h4>
+                    <p><strong>Copyright Menu</strong> (<code>copyright_menu</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Copyright</strong> section → <strong>Menu</strong> dropdown</li>
+                        <li><strong>Purpose:</strong> Menu displayed in footer bottom bar (policies, privacy links)</li>
+                        <li><strong>Display:</strong> Horizontal links in footer bottom bar</li>
+                        <li><strong>Mobile Display:</strong> Configurable (Column or Row, Copyright section → <strong>Copyright Menu display (mobile)</strong>)</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Copyright section</li>
+                    </ul>
+                    <p><strong>Copyright Text</strong> (<code>copyright_text</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Copyright</strong> section → <strong>Copyright Text</strong> text input</li>
+                        <li><strong>Display:</strong> Next to copyright year (e.g., "© 2025 RUDIS")</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Copyright section</li>
+                    </ul>
+                    
+                    <h4>Footer Payment Icons</h4>
+                    <p><strong>Payment Enable</strong> (<code>payment_enable</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Payment</strong> section → <strong>Enable payment icons</strong> checkbox</li>
+                        <li><strong>Default:</strong> Disabled</li>
+                        <li><strong>Effect:</strong> Displays accepted payment method icons</li>
+                        <li><strong>Icons:</strong> Automatically displays all enabled payment types from Shopify settings</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Payment section</li>
+                    </ul>
+                    
+                    <h4>Footer Country/Language Selectors</h4>
+                    <p><strong>Country Selector</strong> (<code>enable_country_selector</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Country selector</strong> section → <strong>Enable country selector</strong> checkbox</li>
+                        <li><strong>Default:</strong> Disabled</li>
+                        <li><strong>Effect:</strong> Displays country/currency selector dropdown</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Country selector section</li>
+                    </ul>
+                    <p><strong>Language Selector</strong> (<code>enable_language_selector</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Language selector</strong> section → <strong>Enable language selector</strong> checkbox</li>
+                        <li><strong>Default:</strong> Disabled</li>
+                        <li><strong>Effect:</strong> Displays language selector dropdown</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Language selector section</li>
+                    </ul>
+                    
+                    <h4>Footer App Settings</h4>
+                    <p><strong>App Description</strong> (<code>app_description</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>App Settings</strong> section → <strong>Description</strong> rich text editor</li>
+                        <li><strong>Purpose:</strong> Display app download information</li>
+                        <li><strong>Where to Edit:</strong> Footer section → App Settings section</li>
+                    </ul>
+                    <p><strong>App Label & Link</strong> (<code>app_label_one</code>, <code>app_link_one</code>, <code>app_label_two</code>, <code>app_link_two</code> settings)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>App Settings</strong> section</li>
+                        <li><strong>Purpose:</strong> App download buttons (up to 2)</li>
+                        <li><strong>Configuration:</strong>
+                            <ul>
+                                <li><strong>App Label One/Two:</strong> Button text</li>
+                                <li><strong>App Link One/Two:</strong> Download URL</li>
+                            </ul>
+                        </li>
+                        <li><strong>Where to Edit:</strong> Footer section → App Settings section</li>
+                    </ul>
+                    
+                    <h4>Footer Color Scheme</h4>
+                    <p><strong>Color Scheme</strong> (<code>color_scheme</code> setting)</p>
+                    <ul>
+                        <li><strong>Location:</strong> Footer section → <strong>Colors</strong> section → <strong>Color scheme</strong> dropdown</li>
+                        <li><strong>Options:</strong> Accent 1, Accent 2, Background 1, Background 2, Inverse</li>
+                        <li><strong>Default:</strong> Background 1</li>
+                        <li><strong>Effect:</strong> Controls footer background and text colors</li>
+                        <li><strong>Where to Edit:</strong> Footer section → Colors section</li>
+                    </ul>
+                    
+                    <h3 id="managing-menus-in-shopify-admin">Managing Menus in Shopify Admin</h3>
+                    
+                    <h4>Access Menus</h4>
+                    <p><strong>Path:</strong> Online Store → <strong>Navigation</strong></p>
+                    <p>All menus are managed in Shopify Admin, then assigned to theme sections in the theme customizer.</p>
+                    
+                    <h4>Creating a New Menu</h4>
+                    <ol>
+                        <li>Navigate to <strong>Online Store</strong> → <strong>Navigation</strong></li>
+                        <li>Click <strong>Add menu</strong></li>
+                        <li>Enter menu name (e.g., "Footer Support")</li>
+                        <li>Click <strong>Add menu item</strong> to add links</li>
+                        <li>Configure each menu item (see below)</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <h4>Editing Menu Items</h4>
+                    <ol>
+                        <li>Select the menu to edit</li>
+                        <li>Click <strong>Add menu item</strong> or edit existing items</li>
+                        <li>Configure menu item:
+                            <ul>
+                                <li><strong>Name:</strong> Display text (e.g., "Contact", "Shipping")</li>
+                                <li><strong>Link:</strong> Choose link type:
+                                    <ul>
+                                        <li><strong>Collections</strong> - Link to a product collection</li>
+                                        <li><strong>Pages</strong> - Link to a content page</li>
+                                        <li><strong>Products</strong> - Link to a product page</li>
+                                        <li><strong>Blogs</strong> - Link to blog or blog post</li>
+                                        <li><strong>HTTP</strong> - External URL (e.g., <code>https://www.rudis.com/pages/custom-team-gear</code>)</li>
+                                        <li><strong>Frontpage</strong> - Link to homepage (<code>/</code>)</li>
+                                        <li><strong>Search</strong> - Link to search page (<code>/search</code>)</li>
+                                        <li><strong>Customer Account Page</strong> - Link to customer account pages</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Parent menu item:</strong> For nested menus, select parent item to create submenus</li>
+                            </ul>
+                        </li>
+                        <li>Drag to reorder items</li>
+                        <li>Save</li>
+                    </ol>
+                    
+                    <h4>Menu Item Types</h4>
+                    <p><strong>Collection Links:</strong></p>
+                    <ul>
+                        <li>Links to product collections (e.g., <code>/collections/sale</code>, <code>/collections/usa-wrestling</code>)</li>
+                        <li>Automatically updates when collection URL changes</li>
+                        <li>Use for category navigation</li>
+                    </ul>
+                    <p><strong>Page Links:</strong></p>
+                    <ul>
+                        <li>Links to content pages (e.g., <code>/pages/contact</code>, <code>/pages/shipping</code>)</li>
+                        <li>Use for informational pages, policies, support pages</li>
+                    </ul>
+                    <p><strong>External URLs (HTTP):</strong></p>
+                    <ul>
+                        <li>Links to external websites or absolute URLs</li>
+                        <li>Examples:
+                            <ul>
+                                <li><code>https://www.rudis.com/blogs/stories/...</code> (blog posts)</li>
+                                <li><code>https://rudissupport.zendesk.com/...</code> (help center)</li>
+                                <li><code>https://rudis.loopreturns.com/...</code> (returns portal)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><strong>Frontpage:</strong></p>
+                    <ul>
+                        <li>Links to homepage (<code>/</code>)</li>
+                        <li>Use for "Home" links</li>
+                    </ul>
+                    <p><strong>Search:</strong></p>
+                    <ul>
+                        <li>Links to search page (<code>/search</code>)</li>
+                        <li>Use for search functionality</li>
+                    </ul>
+                    <p><strong>Customer Account Pages:</strong></p>
+                    <ul>
+                        <li>Links to customer account sections (orders, addresses, etc.)</li>
+                        <li>Use for account navigation</li>
+                    </ul>
+                    
+                    <h4>Creating Nested Menus (Submenus)</h4>
+                    <p><strong>Hierarchical Menu Structure:</strong></p>
+                    <ol>
+                        <li>Create parent menu item (e.g., "Support")</li>
+                        <li>Create child menu items (e.g., "Contact", "Shipping", "Returns")</li>
+                        <li>For each child item, select the parent menu item in the <strong>Parent menu item</strong> dropdown</li>
+                        <li>Child items will appear as submenus under the parent</li>
+                    </ol>
+                    <p><strong>Mega Menu Support:</strong></p>
+                    <ul>
+                        <li>Nested menus up to 3 levels deep are supported</li>
+                        <li>First level (parent) triggers mega menu flyout</li>
+                        <li>Second level (child) appears as subcategories</li>
+                        <li>Third level (grandchild) appears as sub-subcategories</li>
+                    </ul>
+                    <p><strong>Example - Footer Support Menu:</strong></p>
+                    <ul>
+                        <li><strong>Parent:</strong> Support
+                            <ul>
+                                <li><strong>Child:</strong> Contact</li>
+                                <li><strong>Child:</strong> Help Center</li>
+                                <li><strong>Child:</strong> Shipping</li>
+                                <li><strong>Child:</strong> Track my Order</li>
+                                <li><strong>Child:</strong> Returns & Exchanges</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h4>Menu-to-Section Mapping Reference</h4>
+                    <p><strong>Quick Reference - Which Menu Goes Where:</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Menu Setting</th>
+                                <th>Location</th>
+                                <th>Section</th>
+                                <th>Desktop Display</th>
+                                <th>Mobile Display</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Main Shopping Menu</strong></td>
+                                <td>Header</td>
+                                <td>Header → Main Shopping Menu</td>
+                                <td>Primary nav bar</td>
+                                <td>Mobile drawer menu</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Main Content Menu</strong></td>
+                                <td>Header</td>
+                                <td>Header → Main Content Menu</td>
+                                <td>Secondary nav bar</td>
+                                <td>Below main menu in drawer</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Utility Menu</strong></td>
+                                <td>Header</td>
+                                <td>Header → Utility menu mobile</td>
+                                <td>Hidden</td>
+                                <td>Mobile drawer only</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Utility Menu</strong></td>
+                                <td>Announcement Bar</td>
+                                <td>Announcement bar → Utility Menu</td>
+                                <td>Top bar (right side)</td>
+                                <td>Top bar (right side)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Footer Menus</strong></td>
+                                <td>Footer</td>
+                                <td>Footer → Link List blocks</td>
+                                <td>Footer columns</td>
+                                <td>Accordion sections</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Copyright Menu</strong></td>
+                                <td>Footer</td>
+                                <td>Footer → Copyright → Menu</td>
+                                <td>Footer bottom bar</td>
+                                <td>Footer bottom bar</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4>Menu Best Practices</h4>
+                    <p><strong>Menu Organization:</strong></p>
+                    <ul>
+                        <li>Keep main navigation focused (5-7 items)</li>
+                        <li>Use nested menus for subcategories</li>
+                        <li>Group related items together</li>
+                        <li>Place most important links first</li>
+                    </ul>
+                    <p><strong>Naming Conventions:</strong></p>
+                    <ul>
+                        <li>Use clear, descriptive names</li>
+                        <li>Keep names concise (avoid long text)</li>
+                        <li>Use consistent naming across menus</li>
+                        <li>For mega menu blocks, menu item names must match exactly (case-sensitive)</li>
+                    </ul>
+                    <p><strong>Link Management:</strong></p>
+                    <ul>
+                        <li>Use collection/page links instead of HTTP when possible (easier to maintain)</li>
+                        <li>Test all links after updates</li>
+                        <li>Update external URLs when pages move</li>
+                        <li>Remove or update broken links regularly</li>
+                    </ul>
+                    <p><strong>Menu Updates:</strong></p>
+                    <ul>
+                        <li>Changes appear immediately on storefront</li>
+                        <li>Test menu changes on mobile and desktop</li>
+                        <li>Verify nested menu structure displays correctly</li>
+                        <li>Check that menu items are accessible on all page types</li>
+                    </ul>
+                    
+                    <h4>Troubleshooting Menus</h4>
+                    <p><strong>Menu Not Appearing:</strong></p>
+                    <ul>
+                        <li>Verify menu is assigned in theme customizer</li>
+                        <li>Check menu has menu items</li>
+                        <li>Ensure menu is enabled/active</li>
+                        <li>Check theme section settings</li>
+                        <li>Verify correct section is being edited</li>
+                    </ul>
+                    <p><strong>Menu Item Links Broken:</strong></p>
+                    <ul>
+                        <li>Verify collection/page/product exists</li>
+                        <li>Check URL is correct</li>
+                        <li>Test external URLs</li>
+                        <li>Update HTTP links if pages moved</li>
+                    </ul>
+                    <p><strong>Nested Menu Not Displaying:</strong></p>
+                    <ul>
+                        <li>Verify parent menu item is selected for child items</li>
+                        <li>Check theme supports nested menus (up to 3 levels)</li>
+                        <li>Test on mobile (may display differently)</li>
+                        <li>Verify mega menu block is configured (if using mega menus)</li>
+                    </ul>
+                    <p><strong>Mega Menu Not Showing:</strong></p>
+                    <ul>
+                        <li>Verify mega menu block exists for parent menu item</li>
+                        <li>Check "Menu item name" in block matches parent menu item name exactly (case-sensitive)</li>
+                        <li>Ensure menu has nested items (child links)</li>
+                        <li>Check header animation is enabled (required for mega menu animations)</li>
+                    </ul>
+                    <p><strong>Menu Changes Not Visible:</strong></p>
+                    <ul>
+                        <li>Clear browser cache</li>
+                        <li>Check theme customizer saved</li>
+                        <li>Verify correct menu is assigned</li>
+                        <li>Test in incognito/private browsing mode</li>
                     </ul>
                 </section>
                 

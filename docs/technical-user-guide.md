@@ -915,6 +915,258 @@ Available blocks include:
 
 ---
 
+## Navigation Sections
+
+### Shopify Menus Implementation
+
+RUDIS uses **29 navigation menus** throughout the theme. Menus are managed in Shopify Admin and rendered in theme sections using Liquid's `linklists` object.
+
+### Menu Access in Liquid
+
+**Accessing Menus:**
+```liquid
+{% for link in linklists['menu-handle'].links %}
+  {{ link.title }}
+  {{ link.url }}
+{% endfor %}
+```
+
+**Menu Handle:**
+- Menus are accessed by their **handle** (lowercase, hyphenated version of menu name)
+- Example: Menu "Footer Support" has handle `footer-support`
+- Menu handle is set in Shopify Admin when creating the menu
+
+### Header Menu Implementation
+
+**Header Section (`header.liquid`):**
+
+The header section uses the menu assigned in theme settings:
+
+```liquid
+{%- if section.settings.menu != blank -%}
+  {%- for link in linklists[section.settings.menu].links -%}
+    <!-- Menu items rendered here -->
+  {%- endfor -%}
+{%- endif -%}
+```
+
+**Menu Assignment:**
+- Menu is assigned in theme customizer: **Header** section → **Menu** dropdown
+- Theme setting key: `section.settings.menu`
+- Value is the menu handle (e.g., `main-menu`, `utility-menu`)
+
+**Menu Components:**
+- `menu-bar.liquid` - Main navigation menu bar
+- `menu-drawer-list.liquid` - Mobile menu drawer
+- `menu-list.liquid` - Standard menu list
+- `menu-link-item.liquid` - Individual menu link item
+- `menu-header-drawer.liquid` - Menu drawer component
+
+### Footer Menu Implementation
+
+**Footer Section (`footer.liquid`):**
+
+Footer menus are assigned in theme customizer settings:
+
+```liquid
+{%- if section.settings.footer_menu != blank -%}
+  {%- for link in linklists[section.settings.footer_menu].links -%}
+    <!-- Footer menu items -->
+  {%- endfor -%}
+{%- endif -%}
+```
+
+**Multiple Footer Menus:**
+- Footer can have multiple menu columns
+- Each column can have its own menu assignment
+- Settings: `footer_menu_1`, `footer_menu_2`, `footer_menu_3`, etc.
+
+### Announcement Bar Menu
+
+**Announcement Bar Section (`announcement-bar.liquid`):**
+
+Utility menu displayed in announcement bar:
+
+```liquid
+{% for link in linklists[section.settings.utility_menu].links %}
+  <div class="announcement-bar__menu-item" data-menu-link-handle="{{ link.handle }}">
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  </div>
+{% endfor %}
+```
+
+**Menu Assignment:**
+- Theme setting: `section.settings.utility_menu`
+- Assigned in theme customizer: **Announcement Bar** → **Utility Menu** dropdown
+
+### Menu Item Properties
+
+**Standard Menu Item Properties:**
+- `link.title` - Display text
+- `link.url` - Link URL (relative or absolute)
+- `link.handle` - URL handle (lowercase, hyphenated)
+- `link.type` - Link type (collection, page, product, http, etc.)
+- `link.object` - Shopify object (collection, page, product)
+
+**Nested Menu Items:**
+- `link.links` - Child menu items (submenus)
+- `link.levels` - Menu depth level
+- `link.parent` - Parent menu item (if nested)
+
+**Example - Nested Menu:**
+```liquid
+{% for link in linklists['main-menu'].links %}
+  <a href="{{ link.url }}">{{ link.title }}</a>
+  {% if link.links.size > 0 %}
+    <ul>
+      {% for child_link in link.links %}
+        <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endfor %}
+```
+
+### Menu Link Types
+
+**Collection Links:**
+- `link.type` = `collection`
+- `link.object` = Collection object
+- `link.url` = `/collections/{handle}`
+
+**Page Links:**
+- `link.type` = `page`
+- `link.object` = Page object
+- `link.url` = `/pages/{handle}`
+
+**Product Links:**
+- `link.type` = `product`
+- `link.object` = Product object
+- `link.url` = `/products/{handle}`
+
+**HTTP Links (External):**
+- `link.type` = `http`
+- `link.url` = Full URL (e.g., `https://www.rudis.com/...`)
+
+**Frontpage Links:**
+- `link.type` = `frontpage`
+- `link.url` = `/`
+
+**Search Links:**
+- `link.type` = `search`
+- `link.url` = `/search`
+
+### Menu Component Files
+
+**Menu Snippets:**
+- `snippets/menu-list.liquid` - Standard menu list rendering
+- `snippets/menu-list-image.liquid` - Menu list with images
+- `snippets/menu-list-promos.liquid` - Menu list with promotional content
+- `snippets/menu-list-activity.liquid` - Menu list with activity indicators
+- `snippets/menu-link-item.liquid` - Individual menu link item component
+- `snippets/menu-search.liquid` - Menu search component
+- `snippets/menu-search-modal.liquid` - Menu search modal
+
+**Menu CSS:**
+- `assets/component-menu-drawer.css` - Menu drawer styles
+- `assets/component-list-menu.css` - List menu styles
+- `assets/component-mega-menu.css` - Mega menu styles (if used)
+
+**Menu JavaScript:**
+- Menu drawer functionality in `assets/global.js`
+- Mobile menu toggle in header section
+
+### Menu Data Structure
+
+**RUDIS Menu Inventory:**
+- **Total Menus:** 29 navigation menus
+- **Menu Types:**
+  - Header navigation (main menu, utility menu)
+  - Footer menus (footer, support, policies)
+  - Special purpose (customer account, partnership, collection menus)
+
+**Menu Data Export:**
+- Menu data available in: `/Users/pete/dev/shopify/rudis-documentation/data/AD-EVERYTHING-Export_2025-10-22_131917/Menus.csv`
+- CSV includes: Menu ID, handle, title, menu items, parent-child relationships
+
+### Menu Configuration
+
+**Menu Assignment in Theme Settings:**
+
+Menus are assigned in theme customizer sections:
+1. **Header Section:**
+   - Setting: `menu` (dropdown)
+   - Selects main navigation menu
+
+2. **Footer Section:**
+   - Settings: `footer_menu_1`, `footer_menu_2`, `footer_menu_3` (dropdowns)
+   - Multiple footer columns
+
+3. **Announcement Bar Section:**
+   - Setting: `utility_menu` (dropdown)
+   - Utility navigation items
+
+**Theme Settings Schema:**
+Menus are defined in `config/settings_schema.json` with menu picker inputs:
+
+```json
+{
+  "type": "link_list",
+  "id": "menu",
+  "label": "Menu",
+  "default": "main-menu"
+}
+```
+
+### Menu Best Practices
+
+**Menu Handle Naming:**
+- Use lowercase, hyphenated handles
+- Keep handles descriptive (e.g., `footer-support`, `utility-menu`)
+- Avoid special characters or spaces
+
+**Menu Structure:**
+- Limit main navigation to 5-7 items
+- Use nested menus for subcategories
+- Keep menu depth reasonable (2-3 levels max)
+
+**Performance:**
+- Menus are cached by Shopify
+- Menu changes appear immediately
+- No page rebuild required for menu updates
+
+**Accessibility:**
+- Ensure proper ARIA labels for menu items
+- Support keyboard navigation
+- Test menu accessibility with screen readers
+
+### Code References
+
+**Header Menu:**
+```68:68:sections/header.liquid
+  <header class="header page-width {% if section.settings.menu != blank %} header--has-menu{% endif %}">
+```
+
+```90:90:sections/header.liquid
+    {%- if section.settings.menu != blank -%}
+```
+
+**Announcement Bar Menu:**
+```44:51:sections/announcement-bar.liquid
+    <div class="announcement_bar__menu">
+      {% for link in linklists[section.settings.utility_menu].links %}
+          {%- render "function.is_menu_item_hidden", link: link -%}
+          {%- unless is_menu_item_hidden -%}
+          <div class="announcement-bar__menu-item" data-menu-link-handle="{{ link.handle }}">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </div>
+```
+
+**Menu List Component:**
+See `snippets/menu-list.liquid` for menu rendering implementation.
+
+---
+
 ## Custom Features
 
 ### Team Store Functionality

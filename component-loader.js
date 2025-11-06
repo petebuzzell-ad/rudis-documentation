@@ -87,6 +87,7 @@
         input.placeholder = 'Password';
         input.id = 'auth-password-input';
         input.name = 'password';
+        input.autocomplete = 'current-password';
         input.style.cssText = `
             width: 100%;
             padding: 0.75rem;

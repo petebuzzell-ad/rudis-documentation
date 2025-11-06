@@ -81,6 +81,15 @@
             checkPassword();
         });
         
+        // Hidden username field for accessibility (browser requirement)
+        const usernameInput = document.createElement('input');
+        usernameInput.type = 'text';
+        usernameInput.name = 'username';
+        usernameInput.autocomplete = 'username';
+        usernameInput.style.cssText = 'position: absolute; left: -9999px; width: 1px; height: 1px;';
+        usernameInput.tabIndex = -1;
+        usernameInput.setAttribute('aria-hidden', 'true');
+        
         // Password input
         const input = document.createElement('input');
         input.type = 'password';
@@ -141,6 +150,7 @@
         });
         
         // Assemble form
+        form.appendChild(usernameInput);
         form.appendChild(input);
         form.appendChild(error);
         form.appendChild(button);

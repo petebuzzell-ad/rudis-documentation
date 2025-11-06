@@ -10,8 +10,10 @@
     const AUTH_KEY = 'rudis_docs_authenticated';
     
     // Hide content immediately to prevent flash
-    document.body.style.visibility = 'hidden';
-    document.body.style.overflow = 'hidden';
+    if (document.body) {
+        document.body.style.visibility = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
     
     // Check if already authenticated
     function isAuthenticated() {
@@ -25,6 +27,9 @@
     
     // Show password prompt
     function showPasswordPrompt() {
+        // Make body visible so overlay can be seen
+        document.body.style.visibility = 'visible';
+        
         // Create overlay
         const overlay = document.createElement('div');
         overlay.id = 'auth-overlay';
@@ -250,12 +255,26 @@
     }
     
     // Initialize: Check auth first, then load components
-    if (!isAuthenticated()) {
-        showPasswordPrompt();
+    // Wait for body to be ready
+    if (document.body) {
+        if (!isAuthenticated()) {
+            showPasswordPrompt();
+        } else {
+            document.body.style.visibility = 'visible';
+            document.body.style.overflow = '';
+            loadComponents();
+        }
     } else {
-        document.body.style.visibility = 'visible';
-        document.body.style.overflow = '';
-        loadComponents();
+        // Fallback if body isn't ready yet
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isAuthenticated()) {
+                showPasswordPrompt();
+            } else {
+                document.body.style.visibility = 'visible';
+                document.body.style.overflow = '';
+                loadComponents();
+            }
+        });
     }
 })();
 

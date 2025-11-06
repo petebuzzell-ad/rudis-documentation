@@ -1,0 +1,4 @@
+# Tell all bots to go away
+User-agent: *
+Disallow: /
+

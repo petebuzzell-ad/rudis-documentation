@@ -73,11 +73,20 @@
             font-size: 0.9rem;
         `;
         
+        // Form to contain password input (fixes browser warning)
+        const form = document.createElement('form');
+        form.style.cssText = 'width: 100%;';
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            checkPassword();
+        });
+        
         // Password input
         const input = document.createElement('input');
         input.type = 'password';
         input.placeholder = 'Password';
         input.id = 'auth-password-input';
+        input.name = 'password';
         input.style.cssText = `
             width: 100%;
             padding: 0.75rem;
@@ -91,6 +100,7 @@
         `;
         input.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 checkPassword();
             }
         });
@@ -108,6 +118,7 @@
         
         // Submit button
         const button = document.createElement('button');
+        button.type = 'submit';
         button.textContent = 'Access Documentation';
         button.style.cssText = `
             width: 100%;
@@ -127,14 +138,16 @@
         button.addEventListener('mouseleave', function() {
             button.style.background = '#2d5016';
         });
-        button.addEventListener('click', checkPassword);
         
-        // Assemble
+        // Assemble form
+        form.appendChild(input);
+        form.appendChild(error);
+        form.appendChild(button);
+        
+        // Assemble container
         container.appendChild(title);
         container.appendChild(desc);
-        container.appendChild(input);
-        container.appendChild(error);
-        container.appendChild(button);
+        container.appendChild(form);
         overlay.appendChild(container);
         document.body.appendChild(overlay);
         
